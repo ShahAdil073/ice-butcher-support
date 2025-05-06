@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Example</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Sidebar will be loaded here -->
+    <div  class="sidebar d-flex flex-column" id="sidebar-container"></div>
+    <div class="sidebar-mobile-overlay" id="sidebarMobileOverlay"></div>
+    <div class="main-content" id="mainContent">
+      <!-- Navbar -->
+      <div id="header-container"></div>
+      <div class="container-fluid pt-3">
+        <div class="d-flex align-items-center mb-3">
+          <span class="fs-5 fw-bold">Sales Essentials</span>
+          <span class="ms-auto fs-sm text-muted d-flex align-items-center"
+            >Data Updated: 15 Apr 2025 15:04:54
+            <button class="btn btn-sm btn-outline-primary ms-3">
+              <i class="bi bi-download"></i> Export Report
+            </button></span
+          >
+        </div>
+        <!-- Info Cards Row -->
+        <div class="row dashboard-cards flex-nowrap overflow-auto pb-2 gx-3">
+          <div class="col">
+            <div class="card dashboard-card-1 p-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-medium"
+                  >Revenue Generate<br /><small>this month</small></span
+                >
+                <span class="percent">35%</span>
+              </div>
+              <div class="fw-semibold fs-4 mt-3">$88.9k</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card dashboard-card-2 p-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-medium"
+                  >Come Back Order<br /><small>in the last 7 days</small></span
+                >
+                <span class="percent">20%</span>
+              </div>
+              <div class="fw-semibold fs-4 mt-3">$4.56k</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card dashboard-card-3 p-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-medium"
+                  >Deals In-Progress<br /><small>this month</small></span
+                >
+                <span class="percent">15%</span>
+              </div>
+              <div class="fw-semibold fs-4 mt-3">$23.0k</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card dashboard-card-4 p-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-medium"
+                  >New Customer Order<br /><small>in this project</small></span
+                >
+                <span class="percent">20%</span>
+              </div>
+              <div class="fw-semibold fs-4 mt-3">$18.9K</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card dashboard-card-5 p-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-medium"
+                  >Revenue Lost<br /><small>in the last 7 days</small></span
+                >
+                <span class="percent">8%</span>
+              </div>
+              <div class="fw-semibold fs-4 mt-3">$5.3k</div>
+            </div>
+          </div>
+        </div>
+        <!-- Main Row Charts -->
+        <div class="row mt-1 gx-3">
+          <div class="col-lg-8">
+            <div class="data-chart mb-3">
+              <div
+                class="d-flex justify-content-between align-items-center mb-2"
+              >
+                <span class="fw-medium">Product Order by Category</span>
+                <div>
+                  <button class="btn btn-sm btn-outline-secondary">
+                    Hours
+                  </button>
+                  <button class="btn btn-sm btn-outline-secondary">Day</button>
+                  <button class="btn btn-sm btn-outline-primary">Week</button>
+                  <button class="btn btn-sm btn-outline-secondary">
+                    Month
+                  </button>
+                </div>
+              </div>
+              <div style="height: 230px">
+                <canvas id="lineChart" height="90"></canvas>
+              </div>
+              <div class="px-2 mt-3">
+                <span class="badge bg-warning text-dark">Ice Luge</span>
+                <span
+                  class="badge bg-orange text-dark"
+                  style="background: #ffb957; color: #7d4801"
+                  >Seafood Display</span
+                >
+                <span class="badge bg-danger">3D Showpieces</span>
+                <span class="badge bg-info text-dark">Ice Bar</span>
+                <span class="badge bg-primary">Mini Luge</span>
+                <span class="badge bg-purple" style="background: #7266f5"
+                  >Ice Cube</span
+                >
+              </div>
+            </div>
+            <div class="row gx-3">
+              <div class="col-md-7">
+                <div class="data-chart-bar">
+                  <div class="fw-medium mb-2">Revenue by Category Deals</div>
+                  <div style="height: 180px">
+                    <canvas id="barChart" height="80"></canvas>
+                  </div>
+                  <div class="d-flex gap-3 mt-3 small">
+                    <span style="color: #5170ff">■ $33.9k</span>
+                    <span style="color: #ff9008">■ $81.6k</span>
+                    <span style="color: #fa4e61">■ $109.1k</span>
+                    <span style="color: #2ba589">■ $57.3k</span>
+                    <span style="color: #485660">■ $57.3k</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="data-chart-bar">
+                  <div class="fw-medium mb-2">Revenue Won by Source</div>
+                  <div style="height: 180px">
+                    <canvas id="doughnutChart" height="100"></canvas>
+                  </div>
+                  <div class="mt-3 small">
+                    <div>
+                      Email Marketing<span class="float-end">11.2%</span>
+                    </div>
+                    <div>
+                      Organic Search<span class="float-end">22.8%</span>
+                    </div>
+                    <div>
+                      Social Marketing<span class="float-end">13.9%</span>
+                    </div>
+                    <div>
+                      Paid Promotion<span class="float-end">52.1%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Right Side Stat Panels -->
+          <div class="col-lg-4 mt-3 mt-lg-0">
+            <div class="side-panel mb-3">
+              <div class="fw-medium mb-2">Response Times</div>
+              <ul class="list-unstyled mb-0">
+                <li>Google ---</li>
+                <li>YouTube ---</li>
+                <li>Instagram ---</li>
+                <li>Pinterest ---</li>
+                <li>Facebook ---</li>
+                <li>Twitter ---</li>
+              </ul>
+            </div>
+            <div class="side-panel">
+              <div class="fw-medium mb-2">Response Times</div>
+              <ul class="list-unstyled mb-0">
+                <li>Google ---</li>
+                <li>YouTube ---</li>
+                <li>Instagram ---</li>
+                <li>Pinterest ---</li>
+                <li>Facebook ---</li>
+                <li>Twitter ---</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    <script>
+      // Chart.js initialization
+      window.addEventListener("DOMContentLoaded", function () {
+        // Line Chart
+        new Chart(document.getElementById("lineChart").getContext("2d"), {
+          type: "line",
+          data: {
+            labels: [
+              "Ice Luge",
+              "Seafood Display",
+              "3D Showpieces",
+              "Ice Bar",
+              "Mini Luge",
+              "Ice Cube",
+            ],
+            datasets: [
+              {
+                label: "Ice Luge",
+                data: [40, 70, 50, 30, 80, 120],
+                borderColor: "#FF9008",
+                backgroundColor: "transparent",
+                tension: 0.4,
+              },
+              {
+                label: "Seafood Display",
+                data: [60, 85, 80, 60, 90, 140],
+                borderColor: "#ffb957",
+                backgroundColor: "transparent",
+                tension: 0.4,
+              },
+              {
+                label: "3D Showpieces",
+                data: [40, 90, 70, 60, 120, 200],
+                borderColor: "#fa4e61",
+                backgroundColor: "transparent",
+                tension: 0.4,
+              },
+              {
+                label: "Ice Bar",
+                data: [20, 55, 35, 50, 60, 100],
+                borderColor: "#2ba589",
+                backgroundColor: "transparent",
+                tension: 0.4,
+              },
+              {
+                label: "Mini Luge",
+                data: [30, 50, 60, 70, 50, 120],
+                borderColor: "#516cff",
+                backgroundColor: "transparent",
+                tension: 0.4,
+              },
+              {
+                label: "Ice Cube",
+                data: [80, 140, 120, 110, 170, 230],
+                borderColor: "#7266f5",
+                backgroundColor: "transparent",
+                tension: 0.4,
+              },
+            ],
+          },
+          options: {
+            plugins: { legend: { display: false } },
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: { grid: { color: "#ececec" }, beginAtZero: true },
+              x: { grid: { display: false } },
+            },
+          },
+        });
+        // Bar Chart
+        new Chart(document.getElementById("barChart").getContext("2d"), {
+          type: "bar",
+          data: {
+            labels: ["IL", "SD", "3DS", "IB", "ML", "IC"],
+            datasets: [
+              {
+                label: "Revenue",
+                data: [33900, 81600, 109100, 57300, 57300, 81300],
+                backgroundColor: [
+                  "#5170ff",
+                  "#ff9008",
+                  "#fa4e61",
+                  "#2ba589",
+                  "#485660",
+                  "#7266f5",
+                ],
+              },
+            ],
+          },
+          options: {
+            plugins: { legend: { display: false } },
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: { grid: { color: "#ececec" }, beginAtZero: true },
+              x: { grid: { display: false } },
+            },
+          },
+        });
+        // Doughnut Chart
+        new Chart(document.getElementById("doughnutChart").getContext("2d"), {
+          type: "doughnut",
+          data: {
+            labels: [
+              "Email Marketing",
+              "Organic Search",
+              "Social Marketing",
+              "Paid Promotion",
+            ],
+            datasets: [
+              {
+                data: [11.2, 22.8, 13.9, 52.1],
+                backgroundColor: ["#22dd93", "#53cbff", "#7266f5", "#d2d5db"],
+                borderWidth: 2,
+              },
+            ],
+          },
+          options: {
+            plugins: { legend: { display: false } },
+            cutout: "70%",
+            responsive: true,
+            maintainAspectRatio: false,
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

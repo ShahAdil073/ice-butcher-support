@@ -1,0 +1,274 @@
+/* Main CSS for Ice Butcher Dashboard */
+
+:root {
+  --sidebar-width: 260px;
+  --sidebar-width-collapsed: 80px;
+  --header-height: 60px;
+  --primary-color: #0f2d50;
+  --secondary-color: #ff7a59;
+  --light-bg: #f5f7fa;
+  --card-bg: #ffffff;
+  --text-color: #333333;
+  --text-muted: #6c757d;
+  --border-color: #e9ecef;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --info-color: #17a2b8;
+  --todo-color: #0f2d50;
+  --doing-color: #ff7a59;
+  --done-color: #7eb6dd;
+}
+
+body {
+  background: #f8f9fb;
+  font-family: "Inter", Arial, sans-serif;
+}
+.sidebar {
+  min-width: 220px;
+  max-width: 220px;
+  height: 100vh;
+  background: #fff;
+  border-right: 1px solid #ececec;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: all 0.3s;
+  z-index: 1030;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar.collapsed {
+  min-width: 70px;
+  max-width: 70px;
+}
+.sidebar .sidebar-header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+}
+.sidebar .nav-link {
+  color: #333;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.sidebar .nav-link.active {
+  background: #eee;
+  border-left: 4px solid #00a99d;
+}
+.sidebar.collapsed .nav-text,
+.sidebar.collapsed .sidebar-section {
+  display: none;
+}
+.sidebar .nav-icon {
+  font-size: 1.4rem;
+}
+.sidebar .sidebar-section {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  font-size: 0.95rem;
+  color: #888;
+}
+.sidebar-footer {
+  margin-top: auto;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.sidebar.collapsed .sidebar-header-logo {
+  margin: 0 auto;
+}
+.sidebar .sidebar-header-logo img {
+  height: 40px;
+}
+.sidebar-content {
+  flex: 1 1 0;
+  overflow-y: auto;
+  min-height: 0;
+}
+.sidebar.collapsed .sidebar-header-logo img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.sidebar.collapsed {
+  min-width: 70px;
+  max-width: 70px;
+}
+.main-content {
+  margin-left: 220px;
+  padding: 1.5rem;
+  transition: margin-left 0.3s;
+}
+.sidebar.collapsed ~ .main-content {
+  margin-left: 70px;
+}
+.navbar {
+  background: #fff;
+  border-bottom: 1px solid #ececec;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+}
+.dashboard-cards .card {
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 1rem;
+  min-width: 180px;
+  margin-bottom: 1rem;
+}
+.dashboard-card-1 {
+  background: linear-gradient(100deg, #ff9008, #ffab37);
+}
+.dashboard-card-2 {
+  background: linear-gradient(100deg, #516cff, #6690ff);
+}
+.dashboard-card-3 {
+  background: linear-gradient(100deg, #18314f 70%, #476e92 100%);
+}
+.dashboard-card-4 {
+  background: linear-gradient(100deg, #53cbff, #84e6bb);
+  color: #19323c;
+}
+.dashboard-card-5 {
+  background: linear-gradient(100deg, #22dd93, #16a17b);
+}
+.dashboard-card-1 .percent,
+.dashboard-card-2 .percent,
+.dashboard-card-3 .percent,
+.dashboard-card-4 .percent,
+.dashboard-card-5 .percent {
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: rgba(0, 0, 0, 0.07);
+  border-radius: 12px;
+  padding: 2px 10px;
+}
+.data-chart,
+.data-chart-bar {
+  background: #fff;
+  border-radius: 18px;
+  padding: 1.7rem 1.5rem 1rem 1.5rem;
+  box-shadow: 0 1px 6px rgba(60, 100, 180, 0.07);
+  margin-bottom: 1.2rem;
+}
+.side-panel {
+  background: #fff;
+  border-radius: 18px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 1px 8px rgba(60, 100, 180, 0.08);
+  margin-bottom: 1.2rem;
+  min-width: 210px;
+}
+.chart-placeholder {
+  width: 100%;
+  height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: repeating-linear-gradient(
+    45deg,
+    #e7eaf3,
+    #e7eaf3 6px,
+    #fff 6px,
+    #fff 16px
+  );
+  border-radius: 10px;
+  font-size: 2rem;
+  color: #a2a8cb;
+}
+.bar-placeholder {
+  width: 100%;
+  height: 180px;
+  background: repeating-linear-gradient(
+    90deg,
+    #e7eaf3,
+    #e7eaf3 6px,
+    #fff 6px,
+    #fff 22px
+  );
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b3b9ce;
+  font-size: 1.8rem;
+}
+.sidebar-toggle {
+  position: absolute;
+  left: 100%;
+  top: 16px;
+  background: #fff;
+  border: 1px solid #ececec;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: left 0.3s;
+}
+.sidebar.collapsed + .sidebar-toggle {
+  left: 100%;
+}
+.sidebar-toggle i {
+  font-size: 1.45rem;
+}
+.sidebar-mobile-overlay {
+  display: none;
+  position: fixed;
+  z-index: 1099;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(44, 55, 70, 0.14);
+}
+@media (max-width: 991.98px) {
+  .main-content {
+    margin-left: 70px !important;
+  }
+  .sidebar {
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    transition: left 0.3s;
+    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.09);
+  }
+  .sidebar:not(.collapsed) {
+    left: 0;
+    z-index: 1110;
+  }
+  .sidebar.collapsed {
+    left: 0;
+    z-index: 1110;
+  }
+  .sidebar-toggle {
+    left: 70px;
+    top: 16px;
+  }
+  .sidebar-mobile-overlay.active {
+    display: block;
+  }
+}
+@media (max-width: 767.98px) {
+  .main-content {
+    padding: 0.5rem;
+  }
+  .dashboard-cards {
+    flex-direction: column !important;
+  }
+}
+/* Hide sidebar sub-tabs in collapsed mode */
+.sidebar.collapsed .collapse,
+.sidebar.collapsed [aria-controls] + .collapse {
+  display: none !important;
+}
