@@ -55,7 +55,6 @@ body {
   padding: 0.75rem 1.5rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
 }
 .sidebar .nav-link.active {
   background: #eee;
@@ -64,6 +63,10 @@ body {
 .sidebar.collapsed .nav-text,
 .sidebar.collapsed .sidebar-section {
   display: none;
+}
+.sidebar .nav-link .nav-text {
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
 }
 .sidebar .nav-icon {
   font-size: 1.4rem;

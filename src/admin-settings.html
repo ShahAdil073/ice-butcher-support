@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notification Preferences</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Sidebar will be loaded here -->
+    <div class="sidebar d-flex flex-column" id="sidebar-container"></div>
+    <div class="sidebar-mobile-overlay" id="sidebarMobileOverlay"></div>
+    <div class="main-content" id="mainContent">
+      <!-- Navbar -->
+      <div id="header-container"></div>
+      <div class="container-fluid pt-3">
+        <div class="row">
+          <div class="col-lg-3 border-end">
+            <div class="mb-4">
+              <div class="fw-bold fs-4 ps-2 mb-3 mt-2">Settings</div>
+              <div class="ps-2 text-muted small">Your Preferences</div>
+              <div class="list-group list-group-flush mb-2">
+                <a href="#" class="list-group-item list-group-item-action">Account Setting</a>
+                <a href="#" class="list-group-item list-group-item-action">Appearance</a>
+                <a href="#" class="list-group-item list-group-item-action active">Notifications</a>
+              </div>
+              <div class="ps-2 text-muted small mt-3">Account Management</div>
+              <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action">Users & Teams</a>
+                <a href="#" class="list-group-item list-group-item-action">Audit Log</a>
+                <a href="#" class="list-group-item list-group-item-action">Works Schedule</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-9">
+            <div id="Notifications">
+              <div class="d-flex align-items-center border-bottom py-2 mb-4">
+                <div class="fw-semibold fs-5 px-2">Manage Users</div>
+              </div>
+              <div class="px-2 px-lg-4">
+                <div class="fw-bold fs-4">Notification Preferences</div>
+                <div class="mb-4 text-muted">Get emails to found out what is going on when you are not online. You can turn them off anytime.</div>
+                <form>
+                  <!-- Notifications from us -->
+                  <div class="mb-3 pb-2 border-bottom">
+                    <div class="fw-semibold">Notifications from us</div>
+                    <div class="text-muted mb-2 small">Receive the latest news, updates, and industry tutorials from us.</div>
+                    <div class="form-check mb-1">
+                      <input class="form-check-input" type="checkbox" id="news-updates" checked />
+                      <label class="form-check-label" for="news-updates">News and updates <span class="text-muted fw-normal">- News about product and feature updates.</span></label>
+                    </div>
+                    <div class="form-check mb-1">
+                      <input class="form-check-input" type="checkbox" id="tips-tutorials" />
+                      <label class="form-check-label" for="tips-tutorials">Tips and tutorials <span class="text-muted fw-normal">- Tips on getting more out of Courier.</span></label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="user-research" />
+                      <label class="form-check-label" for="user-research">User research <span class="text-muted fw-normal">- Data results to help you better understand your users.</span></label>
+                    </div>
+                  </div>
+                  <!-- Comments -->
+                  <div class="mb-3 pb-2 border-bottom">
+                    <div class="fw-semibold">Comments</div>
+                    <div class="text-muted mb-2 small">These are notifications for comments on your posts and replies to your comments</div>
+                    <div class="form-check mb-1">
+                      <input class="form-check-input" type="radio" name="comments-setting" id="c-notify-none" checked />
+                      <label class="form-check-label" for="c-notify-none">Do not notify me</label>
+                    </div>
+                    <div class="form-check mb-1">
+                      <input class="form-check-input" type="radio" name="comments-setting" id="c-mentions-only" />
+                      <label class="form-check-label" for="c-mentions-only">Mentions only</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="comments-setting" id="c-all-comments" />
+                      <label class="form-check-label" for="c-all-comments">All comments</label>
+                    </div>
+                  </div>
+                  <!-- Reminders -->
+                  <div class="mb-3 pb-2 border-bottom">
+                    <div class="fw-semibold">Reminders</div>
+                    <div class="text-muted mb-2 small">These are notifications to remind you of updates you might have missed.</div>
+                    <div class="form-check mb-1">
+                      <input class="form-check-input" type="radio" name="reminders-setting" id="r-notify-none" checked />
+                      <label class="form-check-label" for="r-notify-none">Do not notify me</label>
+                    </div>
+                    <div class="form-check mb-1">
+                      <input class="form-check-input" type="radio" name="reminders-setting" id="r-important-only" />
+                      <label class="form-check-label" for="r-important-only">Important reminders only</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="reminders-setting" id="r-all-reminders" />
+                      <label class="form-check-label" for="r-all-reminders">All reminders</label>
+                    </div>
+                  </div>
+                  <!-- More activity about you -->
+                  <div class="mb-4">
+                    <div class="fw-semibold">More activity about you</div>
+                    <div class="text-muted mb-2 small">These are notifications for posts on your profile, likes and other reactions to your posts.</div>
+                    <div class="form-check mb-1">
+                      <input class="form-check-input" type="radio" name="activity-setting" id="a-notify-none" checked />
+                      <label class="form-check-label" for="a-notify-none">Do not notify me</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="activity-setting" id="a-all-reminders" />
+                      <label class="form-check-label" for="a-all-reminders">All reminders</label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      // Auto-load header and sidebar
+      window.addEventListener('DOMContentLoaded', function () {
+        fetch('components/header.html')
+          .then(r => r.text())
+          .then(html => {
+            document.getElementById('header-container').innerHTML = html;
+          });
+        fetch('components/sidebar.html')
+          .then(r => r.text())
+          .then(html => {
+            document.getElementById('sidebar-container').innerHTML = html;
+          });
+      });
+    </script>
+  </body>
+</html>
