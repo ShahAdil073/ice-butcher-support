@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Works Schedule - Ice Butcher</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Sidebar will be loaded here -->
+    <div class="sidebar d-flex flex-column" id="sidebar-container"></div>
+    <div class="sidebar-mobile-overlay" id="sidebarMobileOverlay"></div>
+    <div class="main-content" id="mainContent">
+      <!-- Navbar -->
+      <div id="header-container"></div>
+      <div class="container-fluid pt-3">
+        <!-- Main Content -->
+        <div class="row">
+          <div class="col-12">
+            <div class="works-schedule-section">
+              <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+                <div>
+                  <h3 class="mb-1">Works Schedule</h3>
+                </div>
+                <div class="d-flex works-schedule-actions gap-2">
+                  <div class="search-container position-relative">
+                    <input type="text" class="form-control search-input" placeholder="Search here...">
+                    <i class="bi bi-search search-icon position-absolute"></i>
+                  </div>
+                  <button class="btn btn-primary grant-access-btn">
+                    <i class="bi bi-lock me-1"></i> Grant Access
+                  </button>
+                </div>
+              </div>
+
+              <!-- Calendar and Schedule Content -->
+              <div class="row">
+                <!-- Small Calendar -->
+                <div class="col-md-4 col-lg-3">
+                  <div class="bg-white p-3 rounded shadow-sm mb-3">
+                    <h5 class="mb-3">January</h5>
+                    <div class="calendar-small">
+                      <div class="calendar-header d-flex justify-content-between align-items-center mb-2">
+                        <div class="week-days d-flex w-100 justify-content-between">
+                          <div class="day-label">MON</div>
+                          <div class="day-label">TUE</div>
+                          <div class="day-label">WED</div>
+                          <div class="day-label">THU</div>
+                          <div class="day-label">FRI</div>
+                          <div class="day-label">SAT</div>
+                          <div class="day-label">SUN</div>
+                        </div>
+                      </div>
+                      <div class="calendar-grid">
+                        <div class="calendar-row d-flex">
+                          <div class="calendar-day">01</div>
+                          <div class="calendar-day">02</div>
+                          <div class="calendar-day">03</div>
+                          <div class="calendar-day">04</div>
+                          <div class="calendar-day">05</div>
+                          <div class="calendar-day">06</div>
+                          <div class="calendar-day">07</div>
+                        </div>
+                        <div class="calendar-row d-flex">
+                          <div class="calendar-day">08</div>
+                          <div class="calendar-day">09</div>
+                          <div class="calendar-day">10</div>
+                          <div class="calendar-day">11</div>
+                          <div class="calendar-day">12</div>
+                          <div class="calendar-day">13</div>
+                          <div class="calendar-day">14</div>
+                        </div>
+                        <div class="calendar-row d-flex">
+                          <div class="calendar-day">15</div>
+                          <div class="calendar-day">16</div>
+                          <div class="calendar-day">17</div>
+                          <div class="calendar-day">18</div>
+                          <div class="calendar-day">19</div>
+                          <div class="calendar-day">20</div>
+                          <div class="calendar-day">21</div>
+                        </div>
+                        <div class="calendar-row d-flex">
+                          <div class="calendar-day">22</div>
+                          <div class="calendar-day">23</div>
+                          <div class="calendar-day">24</div>
+                          <div class="calendar-day">25</div>
+                          <div class="calendar-day">26</div>
+                          <div class="calendar-day">27</div>
+                          <div class="calendar-day">28</div>
+                        </div>
+                        <div class="calendar-row d-flex">
+                          <div class="calendar-day">29</div>
+                          <div class="calendar-day">30</div>
+                          <div class="calendar-day">31</div>
+                          <div class="calendar-day text-muted">01</div>
+                          <div class="calendar-day text-muted">02</div>
+                          <div class="calendar-day text-muted">03</div>
+                          <div class="calendar-day text-muted">04</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Holidays and Ceremonies -->
+                  <div class="bg-white p-3 rounded shadow-sm mb-3">
+                    <h6 class="mb-4 pb-2 border-bottom"><i class="bi bi-gift me-2 text-danger"></i> Ceremony Days</h6>
+                    <div class="holiday-list">
+                      <div class="holiday-item d-flex align-items-center mb-3">
+                        <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                          <span><i class="bi bi-calendar-event text-primary"></i></span>
+                        </div>
+                        <div>
+                          <div class="text-primary small mb-1">Jan 01</div>
+                          <div class="fw-medium">New Year's Day</div>
+                        </div>
+                      </div>
+                      <div class="holiday-item d-flex align-items-center mb-3">
+                        <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                          <span><i class="bi bi-calendar-event text-primary"></i></span>
+                        </div>
+                        <div>
+                          <div class="text-primary small mb-1">Feb 20</div>
+                          <div class="fw-medium">Washington's Birthday</div>
+                        </div>
+                      </div>
+                      <div class="holiday-item d-flex align-items-center mb-3">
+                        <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                          <span><i class="bi bi-calendar-event text-primary"></i></span>
+                        </div>
+                        <div>
+                          <div class="text-primary small mb-1">Nov 22</div>
+                          <div class="fw-medium">Thanksgiving Day</div>
+                        </div>
+                      </div>
+                      <div class="holiday-item d-flex align-items-center">
+                        <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                          <span><i class="bi bi-calendar-event text-primary"></i></span>
+                        </div>
+                        <div>
+                          <div class="text-primary small mb-1">Dec 25</div>
+                          <div class="fw-medium">Christmas Day</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bg-white p-3 rounded shadow-sm mb-3">
+                    <h6 class="mb-4 pb-2 border-bottom"><i class="bi bi-airplane me-2 text-info"></i> Holi Days</h6>
+                    <div class="holiday-list">
+                      <div class="holiday-item d-flex align-items-center mb-3">
+                        <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                          <span><i class="bi bi-calendar-event text-primary"></i></span>
+                        </div>
+                        <div>
+                          <div class="text-primary small mb-1">Jul 04</div>
+                          <div class="fw-medium">Independence Day</div>
+                        </div>
+                      </div>
+                      <div class="holiday-item d-flex align-items-center mb-3">
+                        <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                          <span><i class="bi bi-calendar-event text-primary"></i></span>
+                        </div>
+                        <div>
+                          <div class="text-primary small mb-1">Sep 03</div>
+                          <div class="fw-medium">Labor Day</div>
+                        </div>
+                      </div>
+                      <div class="holiday-item d-flex align-items-center mb-3">
+                        <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                          <span><i class="bi bi-calendar-event text-primary"></i></span>
+                        </div>
+                        <div>
+                          <div class="text-primary small mb-1">Oct 08</div>
+                          <div class="fw-medium">Columbus Day</div>
+                        </div>
+                      </div>
+                      <div class="holiday-item d-flex align-items-center">
+                        <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                          <span><i class="bi bi-calendar-event text-primary"></i></span>
+                        </div>
+                        <div>
+                          <div class="text-primary small mb-1">Nov 11</div>
+                          <div class="fw-medium">Veterans Day</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Main Calendar and Settings -->
+                <div class="col-md-8 col-lg-9">
+                  <div class="bg-white p-4 rounded shadow-sm mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                      <h3 class="mb-0">January 2022</h3>
+                      <div class="calendar-controls">
+                        <button class="btn btn-outline-secondary month-btn">
+                          Month <i class="bi bi-chevron-down ms-1"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <p class="mb-4">User Profile Info.<br>Manage your current integrated accounts.</p>
+
+                    <!-- Schedule Form -->
+                    <div class="row mb-4">
+                      <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                          <label for="worksType" class="form-label">Works Type <span class="text-danger">*</span></label>
+                          <select class="form-select" id="worksType">
+                            <option selected>Regular</option>
+                            <option>Special</option>
+                            <option>Seasonal</option>
+                            <option>Custom</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                          <label for="selectCalendar" class="form-label">Select Calendar <span class="text-danger">*</span></label>
+                          <select class="form-select" id="selectCalendar">
+                            <option selected>Google Calendar</option>
+                            <option>Outlook Calendar</option>
+                            <option>Apple Calendar</option>
+                            <option>Local Calendar</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                          <label for="selectEmploys" class="form-label">Select Employs <span class="text-danger">*</span></label>
+                          <div class="position-relative">
+                            <select class="form-select" id="selectEmploys">
+                              <option>@icesculptures</option>
+                              <option>@hasan</option>
+                              <option>@abirkhan</option>
+                            </select>
+                            <div class="selected-employs position-absolute d-flex gap-1" style="top: 8px; left: 15px;">
+                              <span class="badge rounded-pill bg-light text-dark">@icesculptures <i class="bi bi-x-circle"></i></span>
+                              <span class="badge rounded-pill bg-light text-dark">@hasan <i class="bi bi-x-circle"></i></span>
+                              <span class="badge rounded-pill bg-light text-dark">@abirkhan <i class="bi bi-x-circle"></i></span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                          <label for="timeZone" class="form-label">Time Zone <span class="text-danger">*</span></label>
+                          <select class="form-select" id="timeZone">
+                            <option selected>Eastern Time (US & Canada)</option>
+                            <option>Central Time (US & Canada)</option>
+                            <option>Mountain Time (US & Canada)</option>
+                            <option>Pacific Time (US & Canada)</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Work Schedule Hours -->
+                    <div class="employs-schedule mb-4">
+                      <h5 class="mb-3">Employs Works Schedule</h5>
+
+                      <div class="schedule-table">
+                        <div class="schedule-row d-flex align-items-center mb-3">
+                          <div class="day-checkbox me-3" style="width: 30px;">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="worksSunday">
+                            </div>
+                          </div>
+                          <div class="day-name me-3" style="width: 100px;">
+                            <label class="form-label" for="worksSunday">Works Hours <i class="bi bi-arrow-down-up ms-1"></i></label>
+                          </div>
+                        </div>
+
+                        <div class="schedule-row d-flex align-items-center mb-3">
+                          <div class="day-checkbox me-3" style="width: 30px;">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="worksMonday" checked>
+                            </div>
+                          </div>
+                          <div class="day-name me-3" style="width: 100px;">
+                            <label class="form-check-label" for="worksMonday">Monday</label>
+                          </div>
+                          <div class="time-selectors d-flex gap-2 align-items-center flex-wrap">
+                            <select class="form-select form-select-sm" style="width: 80px;">
+                              <option>08:00</option>
+                            </select>
+                            <select class="form-select form-select-sm" style="width: 80px;">
+                              <option>AM</option>
+                            </select>
+                            <span class="px-2">TO</span>
+                            <select class="form-select form-select-sm" style="width: 80px;">
+                              <option>08:00</option>
+                            </select>
+                            <select class="form-select form-select-sm" style="width: 80px;">
+                              <option>PM</option>
+                            </select>
+                            <span class="ms-3 text-muted">9 hrs</span>
+                          </div>
+                        </div>
+
+                        <div class="schedule-row d-flex align-items-center mb-3">
+                          <div class="day-checkbox me-3" style="width: 30px;">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="worksTuesday" checked>
+                            </div>
+                          </div>
+                          <div class="day-name me-3" style="width: 100px;">
+                            <label class="form-check-label" for="worksTuesday">Tuesday</label>
+                          </div>
+                          <div class="time-selectors d-flex gap-2 align-items-center flex-wrap">
+                            <select class="form-select form-select-sm" style="width: 80px;">
+                              <option>08:00</option>
+                            </select>
+                            <select class="form-select form-select-sm" style="width: 80px;">
+                              <option>AM</option>
+                            </select>
+                            <span class="px-2">TO</span>
+                            <select class="form-select form-select-sm" style="width: 80px;">
+                              <option>08:00</option>
+                            </select>
+                            <select class="form-select form-select-sm" style="width: 80px;">
+                              <option>PM</option>
+                            </select>
+                            <span class="ms-3 text-muted">9 hrs</span>
+                          </div>
+                        </div>
+
+                        <div class="schedule-row d-flex align-items-center mb-3">
+                          <div class="day-checkbox me-3" style="width: 30px;">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="worksWednesday" checked>
+                            </div>
+                          </div>
+                          <div class="day-name me-3" style="width: 100px;">
+                            <label class="form-check-label" for="worksWednesday">Wednesday</label>
+                          </div>
+                          <div class="time-selectors d-flex gap-2 align-items-center flex-wrap">
+                            <select class="form-select form-select-sm" style="width: 80px;">
+                              <option>08:00</option>
+                            </select>
+                            <select class="form-select form-select-sm" style="width: 80px;">
+                              <option>AM</option>
+                            </select>
+                            <span class="px-2">TO</span>
+                            <select class="form-select form-select-sm" style="width: 80px;">
+                              <option>08:00</option>
+                            </select>
+                            <select class="form-select form-select-sm" style="width: 80px;">
+                              <option>PM</option>
+                            </select>
+                            <span class="ms-3 text-muted">9 hrs</span>
+                          </div>
+                        </div>
+
+                        <div class="schedule-row d-flex align-items-center mb-3">
+                          <div class="day-checkbox me-3" style="width: 30px;">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="worksThursday" checked>
+                            </div>
+                          </div>
+                          <div class="day-name me-3" style="width: 100px;">
+                            <label class="form-check-label" for="worksThursday">Thursday</label>
+                          </div>
+                          <div class="time-selectors d-flex gap-2 align-items-center flex-wrap">
+                            <select class="form-select form-select-sm" style="width: 80px;">
+                              <option>08:00</option>
+                            </select>
+                            <select class="form-select form-select-sm" style="width: 80px;">
+                              <option>AM</option>
+                            </select>
+                            <span class="px-2">TO</span>
+                            <select class="form-select form-select-sm" style="width: 80px;">
+                              <option>08:00</option>
+                            </select>
+                            <select class="form-select form-select-sm" style="width: 80px;">
+                              <option>PM</option>
+                            </select>
+                            <span class="ms-3 text-muted">9 hrs</span>
+                          </div>
+                        </div>
+
+                        <div class="schedule-row d-flex align-items-center mb-3">
+                          <div class="day-checkbox me-3" style="width: 30px;">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="worksFriday" checked>
+                            </div>
+                          </div>
+                          <div class="day-name me-3" style="width: 100px;">
+                            <label class="form-check-label" for="worksFriday">Friday</label>
+                          </div>
+                          <div class="time-selectors d-flex gap-2 align-items-center flex-wrap">
+                            <select class="form-select form-select-sm" style="width: 80px;">
+                              <option>08:00</option>
+                            </select>
+                            <select class="form-select form-select-sm" style="width: 80px;">
+                              <option>AM</option>
+                            </select>
+                            <span class="px-2">TO</span>
+                            <select class="form-select form-select-sm" style="width: 80px;">
+                              <option>08:00</option>
+                            </select>
+                            <select class="form-select form-select-sm" style="width: 80px;">
+                              <option>PM</option>
+                            </select>
+                            <span class="ms-3 text-muted">9 hrs</span>
+                          </div>
+                        </div>
+
+                        <div class="schedule-row d-flex align-items-center mb-3">
+                          <div class="day-checkbox me-3" style="width: 30px;">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="worksSaturday">
+                            </div>
+                          </div>
+                          <div class="day-name me-3" style="width: 100px;">
+                            <label class="form-check-label" for="worksSaturday">Saturday</label>
+                          </div>
+                          <div class="time-selectors d-flex gap-2 align-items-center flex-wrap">
+                            <select class="form-select form-select-sm" style="width: 80px;" disabled>
+                              <option>08:00</option>
+                            </select>
+                            <select class="form-select form-select-sm" style="width: 80px;" disabled>
+                              <option>AM</option>
+                            </select>
+                            <span class="px-2">TO</span>
+                            <select class="form-select form-select-sm" style="width: 80px;" disabled>
+                              <option>08:00</option>
+                            </select>
+                            <select class="form-select form-select-sm" style="width: 80px;" disabled>
+                              <option>AM</option>
+                            </select>
+                            <span class="ms-3 text-muted">--</span>
+                          </div>
+                        </div>
+
+                        <div class="schedule-row d-flex align-items-center mb-3">
+                          <div class="day-checkbox me-3" style="width: 30px;">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="worksSunday">
+                            </div>
+                          </div>
+                          <div class="day-name me-3" style="width: 100px;">
+                            <label class="form-check-label" for="worksSunday">Sunday</label>
+                          </div>
+                          <div class="time-selectors d-flex gap-2 align-items-center flex-wrap">
+                            <select class="form-select form-select-sm" style="width: 80px;" disabled>
+                              <option>08:00</option>
+                            </select>
+                            <select class="form-select form-select-sm" style="width: 80px;" disabled>
+                              <option>AM</option>
+                            </select>
+                            <span class="px-2">TO</span>
+                            <select class="form-select form-select-sm" style="width: 80px;" disabled>
+                              <option>08:00</option>
+                            </select>
+                            <select class="form-select form-select-sm" style="width: 80px;" disabled>
+                              <option>AM</option>
+                            </select>
+                            <span class="ms-3 text-muted">--</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="text-end">
+                      <button class="btn btn-primary send-alerts-btn">
+                        <i class="bi bi-bell me-2"></i> Send Alerts
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

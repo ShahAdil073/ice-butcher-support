@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile - Ice Butcher</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Sidebar will be loaded here -->
+    <div class="sidebar d-flex flex-column" id="sidebar-container"></div>
+    <div class="sidebar-mobile-overlay" id="sidebarMobileOverlay"></div>
+    <div class="main-content" id="mainContent">
+      <!-- Navbar -->
+      <div id="header-container"></div>
+      <div class="container-fluid pt-3">
+        <!-- Main Content -->
+        <div class="row">
+          <div class="col-12">
+            <div class="manage-users-section">
+              <h3 class="mb-4">User Profile Info.</h3>
+              <p class="text-muted mb-4">Manage your current integrated accounts.</p>
+
+              <!-- Profile Tabs -->
+              <ul class="nav nav-tabs mb-4 profile-tabs" id="profileTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="user-profile-tab" data-bs-toggle="tab" data-bs-target="#user-profile" type="button" role="tab" aria-controls="user-profile" aria-selected="true">User Profile</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="account-security-tab" data-bs-toggle="tab" data-bs-target="#account-security" type="button" role="tab" aria-controls="account-security" aria-selected="false">Account Security</button>
+                </li>
+              </ul>
+
+              <div class="tab-content" id="profileTabsContent">
+                <!-- User Profile Tab Content -->
+                <div class="tab-pane fade show active" id="user-profile" role="tabpanel" aria-labelledby="user-profile-tab">
+                  <div class="profile-info bg-white p-4 rounded shadow-sm">
+                    <div class="profile-section">
+                      <h5 class="mb-3">Profile Picture</h5>
+                      <div class="d-flex align-items-center mb-3">
+                        <div class="profile-picture-container position-relative me-4">
+                          <img src="assets/images/avatar1.png" alt="Profile Picture" class="profile-picture rounded-circle" width="120" height="120">
+                        </div>
+                        <div class="profile-actions">
+                          <p class="text-muted mb-2">PNG, JPEG under 15MB</p>
+                          <div class="btn-group">
+                            <button class="btn btn-primary upload-btn me-2">
+                              <i class="bi bi-upload me-2"></i>Upload New Picture
+                            </button>
+                            <button class="btn btn-danger delete-btn">
+                              <i class="bi bi-trash me-2"></i>Delete
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="profile-section mt-4">
+                      <h5 class="mb-3">Profile Info.</h5>
+                      <p class="text-muted mb-4">Manage your current integrated accounts.</p>
+
+                      <form id="profileForm">
+                        <div class="row mb-3">
+                          <div class="col-md-6 mb-3 mb-md-0">
+                            <label for="firstName" class="form-label">First Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="firstName" placeholder="Heather" value="Heather">
+                          </div>
+                          <div class="col-md-6">
+                            <label for="lastName" class="form-label">Last Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="lastName" placeholder="White" value="White">
+                          </div>
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="permissionRoles" class="form-label">Permission Roles <span class="text-danger">*</span></label>
+                          <select class="form-select" id="permissionRoles">
+                            <option selected>Admin & Support</option>
+                            <option>Manager</option>
+                            <option>User</option>
+                            <option>Viewer</option>
+                          </select>
+                        </div>
+
+                        <div class="row mb-3">
+                          <div class="col-md-6 mb-3 mb-md-0">
+                            <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="username" placeholder="@icesculptures" value="@icesculptures">
+                          </div>
+                          <div class="col-md-6">
+                            <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="email" placeholder="example@icesculptures.com" value="example@icesculptures.com">
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+                    <div class="profile-section mt-4">
+                      <h5 class="mb-3">Delete Account</h5>
+                      <p class="text-muted mb-2">Need help configuring your account?</p>
+                      <p class="text-muted mb-4">Let us know at support@modrakk.com.</p>
+
+                      <h6 class="mb-3">Delete user Account</h6>
+                      <button class="btn btn-danger delete-account-btn mb-3">
+                        <i class="bi bi-trash me-2"></i>Permanently Delete Account
+                      </button>
+                      <p class="text-muted small">Warning: This is a destructive action that cannot be reverted.</p>
+                    </div>
+
+                    <div class="profile-actions mt-4 text-end">
+                      <button class="btn btn-primary save-changes-btn">
+                        <i class="bi bi-check-lg me-2"></i>Save Changes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Account Security Tab Content -->
+                <div class="tab-pane fade" id="account-security" role="tabpanel" aria-labelledby="account-security-tab">
+                  <div class="security-info bg-white p-4 rounded shadow-sm">
+                    <div class="security-section">
+                      <h5 class="mb-3">Security</h5>
+                      <p class="text-muted mb-4">Manage your current integrated accounts.</p>
+
+                      <h6 class="mb-3">Sign in using password</h6>
+                      <p class="text-muted mb-3">Set your password if you want to be able to sign in using password.</p>
+
+                      <form id="passwordForm">
+                        <div class="mb-3">
+                          <label for="currentPassword" class="form-label">Current Password <span class="text-danger">*</span></label>
+                          <input type="password" class="form-control" id="currentPassword" value="••••••••••" readonly>
+                        </div>
+
+                        <p class="text-muted small mb-3">This will be how your name will be displayed in the account section and in reviews!</p>
+
+                        <div class="row mb-4">
+                          <div class="col-md-6 mb-3 mb-md-0">
+                            <label for="newPassword" class="form-label">New Password <span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" id="newPassword" placeholder="••••••••••">
+                          </div>
+                          <div class="col-md-6">
+                            <label for="confirmPassword" class="form-label">Confirm New Password <span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="••••••••••">
+                          </div>
+                        </div>
+
+                        <div class="password-requirements mb-4">
+                          <h6 class="mb-2">Password requirements:</h6>
+                          <p class="text-muted small mb-2">Ensure that these requirements are met:</p>
+                          <ul class="requirements-list ps-4">
+                            <li>At least one lowercase character</li>
+                            <li>At least one uppercase character</li>
+                            <li>Minimum 8 characters long - the more, the better</li>
+                            <li>At least one number, symbol, or whitespace character</li>
+                          </ul>
+                        </div>
+                      </form>
+                    </div>
+
+                    <div class="security-section mt-4">
+                      <h5 class="mb-3">Two-factor authentication</h5>
+                      <p class="text-muted mb-3">Use Google Authenticator, 1Password, or any other OTP client.</p>
+
+                      <div class="d-flex flex-column mb-4">
+                        <p class="mb-3">Turn Two-Factor Authentication</p>
+                        <button class="btn btn-primary btn-2fa align-self-start">
+                          <i class="bi bi-shield-lock me-2"></i>Enable Two-Factor Authentication
+                        </button>
+                        <p class="text-muted small mt-3">Two-factor authentication is not enabled.</p>
+                        <p class="text-muted small mt-2">Use Google Authenticator, 1Password, or any other OTP client.</p>
+                      </div>
+                    </div>
+
+                    <div class="security-section mt-4">
+                      <h5 class="mb-3">Your Activity</h5>
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-pc-display me-3 fs-4"></i>
+                        <div>
+                          <h6 class="mb-1">Currently Active</h6>
+                          <p class="text-muted small mb-0">Your current session</p>
+                        </div>
+                      </div>
+                      <p class="text-muted small mt-4">You can always customize the look & feel later in your account settings.</p>
+                    </div>
+
+                    <div class="profile-actions mt-4 text-end">
+                      <button class="btn btn-primary save-changes-btn">
+                        <i class="bi bi-check-lg me-2"></i>Save Changes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
