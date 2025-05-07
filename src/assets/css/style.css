@@ -234,6 +234,187 @@ body {
   bottom: 0;
   background: rgba(44, 55, 70, 0.14);
 }
+
+/* Orders Tracking Page Styles */
+
+/* Task Search Styles */
+#no-search-results {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  background-color: #e8f4fd;
+  color: #0c5989;
+  border: 1px solid #b9ddf7;
+}
+
+.task-group {
+  transition: all 0.2s ease;
+}
+
+/* Task Link Styles */
+.task-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #333;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-bottom: 0.25rem;
+  transition: all 0.2s ease;
+  background: #fff;
+  /* Ensure task items are visible on white background */
+}
+
+.task-link:hover {
+  background-color: #f0f4f8;
+  color: #0f2d50;
+  transform: translateX(2px);
+}
+
+.task-link.active {
+  background-color: #e5f0ff;
+  color: #0f2d50;
+  font-weight: 500;
+  border-left: 3px solid #0f2d50;
+  padding-left: calc(1rem - 3px);
+}
+
+.task-link .badge {
+  font-size: 0.7rem;
+  font-weight: 400;
+  padding: 0.25rem 0.6rem;
+}
+
+/* Card Styles */
+.card {
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  border-bottom: 1px solid #f0f4f8;
+  padding: 1rem 1.5rem;
+}
+
+/* Table Styles */
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table th {
+  font-weight: 500;
+  color: #4a5568;
+  white-space: nowrap;
+  padding: 1rem;
+  border-top: none;
+  background: #fafbfc;
+}
+
+.table td {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f8fafd;
+}
+
+/* Status Badges */
+.badge {
+  font-weight: 500;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+}
+
+.badge.bg-danger {
+  background-color: #ffe5e8 !important;
+  color: #e53e3e !important;
+}
+
+.badge.bg-primary {
+  background-color: #e6f0ff !important;
+  color: #3182ce !important;
+}
+
+.badge.bg-secondary {
+  background-color: #edf2f7 !important;
+  color: #718096 !important;
+}
+
+/* Priority Colors */
+tr:has(.badge.bg-danger) {
+  border-left: 3px solid #e53e3e;
+}
+
+tr:has(.badge.bg-primary) {
+  border-left: 3px solid #3182ce;
+}
+
+tr:has(.badge.bg-secondary) {
+  border-left: 3px solid #718096;
+}
+
+/* Dropdown Button Styles */
+.btn-outline-secondary {
+  border-color: #e2e8f0;
+  color: #4a5568;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #f8fafd;
+  border-color: #cbd5e0;
+  color: #2d3748;
+}
+
+.dropdown-toggle::after {
+  margin-left: 0.5rem;
+}
+
+.dropdown-menu {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.5rem 0;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1.25rem;
+}
+
+.dropdown-item:hover {
+  background-color: #f8fafd;
+}
+
+/* Search Field Styles */
+.input-group .form-control {
+  border-color: #e2e8f0;
+}
+
+.input-group .form-control:focus {
+  box-shadow: none;
+  border-color: #cbd5e0;
+}
+
+.input-group-text {
+  background-color: #fff;
+  border-color: #e2e8f0;
+}
+
+/* Pagination Styles */
+.pagination .page-link {
+  color: #4a5568;
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  margin: 0 2px;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #0f2d50;
+  border-color: #0f2d50;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 991.98px) {
   .main-content {
     margin-left: 70px !important;
@@ -261,7 +442,30 @@ body {
   .sidebar-mobile-overlay.active {
     display: block;
   }
+
+  .table-options {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .table-options > div {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  .table-options .dropdown {
+    width: 100%;
+  }
+
+  .table-options .dropdown button {
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
+
 @media (max-width: 767.98px) {
   .main-content {
     padding: 0.5rem;
@@ -269,7 +473,52 @@ body {
   .dashboard-cards {
     flex-direction: column !important;
   }
+
+  .card-header .d-flex {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card-header .d-flex > div {
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  .pagination-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pagination-container .btn-group {
+    margin-top: 1rem;
+  }
 }
+
+/* Mobile optimizations */
+@media (max-width: 575.98px) {
+  .table th, .table td {
+    padding: 0.5rem;
+  }
+
+  .table th {
+    font-size: 0.85rem;
+  }
+
+  .table td {
+    font-size: 0.9rem;
+  }
+
+  .badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .dropdown button {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
 /* Hide sidebar sub-tabs in collapsed mode */
 .sidebar.collapsed .collapse,
 .sidebar.collapsed [aria-controls] + .collapse {

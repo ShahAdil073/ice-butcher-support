@@ -2,20 +2,25 @@
 <nav class="navbar navbar-expand-lg py-1 px-3">
   <div class="container-fluid">
     <div class="d-flex align-items-center">
-      <span class="fw-semibold text-primary"
-        ><i class="bi bi-arrow-left-circle me-1 text-danger"></i
-        >Reporting</span
-      >
+      <span class="fw-semibold text-primary">
+        <i class="bi bi-star-fill me-2 text-warning"></i>
+        Orders Tracking
+      </span>
       <span class="text-muted mx-2">/</span>
       <span class="text-secondary">Name Here</span>
     </div>
     <form class="d-none d-md-flex mx-4 flex-fill" role="search">
-      <input
-        class="form-control rounded-4 bg-light"
-        type="search"
-        placeholder="Search Here"
-        aria-label="Search"
-      />
+      <div class="input-group">
+        <span class="input-group-text bg-white border-end-0">
+          <i class="bi bi-search"></i>
+        </span>
+        <input
+          class="form-control border-start-0"
+          type="search"
+          placeholder="Search Here"
+          aria-label="Search"
+        />
+      </div>
     </form>
     <div class="d-flex align-items-center ms-auto gap-3">
       <button class="btn btn-outline-secondary rounded-circle">
@@ -25,19 +30,20 @@
         <i class="bi bi-plus-lg"></i>
       </button>
       <span class="text-muted d-none d-lg-inline mx-2">|</span>
-      <span class="small fw-semibold d-none d-lg-inline"
-        >Order Tracking</span
-      >
-      <span class="small fw-semibold d-none d-lg-inline">New Orders</span>
-      <span class="small fw-semibold d-none d-lg-inline"
-        >Support Request</span
-      >
-      <img
-        src="assets/images/user.jpg"
-        alt="User"
-        class="rounded-circle"
-        width="36"
-      />
+      <a href="#" class="small fw-semibold d-none d-lg-inline text-decoration-none me-3">Order Tracking</a>
+      <a href="#" class="small fw-semibold d-none d-lg-inline text-decoration-none me-3">New Orders</a>
+      <a href="#" class="small fw-semibold d-none d-lg-inline text-decoration-none me-3">Support Request</a>
+      <div class="position-relative">
+        <img
+          src="assets/images/user.jpg"
+          alt="User"
+          class="rounded-circle border"
+          width="36"
+        />
+        <span class="position-absolute bottom-0 end-0 translate-middle p-1 bg-danger border border-light rounded-circle">
+          <span class="visually-hidden">New alerts</span>
+        </span>
+      </div>
     </div>
   </div>
 </nav>
