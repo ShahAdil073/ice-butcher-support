@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Setting - Ice Butcher</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Sidebar will be loaded here -->
+    <div class="sidebar d-flex flex-column" id="sidebar-container"></div>
+    <div class="sidebar-mobile-overlay" id="sidebarMobileOverlay"></div>
+    <div class="main-content" id="mainContent">
+      <!-- Navbar -->
+      <div id="header-container"></div>
+      <div class="container-fluid pt-3">
+        <!-- Main Content -->
+        <div class="row">
+          <div class="col-12">
+            <h3 class="mt-4 mb-3">Settings</h3>
+
+            <div class="admin-settings-container">
+              <!-- Settings Sidebar -->
+              <div class="settings-sidebar">
+                <div class="settings-menu">
+                  <div class="settings-header">Your Preferences</div>
+                  <div class="settings-menu-item active" data-target="account-setting">
+                    <i class="bi bi-person"></i> Account Setting
+                  </div>
+                  <div class="settings-menu-item" data-target="appearance">
+                    <i class="bi bi-palette"></i> Appearance
+                  </div>
+                  <div class="settings-menu-item" data-target="notifications">
+                    <i class="bi bi-bell"></i> Notifications
+                  </div>
+
+                  <div class="settings-header">Account Management</div>
+                  <div class="settings-menu-item" data-target="users-teams">
+                    <i class="bi bi-people"></i> Manage Users
+                  </div>
+                  <div class="settings-menu-item" data-target="audit-log">
+                    <i class="bi bi-clock-history"></i> Audit Log
+                  </div>
+                  <div class="settings-menu-item" data-target="works-schedule">
+                    <i class="bi bi-calendar3"></i> Works Schedule
+                  </div>
+                </div>
+              </div>
+
+              <!-- Settings Content Area -->
+              <div class="settings-content">
+                <!-- Manage Users Section -->
+                <div class="account-setting-section admin-content-section active" id="account-setting">
+                  <h3 class="mb-4">User Profile Info.</h3>
+                  <p class="text-muted mb-4">Manage your current integrated accounts.</p>
+
+                  <!-- Profile Tabs -->
+                  <ul class="nav nav-tabs mb-4 profile-tabs" id="profileTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="user-profile-tab" data-bs-toggle="tab" data-bs-target="#user-profile" type="button" role="tab" aria-controls="user-profile" aria-selected="true">User Profile</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="account-security-tab" data-bs-toggle="tab" data-bs-target="#account-security" type="button" role="tab" aria-controls="account-security" aria-selected="false">Account Security</button>
+                    </li>
+                  </ul>
+
+                  <div class="tab-content" id="profileTabsContent">
+                    <!-- User Profile Tab Content -->
+                    <div class="tab-pane fade show active" id="user-profile" role="tabpanel" aria-labelledby="user-profile-tab">
+                      <div class="profile-info bg-white p-4 rounded shadow-sm">
+                        <div class="profile-section">
+                          <h5 class="mb-3">Profile Picture</h5>
+                          <div class="d-flex align-items-center mb-3">
+                            <div class="profile-picture-container position-relative me-4">
+                              <img src="assets/images/avatar1.png" alt="Profile Picture" class="profile-picture rounded-circle" width="120" height="120">
+                            </div>
+                            <div class="profile-actions">
+                              <p class="text-muted mb-2">PNG, JPEG under 15MB</p>
+                              <div class="btn-group">
+                                <button class="btn btn-primary upload-btn me-2">
+                                  <i class="bi bi-upload me-2"></i>Upload New Picture
+                                </button>
+                                <button class="btn btn-danger delete-btn">
+                                  <i class="bi bi-trash me-2"></i>Delete
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="profile-section mt-4">
+                          <h5 class="mb-3">Profile Info.</h5>
+                          <p class="text-muted mb-4">Manage your current integrated accounts.</p>
+
+                          <form id="profileForm">
+                            <div class="row mb-3">
+                              <div class="col-md-6 mb-3 mb-md-0">
+                                <label for="firstName" class="form-label">First Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="firstName" placeholder="Heather" value="Heather">
+                              </div>
+                              <div class="col-md-6">
+                                <label for="lastName" class="form-label">Last Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="lastName" placeholder="White" value="White">
+                              </div>
+                            </div>
+
+                            <div class="mb-3">
+                              <label for="permissionRoles" class="form-label">Permission Roles <span class="text-danger">*</span></label>
+                              <select class="form-select" id="permissionRoles">
+                                <option selected>Admin & Support</option>
+                                <option>Manager</option>
+                                <option>User</option>
+                                <option>Viewer</option>
+                              </select>
+                            </div>
+
+                            <div class="row mb-3">
+                              <div class="col-md-6 mb-3 mb-md-0">
+                                <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="username" placeholder="@icesculptures" value="@icesculptures">
+                              </div>
+                              <div class="col-md-6">
+                                <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="email" placeholder="example@icesculptures.com" value="example@icesculptures.com">
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+
+                        <div class="profile-section mt-4">
+                          <h5 class="mb-3">Delete Account</h5>
+                          <p class="text-muted mb-2">Need help configuring your account?</p>
+                          <p class="text-muted mb-4">Let us know at support@modrakk.com.</p>
+
+                          <h6 class="mb-3">Delete user Account</h6>
+                          <button class="btn btn-danger delete-account-btn mb-3">
+                            <i class="bi bi-trash me-2"></i>Permanently Delete Account
+                          </button>
+                          <p class="text-muted small">Warning: This is a destructive action that cannot be reverted.</p>
+                        </div>
+
+                        <div class="profile-actions mt-4 text-end">
+                          <button class="btn btn-primary save-changes-btn">
+                            <i class="bi bi-check-lg me-2"></i>Save Changes
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Account Security Tab Content -->
+                    <div class="tab-pane fade" id="account-security" role="tabpanel" aria-labelledby="account-security-tab">
+                      <div class="security-info bg-white p-4 rounded shadow-sm">
+                        <div class="security-section">
+                          <h5 class="mb-3">Security</h5>
+                          <p class="text-muted mb-4">Manage your current integrated accounts.</p>
+
+                          <h6 class="mb-3">Sign in using password</h6>
+                          <p class="text-muted mb-3">Set your password if you want to be able to sign in using password.</p>
+
+                          <form id="passwordForm">
+                            <div class="mb-3">
+                              <label for="currentPassword" class="form-label">Current Password <span class="text-danger">*</span></label>
+                              <input type="password" class="form-control" id="currentPassword" value="••••••••••" readonly>
+                            </div>
+
+                            <p class="text-muted small mb-3">This will be how your name will be displayed in the account section and in reviews!</p>
+
+                            <div class="row mb-4">
+                              <div class="col-md-6 mb-3 mb-md-0">
+                                <label for="newPassword" class="form-label">New Password <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control" id="newPassword" placeholder="••••••••••">
+                              </div>
+                              <div class="col-md-6">
+                                <label for="confirmPassword" class="form-label">Confirm New Password <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="••••••••••">
+                              </div>
+                            </div>
+
+                            <div class="password-requirements mb-4">
+                              <h6 class="mb-2">Password requirements:</h6>
+                              <p class="text-muted small mb-2">Ensure that these requirements are met:</p>
+                              <ul class="requirements-list ps-4">
+                                <li>At least one lowercase character</li>
+                                <li>At least one uppercase character</li>
+                                <li>Minimum 8 characters long - the more, the better</li>
+                                <li>At least one number, symbol, or whitespace character</li>
+                              </ul>
+                            </div>
+                          </form>
+                        </div>
+
+                        <div class="security-section mt-4">
+                          <h5 class="mb-3">Two-factor authentication</h5>
+                          <p class="text-muted mb-3">Use Google Authenticator, 1Password, or any other OTP client.</p>
+
+                          <div class="d-flex flex-column mb-4">
+                            <p class="mb-3">Turn Two-Factor Authentication</p>
+                            <button class="btn btn-primary btn-2fa align-self-start">
+                              <i class="bi bi-shield-lock me-2"></i>Enable Two-Factor Authentication
+                            </button>
+                            <p class="text-muted small mt-3">Two-factor authentication is not enabled.</p>
+                            <p class="text-muted small mt-2">Use Google Authenticator, 1Password, or any other OTP client.</p>
+                          </div>
+                        </div>
+
+                        <div class="security-section mt-4">
+                          <h5 class="mb-3">Your Activity</h5>
+                          <div class="d-flex align-items-center">
+                            <i class="bi bi-pc-display me-3 fs-4"></i>
+                            <div>
+                              <h6 class="mb-1">Currently Active</h6>
+                              <p class="text-muted small mb-0">Your current session</p>
+                            </div>
+                          </div>
+                          <p class="text-muted small mt-4">You can always customize the look & feel later in your account settings.</p>
+                        </div>
+
+                        <div class="profile-actions mt-4 text-end">
+                          <button class="btn btn-primary save-changes-btn">
+                            <i class="bi bi-check-lg me-2"></i>Save Changes
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Users & Teams Section -->
+                <div class="users-teams-section admin-content-section" id="users-teams">
+                    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+                        <div>
+                        <h3 class="mb-1">Users & Teams</h3>
+                        <p class="text-muted">Manage your current integrated accounts.</p>
+                        </div>
+                        <div class="d-flex users-teams-actions gap-2">
+                        <div class="search-container position-relative">
+                            <input type="text" class="form-control search-input" placeholder="Search here...">
+                            <i class="bi bi-search search-icon position-absolute"></i>
+                        </div>
+                        <button class="btn btn-primary grant-access-btn">
+                            <i class="bi bi-lock me-1"></i> Grant Access
+                        </button>
+                        </div>
+                    </div>
+
+                    <!-- Users Stats Cards -->
+                    <div class="row mb-4 justify-content-between">
+                        <div class="col-md-4 col-lg-3 mb-3">
+                        <div class="stat-card bg-white p-3 rounded shadow-sm">
+                            <h6 class="text-muted mb-2">Total User</h6>
+                            <h3 class="mb-0">7</h3>
+                        </div>
+                        </div>
+                        <div class="col-md-4 col-lg-3 mb-3">
+                        <div class="stat-card bg-white p-3 rounded shadow-sm">
+                            <h6 class="text-muted mb-2">Active Users</h6>
+                            <h3 class="mb-0">6</h3>
+                        </div>
+                        </div>
+                        <div class="col-md-4 col-lg-3 mb-3">
+                        <div class="stat-card bg-white p-3 rounded shadow-sm">
+                            <h6 class="text-muted mb-2">Pending Invite</h6>
+                            <h3 class="mb-0">1</h3>
+                        </div>
+                        </div>
+                        <div class="col-md-4 col-lg-3 mb-3">
+                        <div class="stat-card bg-white p-3 rounded shadow-sm">
+                            <h6 class="text-muted mb-2">Users in 2FA</h6>
+                            <h3 class="mb-0">4</h3>
+                        </div>
+                        </div>
+                    </div>
+
+                    <!-- Users Table Filters -->
+                    <div class="table-filters d-flex flex-wrap gap-3 mb-3">
+                        <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="contactsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            All Contacts <i class="bi bi-chevron-down ms-2"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="contactsDropdown">
+                            <li><a class="dropdown-item" href="#">All Contacts</a></li>
+                            <li><a class="dropdown-item" href="#">Active Contacts</a></li>
+                            <li><a class="dropdown-item" href="#">Inactive Contacts</a></li>
+                        </ul>
+                        </div>
+
+                        <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="createDateDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Create Date <i class="bi bi-chevron-down ms-2"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="createDateDropdown">
+                            <li><a class="dropdown-item" href="#">Newest First</a></li>
+                            <li><a class="dropdown-item" href="#">Oldest First</a></li>
+                        </ul>
+                        </div>
+
+                        <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="lastActivityDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Last Activity Date <i class="bi bi-chevron-down ms-2"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="lastActivityDropdown">
+                            <li><a class="dropdown-item" href="#">Recent Activity</a></li>
+                            <li><a class="dropdown-item" href="#">No Recent Activity</a></li>
+                        </ul>
+                        </div>
+
+                        <button class="btn btn-outline-secondary advanced-filters-btn">
+                        <i class="bi bi-sliders me-2"></i> Advanced Filters
+                        </button>
+                    </div>
+
+                    <!-- Users Table -->
+                    <div class="table-responsive bg-white rounded shadow-sm">
+                        <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                            <th style="width: 40px;">
+                                <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="selectAllUsers">
+                                </div>
+                            </th>
+                            <th>User Name <i class="bi bi-arrow-down-up ms-1"></i></th>
+                            <th>Access <i class="bi bi-arrow-down-up ms-1"></i></th>
+                            <th>Created Date <i class="bi bi-arrow-down-up ms-1"></i></th>
+                            <th>Calendar Status <i class="bi bi-arrow-down-up ms-1"></i></th>
+                            <th>Status <i class="bi bi-arrow-down-up ms-1"></i></th>
+                            <th>Last Activity <i class="bi bi-arrow-down-up ms-1"></i></th>
+                            <th>Scheduling Cal.</th>
+                            <th style="width: 40px;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td>
+                                <div class="form-check">
+                                <input class="form-check-input" type="checkbox">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                <img src="assets/images/avatar1.png" alt="User" class="rounded-circle me-2" width="40" height="40">
+                                <div>
+                                    <div class="fw-medium">Eleanor Pena</div>
+                                    <small class="text-muted">example@icebutcher.com</small>
+                                </div>
+                                </div>
+                            </td>
+                            <td>Admin & Support</td>
+                            <td>April 11, 2025 8:27 AM</td>
+                            <td><span class="status-badge connected">• Connected</span></td>
+                            <td><span class="status-badge active">• Active</span></td>
+                            <td>Active Now</td>
+                            <td><span class="status-badge on">• On</span></td>
+                            <td>
+                                <div class="dropdown">
+                                <button class="btn btn-sm btn-icon" type="button" id="userActions1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userActions1">
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i> Edit</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-trash me-2"></i> Delete</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-lock me-2"></i> Change Access</a></li>
+                                </ul>
+                                </div>
+                            </td>
+                            </tr>
+                            <tr>
+                            <td>
+                                <div class="form-check">
+                                <input class="form-check-input" type="checkbox">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                <img src="assets/images/avatar2.png" alt="User" class="rounded-circle me-2" width="40" height="40">
+                                <div>
+                                    <div class="fw-medium">Heather White</div>
+                                    <small class="text-muted">example@icebutcher.com</small>
+                                </div>
+                                </div>
+                            </td>
+                            <td>Manage Services</td>
+                            <td>April 11, 2025 8:27 AM</td>
+                            <td><span class="status-badge disconnected">• Disconnected</span></td>
+                            <td><span class="status-badge inactive">• Inactive</span></td>
+                            <td>2 hours ago</td>
+                            <td><span class="status-badge off">• Off</span></td>
+                            <td>
+                                <div class="dropdown">
+                                <button class="btn btn-sm btn-icon" type="button" id="userActions2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userActions2">
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i> Edit</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-trash me-2"></i> Delete</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-lock me-2"></i> Change Access</a></li>
+                                </ul>
+                                </div>
+                            </td>
+                            </tr>
+                            <tr>
+                            <td>
+                                <div class="form-check">
+                                <input class="form-check-input" type="checkbox">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                <img src="assets/images/avatar3.png" alt="User" class="rounded-circle me-2" width="40" height="40">
+                                <div>
+                                    <div class="fw-medium">Julia Copper</div>
+                                    <small class="text-muted">example@icebutcher.com</small>
+                                </div>
+                                </div>
+                            </td>
+                            <td>Warehouse Portal</td>
+                            <td>April 11, 2025 8:27 AM</td>
+                            <td><span class="status-badge connected">• Connected</span></td>
+                            <td><span class="status-badge active">• Active</span></td>
+                            <td>Active Now</td>
+                            <td><span class="status-badge on">• On</span></td>
+                            <td>
+                                <div class="dropdown">
+                                <button class="btn btn-sm btn-icon" type="button" id="userActions3" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userActions3">
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i> Edit</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-trash me-2"></i> Delete</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-lock me-2"></i> Change Access</a></li>
+                                </ul>
+                                </div>
+                            </td>
+                            </tr>
+                            <tr>
+                            <td>
+                                <div class="form-check">
+                                <input class="form-check-input" type="checkbox">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                <img src="assets/images/avatar4.png" alt="User" class="rounded-circle me-2" width="40" height="40">
+                                <div>
+                                    <div class="fw-medium">Emma Thompson</div>
+                                    <small class="text-muted">example@icebutcher.com</small>
+                                </div>
+                                </div>
+                            </td>
+                            <td>Delivery Portal</td>
+                            <td>April 11, 2025 8:27 AM</td>
+                            <td><span class="status-badge connected">• Connected</span></td>
+                            <td><span class="status-badge active">• Active</span></td>
+                            <td>Active Now</td>
+                            <td><span class="status-badge on">• On</span></td>
+                            <td>
+                                <div class="dropdown">
+                                <button class="btn btn-sm btn-icon" type="button" id="userActions4" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userActions4">
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i> Edit</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-trash me-2"></i> Delete</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-lock me-2"></i> Change Access</a></li>
+                                </ul>
+                                </div>
+                            </td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Audit Log Section -->
+                <div class="audit-log-section admin-content-section" id="audit-log">
+                    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+                        <div>
+                        <h3 class="mb-1">Audit Log</h3>
+                        </div>
+                        <div class="d-flex audit-log-actions gap-2">
+                        <div class="search-container position-relative">
+                            <input type="text" class="form-control search-input" placeholder="Search here...">
+                            <i class="bi bi-search search-icon position-absolute"></i>
+                        </div>
+                        <button class="btn btn-primary export-btn">
+                            <i class="bi bi-download me-1"></i> Export Report
+                        </button>
+                        </div>
+                    </div>
+
+                    <!-- Audit Log Tabs -->
+                    <ul class="nav nav-tabs mb-4 audit-tabs" id="auditTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="all-logs-tab" data-bs-toggle="tab" data-bs-target="#all-logs" type="button" role="tab" aria-controls="all-logs" aria-selected="true">All Logs</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="login-history-tab" data-bs-toggle="tab" data-bs-target="#login-history" type="button" role="tab" aria-controls="login-history" aria-selected="false">Login History</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="security-activity-tab" data-bs-toggle="tab" data-bs-target="#security-activity" type="button" role="tab" aria-controls="security-activity" aria-selected="false">Security Activity</button>
+                        </li>
+                    </ul>
+
+                    <!-- Audit Log Filters -->
+                    <div class="table-filters d-flex flex-wrap gap-3 mb-3">
+                        <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="contactsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            All Contacts <i class="bi bi-chevron-down ms-2"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="contactsDropdown">
+                            <li><a class="dropdown-item" href="#">All Contacts</a></li>
+                            <li><a class="dropdown-item" href="#">Admin Only</a></li>
+                            <li><a class="dropdown-item" href="#">Users Only</a></li>
+                        </ul>
+                        </div>
+
+                        <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="createDateDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Create Date <i class="bi bi-chevron-down ms-2"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="createDateDropdown">
+                            <li><a class="dropdown-item" href="#">Most Recent</a></li>
+                            <li><a class="dropdown-item" href="#">Oldest First</a></li>
+                            <li><a class="dropdown-item" href="#">Last 7 Days</a></li>
+                            <li><a class="dropdown-item" href="#">Last 30 Days</a></li>
+                        </ul>
+                        </div>
+
+                        <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="lastActivityDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Last Activity Date <i class="bi bi-chevron-down ms-2"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="lastActivityDropdown">
+                            <li><a class="dropdown-item" href="#">Most Recent</a></li>
+                            <li><a class="dropdown-item" href="#">Oldest First</a></li>
+                        </ul>
+                        </div>
+
+                        <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="leadStatusDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Lead Status <i class="bi bi-chevron-down ms-2"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="leadStatusDropdown">
+                            <li><a class="dropdown-item" href="#">All Status</a></li>
+                            <li><a class="dropdown-item" href="#">Active</a></li>
+                            <li><a class="dropdown-item" href="#">Inactive</a></li>
+                        </ul>
+                        </div>
+
+                        <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="assignedAgentDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Assigned Agent <i class="bi bi-chevron-down ms-2"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="assignedAgentDropdown">
+                            <li><a class="dropdown-item" href="#">All Agents</a></li>
+                            <li><a class="dropdown-item" href="#">Unassigned</a></li>
+                            <li><a class="dropdown-item" href="#">Alvaro Lugo</a></li>
+                            <li><a class="dropdown-item" href="#">Eleanor Pena</a></li>
+                        </ul>
+                        </div>
+
+                        <button class="btn btn-outline-secondary advanced-filters-btn">
+                        <i class="bi bi-sliders me-2"></i> Advanced Filters
+                        </button>
+                    </div>
+
+                    <!-- Audit Log Table -->
+                    <div class="tab-content" id="auditTabContent">
+                        <div class="tab-pane fade show active" id="all-logs" role="tabpanel" aria-labelledby="all-logs-tab">
+                        <div class="table-responsive bg-white rounded shadow-sm">
+                            <table class="table table-hover mb-0">
+                            <thead>
+                                <tr>
+                                <th style="width: 40px;">
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="selectAllLogs">
+                                    </div>
+                                </th>
+                                <th>Category <i class="bi bi-arrow-down-up ms-1"></i></th>
+                                <th>Sub-Category <i class="bi bi-arrow-down-up ms-1"></i></th>
+                                <th>Action</th>
+                                <th>Modified by <i class="bi bi-arrow-down-up ms-1"></i></th>
+                                <th>Status</th>
+                                <th>Date of Change <i class="bi bi-arrow-down-up ms-1"></i></th>
+                                <th>IP Address <i class="bi bi-arrow-down-up ms-1"></i></th>
+                                <th style="width: 40px;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <td>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    </div>
+                                </td>
+                                <td>Login</td>
+                                <td>Login Succeeded</td>
+                                <td>Perform</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                    <img src="assets/images/avatar5.png" alt="User" class="rounded-circle me-2" width="30" height="30">
+                                    <div>
+                                        <div class="fw-medium">Alvaro Lugo</div>
+                                        <small class="text-muted">example@icebutcher.com</small>
+                                    </div>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge active">• Active</span></td>
+                                <td>Apr 19, 2025 7:31 AM EDT</td>
+                                <td>27.147.200.7</td>
+                                <td>
+                                    <div class="dropdown">
+                                    <button class="btn btn-sm btn-icon" type="button" id="logActions1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="logActions1">
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-eye me-2"></i> View Details</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-exclamation-triangle me-2"></i> Flag as Suspicious</a></li>
+                                    </ul>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr>
+                                <td>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    </div>
+                                </td>
+                                <td>Security Activity</td>
+                                <td>User Create</td>
+                                <td>Create</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                    <img src="assets/images/avatar5.png" alt="User" class="rounded-circle me-2" width="30" height="30">
+                                    <div>
+                                        <div class="fw-medium">Alvaro Lugo</div>
+                                        <small class="text-muted">example@icebutcher.com</small>
+                                    </div>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge active">• Active</span></td>
+                                <td>Apr 19, 2025 7:31 AM EDT</td>
+                                <td>27.147.200.7</td>
+                                <td>
+                                    <div class="dropdown">
+                                    <button class="btn btn-sm btn-icon" type="button" id="logActions2" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="logActions2">
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-eye me-2"></i> View Details</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-exclamation-triangle me-2"></i> Flag as Suspicious</a></li>
+                                    </ul>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr>
+                                <td>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    </div>
+                                </td>
+                                <td>Login</td>
+                                <td>Login Succeeded</td>
+                                <td>Perform</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                    <img src="assets/images/avatar5.png" alt="User" class="rounded-circle me-2" width="30" height="30">
+                                    <div>
+                                        <div class="fw-medium">Alvaro Lugo</div>
+                                        <small class="text-muted">example@icebutcher.com</small>
+                                    </div>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge active">• Active</span></td>
+                                <td>Apr 19, 2025 7:31 AM EDT</td>
+                                <td>27.147.200.7</td>
+                                <td>
+                                    <div class="dropdown">
+                                    <button class="btn btn-sm btn-icon" type="button" id="logActions3" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="logActions3">
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-eye me-2"></i> View Details</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-exclamation-triangle me-2"></i> Flag as Suspicious</a></li>
+                                    </ul>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr>
+                                <td>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    </div>
+                                </td>
+                                <td>Login</td>
+                                <td>Login Succeeded</td>
+                                <td>Perform</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                    <img src="assets/images/avatar5.png" alt="User" class="rounded-circle me-2" width="30" height="30">
+                                    <div>
+                                        <div class="fw-medium">Alvaro Lugo</div>
+                                        <small class="text-muted">example@icebutcher.com</small>
+                                    </div>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge active">• Active</span></td>
+                                <td>Apr 19, 2025 7:31 AM EDT</td>
+                                <td>27.147.200.7</td>
+                                <td>
+                                    <div class="dropdown">
+                                    <button class="btn btn-sm btn-icon" type="button" id="logActions4" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="logActions4">
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-eye me-2"></i> View Details</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-exclamation-triangle me-2"></i> Flag as Suspicious</a></li>
+                                    </ul>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr>
+                                <td>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    </div>
+                                </td>
+                                <td>Security Activity</td>
+                                <td>User Create</td>
+                                <td>Create</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                    <img src="assets/images/avatar5.png" alt="User" class="rounded-circle me-2" width="30" height="30">
+                                    <div>
+                                        <div class="fw-medium">Alvaro Lugo</div>
+                                        <small class="text-muted">example@icebutcher.com</small>
+                                    </div>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge active">• Active</span></td>
+                                <td>Apr 19, 2025 7:31 AM EDT</td>
+                                <td>27.147.200.7</td>
+                                <td>
+                                    <div class="dropdown">
+                                    <button class="btn btn-sm btn-icon" type="button" id="logActions5" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="logActions5">
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-eye me-2"></i> View Details</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-exclamation-triangle me-2"></i> Flag as Suspicious</a></li>
+                                    </ul>
+                                    </div>
+                                </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                        </div>
+
+                        <!-- Other Tabs Content -->
+                        <div class="tab-pane fade" id="login-history" role="tabpanel" aria-labelledby="login-history-tab">
+                        <div class="p-4 bg-white rounded shadow-sm">
+                            <p>Login history information will appear here.</p>
+                        </div>
+                        </div>
+                        <div class="tab-pane fade" id="security-activity" role="tabpanel" aria-labelledby="security-activity-tab">
+                        <div class="p-4 bg-white rounded shadow-sm">
+                            <p>Security activity information will appear here.</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications Section -->
+                <div class="notifications-section admin-content-section" id="notifications">
+                    <h3 class="mb-4">Notification Preferences</h3>
+                    <p class="text-muted mb-4">Get emails to found out what is going on when you are not online. You can turn them off anytime.</p>
+
+                    <div class="notification-categories bg-white p-4 rounded shadow-sm">
+                        <!-- Notifications from us -->
+                        <div class="notification-category mb-5">
+                        <h5 class="mb-3">Notifications from us</h5>
+                        <p class="text-muted mb-4">Receive the latest news, updates, and industry tutorials from us.</p>
+
+                        <div class="notification-option mb-4">
+                            <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="newsUpdates" checked>
+                            <label class="form-check-label d-flex flex-column" for="newsUpdates">
+                                <span class="fw-medium mb-1">News and updates</span>
+                                <span class="text-muted">News about product and feature updates.</span>
+                            </label>
+                            </div>
+                        </div>
+
+                        <div class="notification-option mb-4">
+                            <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="tipsTutorials">
+                            <label class="form-check-label d-flex flex-column" for="tipsTutorials">
+                                <span class="fw-medium mb-1">Tips and tutorials</span>
+                                <span class="text-muted">Tips on getting more out of Courier.</span>
+                            </label>
+                            </div>
+                        </div>
+
+                        <div class="notification-option mb-4">
+                            <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="userResearch">
+                            <label class="form-check-label d-flex flex-column" for="userResearch">
+                                <span class="fw-medium mb-1">User research</span>
+                                <span class="text-muted">Data results to help you better understand your users.</span>
+                            </label>
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- Comments -->
+                        <div class="notification-category mb-5">
+                        <h5 class="mb-3">Comments</h5>
+                        <p class="text-muted mb-4">These are notifications for comments on your posts and replies to your comments</p>
+
+                        <div class="notification-option mb-3">
+                            <div class="form-check">
+                            <input class="form-check-input" type="radio" name="commentsNotification" id="noCommentsNotify" checked>
+                            <label class="form-check-label d-flex flex-column" for="noCommentsNotify">
+                                <span class="fw-medium mb-1">Do not notify me</span>
+                            </label>
+                            </div>
+                        </div>
+
+                        <div class="notification-option mb-3">
+                            <div class="form-check">
+                            <input class="form-check-input" type="radio" name="commentsNotification" id="mentionsOnly">
+                            <label class="form-check-label d-flex flex-column" for="mentionsOnly">
+                                <span class="fw-medium mb-1">Mentions only</span>
+                                <span class="text-muted">Only notify me if I'm mentioned in a comment.</span>
+                            </label>
+                            </div>
+                        </div>
+
+                        <div class="notification-option mb-3">
+                            <div class="form-check">
+                            <input class="form-check-input" type="radio" name="commentsNotification" id="allComments">
+                            <label class="form-check-label d-flex flex-column" for="allComments">
+                                <span class="fw-medium mb-1">All comments</span>
+                                <span class="text-muted">Notify me for all comments on my posts.</span>
+                            </label>
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- Reminders -->
+                        <div class="notification-category mb-5">
+                        <h5 class="mb-3">Reminders</h5>
+                        <p class="text-muted mb-4">These are notifications to remind you of updates you might have missed.</p>
+
+                        <div class="notification-option mb-3">
+                            <div class="form-check">
+                            <input class="form-check-input" type="radio" name="remindersNotification" id="noRemindersNotify" checked>
+                            <label class="form-check-label d-flex flex-column" for="noRemindersNotify">
+                                <span class="fw-medium mb-1">Do not notify me</span>
+                            </label>
+                            </div>
+                        </div>
+
+                        <div class="notification-option mb-3">
+                            <div class="form-check">
+                            <input class="form-check-input" type="radio" name="remindersNotification" id="importantReminders">
+                            <label class="form-check-label d-flex flex-column" for="importantReminders">
+                                <span class="fw-medium mb-1">Important reminders only</span>
+                                <span class="text-muted">Only notify me if the reminder is tagged as important.</span>
+                            </label>
+                            </div>
+                        </div>
+
+                        <div class="notification-option mb-3">
+                            <div class="form-check">
+                            <input class="form-check-input" type="radio" name="remindersNotification" id="allReminders">
+                            <label class="form-check-label d-flex flex-column" for="allReminders">
+                                <span class="fw-medium mb-1">All reminders</span>
+                                <span class="text-muted">Notify me for all reminders.</span>
+                            </label>
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- More activity about you -->
+                        <div class="notification-category">
+                        <h5 class="mb-3">More activity about you</h5>
+                        <p class="text-muted mb-4">These are notifications for posts on your profile, likes and other reactions to your posts.</p>
+
+                        <div class="notification-option mb-3">
+                            <div class="form-check">
+                            <input class="form-check-input" type="radio" name="activityNotification" id="noActivityNotify" checked>
+                            <label class="form-check-label d-flex flex-column" for="noActivityNotify">
+                                <span class="fw-medium mb-1">Do not notify me</span>
+                            </label>
+                            </div>
+                        </div>
+
+                        <div class="notification-option mb-3">
+                            <div class="form-check">
+                            <input class="form-check-input" type="radio" name="activityNotification" id="allActivity">
+                            <label class="form-check-label d-flex flex-column" for="allActivity">
+                                <span class="fw-medium mb-1">All reminders</span>
+                                <span class="text-muted">Notify me for all reminders.</span>
+                            </label>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Works Schedule Section -->
+                <div class="works-schedule-section admin-content-section" id="works-schedule">
+                    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+                        <div>
+                        <h3 class="mb-1">Works Schedule</h3>
+                        </div>
+                        <div class="d-flex works-schedule-actions gap-2">
+                        <div class="search-container position-relative">
+                            <input type="text" class="form-control search-input" placeholder="Search here...">
+                            <i class="bi bi-search search-icon position-absolute"></i>
+                        </div>
+                        <button class="btn btn-primary grant-access-btn">
+                            <i class="bi bi-lock me-1"></i> Grant Access
+                        </button>
+                        </div>
+                    </div>
+
+                    <!-- Calendar and Schedule Content -->
+                    <div class="row">
+                        <!-- Small Calendar -->
+                        <div class="col-md-4 col-lg-3">
+                        <div class="bg-white p-3 rounded shadow-sm mb-3">
+                            <h5 class="mb-3">January</h5>
+                            <div class="calendar-small">
+                            <div class="calendar-header d-flex justify-content-between align-items-center mb-2">
+                                <div class="week-days d-flex w-100 justify-content-between">
+                                <div class="day-label">MON</div>
+                                <div class="day-label">TUE</div>
+                                <div class="day-label">WED</div>
+                                <div class="day-label">THU</div>
+                                <div class="day-label">FRI</div>
+                                <div class="day-label">SAT</div>
+                                <div class="day-label">SUN</div>
+                                </div>
+                            </div>
+                            <div class="calendar-grid">
+                                <div class="calendar-row d-flex">
+                                <div class="calendar-day">01</div>
+                                <div class="calendar-day">02</div>
+                                <div class="calendar-day">03</div>
+                                <div class="calendar-day">04</div>
+                                <div class="calendar-day">05</div>
+                                <div class="calendar-day">06</div>
+                                <div class="calendar-day">07</div>
+                                </div>
+                                <div class="calendar-row d-flex">
+                                <div class="calendar-day">08</div>
+                                <div class="calendar-day">09</div>
+                                <div class="calendar-day">10</div>
+                                <div class="calendar-day">11</div>
+                                <div class="calendar-day">12</div>
+                                <div class="calendar-day">13</div>
+                                <div class="calendar-day">14</div>
+                                </div>
+                                <div class="calendar-row d-flex">
+                                <div class="calendar-day">15</div>
+                                <div class="calendar-day">16</div>
+                                <div class="calendar-day">17</div>
+                                <div class="calendar-day">18</div>
+                                <div class="calendar-day">19</div>
+                                <div class="calendar-day">20</div>
+                                <div class="calendar-day">21</div>
+                                </div>
+                                <div class="calendar-row d-flex">
+                                <div class="calendar-day">22</div>
+                                <div class="calendar-day">23</div>
+                                <div class="calendar-day">24</div>
+                                <div class="calendar-day">25</div>
+                                <div class="calendar-day">26</div>
+                                <div class="calendar-day">27</div>
+                                <div class="calendar-day">28</div>
+                                </div>
+                                <div class="calendar-row d-flex">
+                                <div class="calendar-day">29</div>
+                                <div class="calendar-day">30</div>
+                                <div class="calendar-day">31</div>
+                                <div class="calendar-day text-muted">01</div>
+                                <div class="calendar-day text-muted">02</div>
+                                <div class="calendar-day text-muted">03</div>
+                                <div class="calendar-day text-muted">04</div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <!-- Holidays and Ceremonies -->
+                        <div class="bg-white p-3 rounded shadow-sm mb-3">
+                            <h6 class="mb-4 pb-2 border-bottom"><i class="bi bi-gift me-2 text-danger"></i> Ceremony Days</h6>
+                            <div class="holiday-list">
+                            <div class="holiday-item d-flex align-items-center mb-3">
+                                <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <span><i class="bi bi-calendar-event text-primary"></i></span>
+                                </div>
+                                <div>
+                                <div class="text-primary small mb-1">Jan 01</div>
+                                <div class="fw-medium">New Year's Day</div>
+                                </div>
+                            </div>
+                            <div class="holiday-item d-flex align-items-center mb-3">
+                                <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <span><i class="bi bi-calendar-event text-primary"></i></span>
+                                </div>
+                                <div>
+                                <div class="text-primary small mb-1">Feb 20</div>
+                                <div class="fw-medium">Washington's Birthday</div>
+                                </div>
+                            </div>
+                            <div class="holiday-item d-flex align-items-center mb-3">
+                                <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <span><i class="bi bi-calendar-event text-primary"></i></span>
+                                </div>
+                                <div>
+                                <div class="text-primary small mb-1">Nov 22</div>
+                                <div class="fw-medium">Thanksgiving Day</div>
+                                </div>
+                            </div>
+                            <div class="holiday-item d-flex align-items-center">
+                                <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <span><i class="bi bi-calendar-event text-primary"></i></span>
+                                </div>
+                                <div>
+                                <div class="text-primary small mb-1">Dec 25</div>
+                                <div class="fw-medium">Christmas Day</div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-3 rounded shadow-sm mb-3">
+                            <h6 class="mb-4 pb-2 border-bottom"><i class="bi bi-airplane me-2 text-info"></i> Holi Days</h6>
+                            <div class="holiday-list">
+                            <div class="holiday-item d-flex align-items-center mb-3">
+                                <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <span><i class="bi bi-calendar-event text-primary"></i></span>
+                                </div>
+                                <div>
+                                <div class="text-primary small mb-1">Jul 04</div>
+                                <div class="fw-medium">Independence Day</div>
+                                </div>
+                            </div>
+                            <div class="holiday-item d-flex align-items-center mb-3">
+                                <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <span><i class="bi bi-calendar-event text-primary"></i></span>
+                                </div>
+                                <div>
+                                <div class="text-primary small mb-1">Sep 03</div>
+                                <div class="fw-medium">Labor Day</div>
+                                </div>
+                            </div>
+                            <div class="holiday-item d-flex align-items-center mb-3">
+                                <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <span><i class="bi bi-calendar-event text-primary"></i></span>
+                                </div>
+                                <div>
+                                <div class="text-primary small mb-1">Oct 08</div>
+                                <div class="fw-medium">Columbus Day</div>
+                                </div>
+                            </div>
+                            <div class="holiday-item d-flex align-items-center">
+                                <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                <span><i class="bi bi-calendar-event text-primary"></i></span>
+                                </div>
+                                <div>
+                                <div class="text-primary small mb-1">Nov 11</div>
+                                <div class="fw-medium">Veterans Day</div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- Main Calendar and Settings -->
+                        <div class="col-md-8 col-lg-9">
+                        <div class="bg-white p-4 rounded shadow-sm mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h3 class="mb-0">January 2022</h3>
+                            <div class="calendar-controls">
+                                <button class="btn btn-outline-secondary month-btn">
+                                Month <i class="bi bi-chevron-down ms-1"></i>
+                                </button>
+                            </div>
+                            </div>
+                            <p class="mb-4">User Profile Info.<br>Manage your current integrated accounts.</p>
+
+                            <!-- Schedule Form -->
+                            <div class="row mb-4">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                <label for="worksType" class="form-label">Works Type <span class="text-danger">*</span></label>
+                                <select class="form-select" id="worksType">
+                                    <option selected>Regular</option>
+                                    <option>Special</option>
+                                    <option>Seasonal</option>
+                                    <option>Custom</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                <label for="selectCalendar" class="form-label">Select Calendar <span class="text-danger">*</span></label>
+                                <select class="form-select" id="selectCalendar">
+                                    <option selected>Google Calendar</option>
+                                    <option>Outlook Calendar</option>
+                                    <option>Apple Calendar</option>
+                                    <option>Local Calendar</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                <label for="selectEmploys" class="form-label">Select Employs <span class="text-danger">*</span></label>
+                                <div class="position-relative">
+                                    <select class="form-select" id="selectEmploys">
+                                    <option>@icesculptures</option>
+                                    <option>@hasan</option>
+                                    <option>@abirkhan</option>
+                                    </select>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                <label for="timeZone" class="form-label">Time Zone <span class="text-danger">*</span></label>
+                                <select class="form-select" id="timeZone">
+                                    <option selected>Eastern Time (US & Canada)</option>
+                                    <option>Central Time (US & Canada)</option>
+                                    <option>Mountain Time (US & Canada)</option>
+                                    <option>Pacific Time (US & Canada)</option>
+                                </select>
+                                </div>
+                            </div>
+                            </div>
+
+                            <!-- Work Schedule Hours -->
+                            <div class="employs-schedule mb-4">
+                            <h5 class="mb-3">Employs Works Schedule</h5>
+
+                            <div class="schedule-table">
+                                <div class="schedule-row d-flex align-items-center mb-3">
+                                <div class="day-checkbox me-3" style="width: 30px;">
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="worksSunday">
+                                    </div>
+                                </div>
+                                <div class="day-name me-3" style="width: 100px;">
+                                    <label class="form-label" for="worksSunday">Works Hours <i class="bi bi-arrow-down-up ms-1"></i></label>
+                                </div>
+                                </div>
+
+                                <div class="schedule-row d-flex align-items-center mb-3">
+                                <div class="day-checkbox me-3" style="width: 30px;">
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="worksMonday" checked>
+                                    </div>
+                                </div>
+                                <div class="day-name me-3" style="width: 100px;">
+                                    <label class="form-check-label" for="worksMonday">Monday</label>
+                                </div>
+                                <div class="time-selectors d-flex gap-2 align-items-center flex-wrap">
+                                    <select class="form-select form-select-sm" style="width: 80px;">
+                                    <option>08:00</option>
+                                    </select>
+                                    <select class="form-select form-select-sm" style="width: 80px;">
+                                    <option>AM</option>
+                                    </select>
+                                    <span class="px-2">TO</span>
+                                    <select class="form-select form-select-sm" style="width: 80px;">
+                                    <option>08:00</option>
+                                    </select>
+                                    <select class="form-select form-select-sm" style="width: 80px;">
+                                    <option>PM</option>
+                                    </select>
+                                    <span class="ms-3 text-muted">9 hrs</span>
+                                </div>
+                                </div>
+
+                                <div class="schedule-row d-flex align-items-center mb-3">
+                                <div class="day-checkbox me-3" style="width: 30px;">
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="worksTuesday" checked>
+                                    </div>
+                                </div>
+                                <div class="day-name me-3" style="width: 100px;">
+                                    <label class="form-check-label" for="worksTuesday">Tuesday</label>
+                                </div>
+                                <div class="time-selectors d-flex gap-2 align-items-center flex-wrap">
+                                    <select class="form-select form-select-sm" style="width: 80px;">
+                                    <option>08:00</option>
+                                    </select>
+                                    <select class="form-select form-select-sm" style="width: 80px;">
+                                    <option>AM</option>
+                                    </select>
+                                    <span class="px-2">TO</span>
+                                    <select class="form-select form-select-sm" style="width: 80px;">
+                                    <option>08:00</option>
+                                    </select>
+                                    <select class="form-select form-select-sm" style="width: 80px;">
+                                    <option>PM</option>
+                                    </select>
+                                    <span class="ms-3 text-muted">9 hrs</span>
+                                </div>
+                                </div>
+
+                                <div class="schedule-row d-flex align-items-center mb-3">
+                                <div class="day-checkbox me-3" style="width: 30px;">
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="worksWednesday" checked>
+                                    </div>
+                                </div>
+                                <div class="day-name me-3" style="width: 100px;">
+                                    <label class="form-check-label" for="worksWednesday">Wednesday</label>
+                                </div>
+                                <div class="time-selectors d-flex gap-2 align-items-center flex-wrap">
+                                    <select class="form-select form-select-sm" style="width: 80px;">
+                                    <option>08:00</option>
+                                    </select>
+                                    <select class="form-select form-select-sm" style="width: 80px;">
+                                    <option>AM</option>
+                                    </select>
+                                    <span class="px-2">TO</span>
+                                    <select class="form-select form-select-sm" style="width: 80px;">
+                                    <option>08:00</option>
+                                    </select>
+                                    <select class="form-select form-select-sm" style="width: 80px;">
+                                    <option>PM</option>
+                                    </select>
+                                    <span class="ms-3 text-muted">9 hrs</span>
+                                </div>
+                                </div>
+
+                                <div class="schedule-row d-flex align-items-center mb-3">
+                                <div class="day-checkbox me-3" style="width: 30px;">
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="worksThursday" checked>
+                                    </div>
+                                </div>
+                                <div class="day-name me-3" style="width: 100px;">
+                                    <label class="form-check-label" for="worksThursday">Thursday</label>
+                                </div>
+                                <div class="time-selectors d-flex gap-2 align-items-center flex-wrap">
+                                    <select class="form-select form-select-sm" style="width: 80px;">
+                                    <option>08:00</option>
+                                    </select>
+                                    <select class="form-select form-select-sm" style="width: 80px;">
+                                    <option>AM</option>
+                                    </select>
+                                    <span class="px-2">TO</span>
+                                    <select class="form-select form-select-sm" style="width: 80px;">
+                                    <option>08:00</option>
+                                    </select>
+                                    <select class="form-select form-select-sm" style="width: 80px;">
+                                    <option>PM</option>
+                                    </select>
+                                    <span class="ms-3 text-muted">9 hrs</span>
+                                </div>
+                                </div>
+
+                                <div class="schedule-row d-flex align-items-center mb-3">
+                                <div class="day-checkbox me-3" style="width: 30px;">
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="worksFriday" checked>
+                                    </div>
+                                </div>
+                                <div class="day-name me-3" style="width: 100px;">
+                                    <label class="form-check-label" for="worksFriday">Friday</label>
+                                </div>
+                                <div class="time-selectors d-flex gap-2 align-items-center flex-wrap">
+                                    <select class="form-select form-select-sm" style="width: 80px;">
+                                    <option>08:00</option>
+                                    </select>
+                                    <select class="form-select form-select-sm" style="width: 80px;">
+                                    <option>AM</option>
+                                    </select>
+                                    <span class="px-2">TO</span>
+                                    <select class="form-select form-select-sm" style="width: 80px;">
+                                    <option>08:00</option>
+                                    </select>
+                                    <select class="form-select form-select-sm" style="width: 80px;">
+                                    <option>PM</option>
+                                    </select>
+                                    <span class="ms-3 text-muted">9 hrs</span>
+                                </div>
+                                </div>
+
+                                <div class="schedule-row d-flex align-items-center mb-3">
+                                <div class="day-checkbox me-3" style="width: 30px;">
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="worksSaturday">
+                                    </div>
+                                </div>
+                                <div class="day-name me-3" style="width: 100px;">
+                                    <label class="form-check-label" for="worksSaturday">Saturday</label>
+                                </div>
+                                <div class="time-selectors d-flex gap-2 align-items-center flex-wrap">
+                                    <select class="form-select form-select-sm" style="width: 80px;" disabled>
+                                    <option>08:00</option>
+                                    </select>
+                                    <select class="form-select form-select-sm" style="width: 80px;" disabled>
+                                    <option>AM</option>
+                                    </select>
+                                    <span class="px-2">TO</span>
+                                    <select class="form-select form-select-sm" style="width: 80px;" disabled>
+                                    <option>08:00</option>
+                                    </select>
+                                    <select class="form-select form-select-sm" style="width: 80px;" disabled>
+                                    <option>AM</option>
+                                    </select>
+                                    <span class="ms-3 text-muted">--</span>
+                                </div>
+                                </div>
+
+                                <div class="schedule-row d-flex align-items-center mb-3">
+                                <div class="day-checkbox me-3" style="width: 30px;">
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="worksSunday">
+                                    </div>
+                                </div>
+                                <div class="day-name me-3" style="width: 100px;">
+                                    <label class="form-check-label" for="worksSunday">Sunday</label>
+                                </div>
+                                <div class="time-selectors d-flex gap-2 align-items-center flex-wrap">
+                                    <select class="form-select form-select-sm" style="width: 80px;" disabled>
+                                    <option>08:00</option>
+                                    </select>
+                                    <select class="form-select form-select-sm" style="width: 80px;" disabled>
+                                    <option>AM</option>
+                                    </select>
+                                    <span class="px-2">TO</span>
+                                    <select class="form-select form-select-sm" style="width: 80px;" disabled>
+                                    <option>08:00</option>
+                                    </select>
+                                    <select class="form-select form-select-sm" style="width: 80px;" disabled>
+                                    <option>AM</option>
+                                    </select>
+                                    <span class="ms-3 text-muted">--</span>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="text-end">
+                            <button class="btn btn-primary send-alerts-btn">
+                                <i class="bi bi-bell me-2"></i> Send Alerts
+                            </button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Appearance Section -->
+                <div class="appearance-section admin-content-section" id="appearance">
+                  <h3 class="mb-4">Appearance</h3>
+                  <p class="text-muted mb-4">Manage your current integrated accounts.</p>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    <script>
+      // Admin settings specific functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        initializeAdminSettings();
+      });
+
+      function initializeAdminSettings() {
+        // Handle settings menu items click
+        const menuItems = document.querySelectorAll('.settings-menu-item');
+        const contentSections = document.querySelectorAll('.admin-content-section');
+
+        menuItems.forEach(item => {
+          item.addEventListener('click', function() {
+            // Remove active class from all menu items
+            menuItems.forEach(m => m.classList.remove('active'));
+
+            // Add active class to clicked menu item
+            this.classList.add('active');
+
+            // Show the corresponding content
+            const targetId = this.getAttribute('data-target');
+
+            // Update the page title
+            updateSettingsTitle(this.textContent.trim());
+
+            // Hide all content sections
+            contentSections.forEach(section => section.classList.remove('active'));
+
+            // Show the target content section
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+          });
+        });
+      }
+
+      function updateSettingsTitle(menuText) {
+        // Update the page breadcrumb title based on selected menu item
+        const titleElement = document.querySelector('.text-secondary');
+        if (titleElement) {
+          titleElement.textContent = menuText;
+        }
+      }
+    </script>
+  </body>
+</html>

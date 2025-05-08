@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeNotificationsPage();
     initializeAuditLogPage();
     initializeWorkSchedulePage();
+    initializeAdminSettingsPage();
   }, 1000);
 });
 
@@ -1014,4 +1015,93 @@ function initializeWorkSchedulePage() {
       alert('Schedule alerts have been sent to the selected employees.');
     });
   }
+}
+
+/**
+ * Initialize Admin Settings page functionality
+ */
+function initializeAdminSettingsPage() {
+  // Check if we're on the admin settings page
+  if (!document.querySelector('.admin-settings-container')) {
+    return;
+  }
+
+  const contentSections = document.querySelectorAll('.admin-content-section');
+
+  // Handle hash navigation
+  function handleHashChange() {
+    const hash = window.location.hash.substring(1);
+    if (hash) {
+      // Find the corresponding menu item
+      const menuItem = document.querySelector(`.settings-menu-item[data-target="${hash}"]`);
+      if (menuItem) {
+        // Activate the menu item
+        document.querySelectorAll('.settings-menu-item').forEach(item => {
+          item.classList.remove('active');
+        });
+        menuItem.classList.add('active');
+
+        // Update the section title
+        updateSectionTitle(menuItem.textContent.trim());
+
+        // Hide all content sections
+        contentSections.forEach(section => section.classList.remove('active'));
+
+        // Show the target content section
+        if (hash === 'user-profile') {
+          document.querySelector('#user-profile-section').classList.add('active');
+        } else {
+          const targetSection = document.getElementById(hash);
+          if (targetSection) {
+            targetSection.classList.add('active');
+          }
+        }
+      }
+    }
+  }
+
+  // Update section title
+  function updateSectionTitle(title) {
+    const titleElement = document.querySelector('.text-secondary');
+    if (titleElement) {
+      titleElement.textContent = title;
+    }
+  }
+
+  // Handle settings menu click
+  const menuItems = document.querySelectorAll('.settings-menu-item');
+  menuItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+      const target = this.getAttribute('data-target');
+      window.location.hash = target;
+
+      // Remove active class from all menu items
+      menuItems.forEach(m => m.classList.remove('active'));
+
+      // Add active class to clicked menu item
+      this.classList.add('active');
+
+      // Update the section title
+      updateSectionTitle(this.textContent.trim());
+
+      // Hide all content sections
+      contentSections.forEach(section => section.classList.remove('active'));
+
+      // Show the target content section
+      if (target === 'user-profile') {
+        document.querySelector('#user-profile-section').classList.add('active');
+      } else {
+        const targetSection = document.getElementById(target);
+        if (targetSection) {
+          targetSection.classList.add('active');
+        }
+      }
+    });
+  });
+
+  // Handle hash change
+  window.addEventListener('hashchange', handleHashChange);
+
+  // Check hash on page load
+  handleHashChange();
 }
