@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeAuditLogPage();
     initializeWorkSchedulePage();
     initializeAdminSettingsPage();
+    initializeNotificationsPopup();
   }, 1000);
 });
 
@@ -27,7 +28,8 @@ document.addEventListener('DOMContentLoaded', function() {
 async function loadComponents() {
   const components = [
     { selector: '#header-container', file: 'components/header.html' },
-    { selector: '#sidebar-container', file: 'components/sidebar.html' }
+    { selector: '#sidebar-container', file: 'components/sidebar.html' },
+    { selector: '#notificationsPopupContainer', file: 'components/notifications-popup.html' }  
   ];
 
   for (const component of components) {
@@ -54,6 +56,40 @@ function initializeComponents() {
   setTimeout(() => {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const sidebarLinks = document.querySelectorAll('.sidebar-menu-item');
+
+    // Update page title in header
+    const pageTitle = document.getElementById('currentPageTitle');
+    if (pageTitle) {
+      // Set the page title based on the current page
+      switch (currentPage) {
+        case 'index.html':
+          pageTitle.textContent = 'Dashboard';
+          break;
+        case 'orders-tracking.html':
+          pageTitle.textContent = 'Orders Tracking';
+          break;
+        case 'user-profile.html':
+          pageTitle.textContent = 'User Profile';
+          break;
+        case 'users-teams.html':
+          pageTitle.textContent = 'Users & Teams';
+          break;
+        case 'notifications.html':
+          pageTitle.textContent = 'Notifications';
+          break;
+        case 'audit-log.html':
+          pageTitle.textContent = 'Audit Log';
+          break;
+        case 'works-schedule.html':
+          pageTitle.textContent = 'Works Schedule';
+          break;
+        case 'admin-settings.html':
+          pageTitle.textContent = 'Admin Settings';
+          break;
+        default:
+          pageTitle.textContent = 'Ice Butcher';
+      }
+    }
 
     sidebarLinks.forEach(link => {
       const href = link.getAttribute('href');
@@ -920,7 +956,7 @@ function initializeWorkSchedulePage() {
   }
 
   // Calendar day selection
-  const calendarDays = document.querySelectorAll('.calendar-day');
+  const calendarDays = document.querySelectorAll('.setting-calendar-day');
 
   calendarDays.forEach(day => {
     day.addEventListener('click', function() {
@@ -1104,4 +1140,162 @@ function initializeAdminSettingsPage() {
 
   // Check hash on page load
   handleHashChange();
+}
+
+/**
+ * Initialize Notifications Popup functionality
+ */
+function initializeNotificationsPopup() {
+  const notificationsBtn = document.getElementById('notificationsBtn');
+  const notificationsPopupContainer = document.getElementById('notificationsPopupContainer');
+
+  if (!notificationsBtn || !notificationsPopupContainer) return;
+
+  // Toggle notifications popup on button click
+  notificationsBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    notificationsPopupContainer.classList.toggle('d-none');
+
+    // Close other dropdowns or popups if needed
+    const dropdowns = document.querySelectorAll('.dropdown-menu.show');
+    dropdowns.forEach(dropdown => {
+      dropdown.classList.remove('show');
+    });
+  });
+
+  // Close notifications popup when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!notificationsPopupContainer.contains(e.target) && e.target !== notificationsBtn) {
+      notificationsPopupContainer.classList.add('d-none');
+    }
+  });
+
+  // Tab navigation within the popup
+  const tabLinks = notificationsPopupContainer.querySelectorAll('.nav-link');
+  tabLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      // Remove active class from all tabs
+      tabLinks.forEach(tab => tab.classList.remove('active'));
+
+      // Add active class to clicked tab
+      this.classList.add('active');
+
+      // Here you would implement tab content switching if needed
+      // For now, we're keeping all notifications visible
+    });
+  });
+
+  // Mark all as read functionality
+  const markAllAsReadBtn = document.getElementById('markAllAsRead');
+  if (markAllAsReadBtn) {
+    markAllAsReadBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      // Remove notification badge
+      const notificationBadge = document.querySelector('#notificationsBtn + .badge');
+      if (notificationBadge) {
+        notificationBadge.style.display = 'none';
+      }
+
+      // Update UI to indicate all notifications are read
+      const unreadNotifications = notificationsPopupContainer.querySelectorAll('.notification-item.unread');
+      unreadNotifications.forEach(notification => {
+        notification.classList.remove('unread');
+      });
+
+      // Update header badge
+      const headerBadge = document.querySelector('.notifications-popup-header .badge');
+      if (headerBadge) {
+        headerBadge.textContent = '0';
+        headerBadge.style.display = 'none';
+      }
+    });
+  }
+
+  // Handle notification action buttons
+  const notificationActions = notificationsPopupContainer.querySelectorAll('.notification-actions button');
+  notificationActions.forEach(button => {
+    button.addEventListener('click', function() {
+      const action = this.textContent.trim();
+      const notificationItem = this.closest('.notification-item');
+
+      if (action === 'Accept') {
+        // Handle accept action
+        notificationItem.innerHTML = `
+          <div class="alert alert-success mb-0 py-2">
+            <small>You've accepted the file edit request</small>
+          </div>
+        `;
+
+        // Remove the notification after delay
+        setTimeout(() => {
+          notificationItem.style.height = '0';
+          notificationItem.style.padding = '0';
+          notificationItem.style.overflow = 'hidden';
+          notificationItem.style.borderBottom = 'none';
+
+          setTimeout(() => {
+            notificationItem.remove();
+
+            // Update badge counts
+            updateNotificationCount();
+          }, 300);
+        }, 2000);
+      } else if (action === 'Deny') {
+        // Handle deny action
+        notificationItem.innerHTML = `
+          <div class="alert alert-secondary mb-0 py-2">
+            <small>You've denied the file edit request</small>
+          </div>
+        `;
+
+        // Remove the notification after delay
+        setTimeout(() => {
+          notificationItem.style.height = '0';
+          notificationItem.style.padding = '0';
+          notificationItem.style.overflow = 'hidden';
+          notificationItem.style.borderBottom = 'none';
+
+          setTimeout(() => {
+            notificationItem.remove();
+
+            // Update badge counts
+            updateNotificationCount();
+          }, 300);
+        }, 2000);
+      }
+    });
+  });
+
+  // Function to update notification count
+  function updateNotificationCount() {
+    const notificationItems = notificationsPopupContainer.querySelectorAll('.notification-item');
+    const count = notificationItems.length;
+
+    // Update header badge
+    const headerBadge = document.querySelector('.notifications-popup-header .badge');
+    if (headerBadge) {
+      headerBadge.textContent = count;
+
+      if (count === 0) {
+        headerBadge.style.display = 'none';
+      } else {
+        headerBadge.style.display = 'inline-block';
+      }
+    }
+
+    // Update button badge
+    const buttonBadge = document.querySelector('#notificationsBtn + .badge');
+    if (buttonBadge) {
+      buttonBadge.textContent = count;
+
+      if (count === 0) {
+        buttonBadge.style.display = 'none';
+      } else {
+        buttonBadge.style.display = 'inline-block';
+      }
+    }
+  }
 }

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Calender - Ice Butcher</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Sidebar will be loaded here -->
+    <div class="sidebar d-flex flex-column" id="sidebar-container"></div>
+    <div class="sidebar-mobile-overlay" id="sidebarMobileOverlay"></div>
+    <div class="main-content" id="mainContent">
+      <!-- Navbar -->
+      <div id="header-container"></div>
+      <div class="container-fluid pt-3">
+        <!-- Main Content -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card border-0 shadow-sm">
+              <div class="card-header bg-white">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h5 class="fs-5 fw-bold">Our Calender (132)</h5>
+                  <div class="d-flex">
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Search here..."
+                      />
+                      <button class="btn btn-primary" type="button">
+                        <i class="bi bi-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="table-options p-3 d-flex flex-wrap justify-content-between align-items-center border-bottom">
+                  <div class="d-flex mb-2 mb-md-0">
+                    <button class="btn btn-sm btn-outline-secondary me-2">
+                      <i class="bi bi-list-ul"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-secondary">
+                      <i class="bi bi-grid-3x3-gap"></i>
+                    </button>
+                  </div>
+                  <div class="d-flex flex-wrap">
+                    <div class="dropdown me-2 mb-2 mb-md-0">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="contactsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        All Contacts
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="contactsDropdown">
+                        <li><a class="dropdown-item" href="#">All Contacts</a></li>
+                        <li><a class="dropdown-item" href="#">Recent Contacts</a></li>
+                        <li><a class="dropdown-item" href="#">Favorite Contacts</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown me-2 mb-2 mb-md-0">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="createDateDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Create Date
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="createDateDropdown">
+                        <li><a class="dropdown-item" href="#">Today</a></li>
+                        <li><a class="dropdown-item" href="#">This Week</a></li>
+                        <li><a class="dropdown-item" href="#">This Month</a></li>
+                        <li><a class="dropdown-item" href="#">This Year</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown me-2 mb-2 mb-md-0">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="lastActivityDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Last Activity Date
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="lastActivityDropdown">
+                        <li><a class="dropdown-item" href="#">Today</a></li>
+                        <li><a class="dropdown-item" href="#">Yesterday</a></li>
+                        <li><a class="dropdown-item" href="#">Last Week</a></li>
+                        <li><a class="dropdown-item" href="#">Last Month</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown me-2 mb-2 mb-md-0">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="leadStatusDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Lead Status
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="leadStatusDropdown">
+                        <li><a class="dropdown-item" href="#">New</a></li>
+                        <li><a class="dropdown-item" href="#">Contacted</a></li>
+                        <li><a class="dropdown-item" href="#">Qualified</a></li>
+                        <li><a class="dropdown-item" href="#">Converted</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown mb-2 mb-md-0">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="assignedAgentDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Assigned Agent
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="assignedAgentDropdown">
+                        <li><a class="dropdown-item" href="#">All Agents</a></li>
+                        <li><a class="dropdown-item" href="#">My Assignments</a></li>
+                        <li><a class="dropdown-item" href="#">Unassigned</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <button class="btn btn-sm btn-outline-secondary">
+                      <i class="bi bi-sliders"></i> Advanced Filters
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-3">
+                <div class="bg-white p-3 rounded shadow-sm mb-3">
+                    <h5 class="mb-3">January</h5>
+                    <div class="calendar-small">
+                      <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="week-days d-flex w-100 justify-content-between">
+                          <div class="day-label">MON</div>
+                          <div class="day-label">TUE</div>
+                          <div class="day-label">WED</div>
+                          <div class="day-label">THU</div>
+                          <div class="day-label">FRI</div>
+                          <div class="day-label">SAT</div>
+                          <div class="day-label">SUN</div>
+                        </div>
+                      </div>
+                      <div class="calendar-grid">
+                        <div class="calendar-row d-flex">
+                          <div class="setting-calendar-day">01</div>
+                          <div class="setting-calendar-day">02</div>
+                          <div class="setting-calendar-day">03</div>
+                          <div class="setting-calendar-day">04</div>
+                          <div class="setting-calendar-day">05</div>
+                          <div class="setting-calendar-day">06</div>
+                          <div class="setting-calendar-day">07</div>
+                        </div>
+                        <div class="calendar-row d-flex">
+                          <div class="setting-calendar-day">08</div>
+                          <div class="setting-calendar-day">09</div>
+                          <div class="setting-calendar-day">10</div>
+                          <div class="setting-calendar-day">11</div>
+                          <div class="setting-calendar-day">12</div>
+                          <div class="setting-calendar-day">13</div>
+                          <div class="setting-calendar-day">14</div>
+                        </div>
+                        <div class="calendar-row d-flex">
+                          <div class="setting-calendar-day">15</div>
+                          <div class="setting-calendar-day">16</div>
+                          <div class="setting-calendar-day">17</div>
+                          <div class="setting-calendar-day">18</div>
+                          <div class="setting-calendar-day">19</div>
+                          <div class="setting-calendar-day">20</div>
+                          <div class="setting-calendar-day">21</div>
+                        </div>
+                        <div class="calendar-row d-flex">
+                          <div class="setting-calendar-day">22</div>
+                          <div class="setting-calendar-day">23</div>
+                          <div class="setting-calendar-day">24</div>
+                          <div class="setting-calendar-day">25</div>
+                          <div class="setting-calendar-day">26</div>
+                          <div class="setting-calendar-day">27</div>
+                          <div class="setting-calendar-day">28</div>
+                        </div>
+                        <div class="calendar-row d-flex">
+                          <div class="setting-calendar-day">29</div>
+                          <div class="setting-calendar-day">30</div>
+                          <div class="setting-calendar-day">31</div>
+                          <div class="setting-calendar-day text-muted">01</div>
+                          <div class="setting-calendar-day text-muted">02</div>
+                          <div class="setting-calendar-day text-muted">03</div>
+                          <div class="setting-calendar-day text-muted">04</div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <!-- Holidays and Ceremonies -->
+                <div class="bg-white p-3 rounded shadow-sm mb-3">
+                  <h6 class="mb-4 pb-2 border-bottom"><i class="bi bi-calendar me-2 text-danger"></i> Today</h6>
+                  <div class="task-list">
+                    <div class="d-flex align-items-center mb-3">
+                      <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                        <span><i class="bi bi-star text-primary"></i></span>
+                      </div>
+                      <div class="d-flex justify-content-between align-items-center w-100">
+                        <div class="fw-medium">Task Name</div>
+                        <div class="text-primary small">08:00 AM</div>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                      <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                        <span><i class="bi bi-star text-danger"></i></span>
+                      </div>
+                      <div class="d-flex justify-content-between align-items-center w-100">
+                        <div class="fw-medium">Task Name</div>
+                        <div class="text-primary small">09:00 AM</div>
+                        </div>
+                    </div>
+
+                    
+                  </div>
+                </div>
+                <div class="bg-white p-3 rounded shadow-sm mb-3">
+                  <h6 class="mb-4 pb-2 border-bottom"><i class="bi bi-airplane me-2 text-info"></i> VIP Trips</h6>
+                  <div class="holiday-list">
+                    <div class="holiday-item d-flex align-items-center mb-3">
+                      <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                        <span><i class="bi bi-calendar-event text-primary"></i></span>
+                      </div>
+                      <div>
+                        <div class="text-primary small mb-1">Jul 04</div>
+                        <div class="fw-medium">Independence Day</div>
+                      </div>
+                    </div>
+                    <div class="holiday-item d-flex align-items-center mb-3">
+                      <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                        <span><i class="bi bi-calendar-event text-primary"></i></span>
+                      </div>
+                      <div>
+                        <div class="text-primary small mb-1">Sep 03</div>
+                        <div class="fw-medium">Labor Day</div>
+                      </div>
+                    </div>
+                    <div class="holiday-item d-flex align-items-center mb-3">
+                      <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                        <span><i class="bi bi-calendar-event text-primary"></i></span>
+                      </div>
+                      <div>
+                        <div class="text-primary small mb-1">Oct 08</div>
+                        <div class="fw-medium">Columbus Day</div>
+                      </div>
+                    </div>
+                    <div class="holiday-item d-flex align-items-center">
+                      <div class="holiday-date bg-light rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                        <span><i class="bi bi-calendar-event text-primary"></i></span>
+                      </div>
+                      <div>
+                        <div class="text-primary small mb-1">Nov 11</div>
+                        <div class="fw-medium">Veterans Day</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <div class="col-md-8 col-lg-9">
+            <div class="calender-section">
+              <div class="card mt-4">
+                <div class="card-body">
+                  <!-- Calendar Navigation and Controls -->
+                  <div class="d-flex justify-content-between align-items-center mb-4">
+                    <!-- Navigation Controls -->
+                    <div class="calendar-navigation">
+                      <button class="btn btn-outline-secondary prev-month me-2">
+                        <i class="bi bi-chevron-left"></i>
+                      </button>
+                      <span class="h5 mb-0 year-display">2025</span>
+                      <button class="btn btn-outline-secondary next-month ms-2">
+                        <i class="bi bi-chevron-right"></i>
+                      </button>
+                    </div>
+
+                    <!-- Calendar Today Button -->
+                    <button class="btn btn-outline-primary today-btn">
+                      <i class="bi bi-calendar"></i> Today
+                    </button>
+                  </div>
+
+                    <!-- Month Selection -->
+                    <div class="month-switcher mb-4">
+                      <div class="btn-group w-100">
+                        <button class="btn btn-outline-secondary month-name">Jan</button>
+                        <button class="btn btn-outline-secondary month-name">Feb</button>
+                        <button class="btn btn-outline-secondary month-name active">Mar</button>
+                        <button class="btn btn-outline-secondary month-name">Apr</button>
+                        <button class="btn btn-outline-secondary month-name">May</button>
+                        <button class="btn btn-outline-secondary month-name">Jun</button>
+                        <button class="btn btn-outline-secondary month-name">Jul</button>
+                        <button class="btn btn-outline-secondary month-name">Aug</button>
+                        <button class="btn btn-outline-secondary month-name">Sep</button>
+                        <button class="btn btn-outline-secondary month-name">Oct</button>
+                        <button class="btn btn-outline-secondary month-name">Nov</button>
+                        <button class="btn btn-outline-secondary month-name">Dec</button>
+                      </div>
+                    </div>
+
+                  <!-- Today Section -->
+                  <h4 class="mb-4">Today</h4>
+
+                  <!-- Calendar Grid -->
+                  <div class="row">
+                    <div class="col-12">
+                      <!-- Calendar Header (Days of Week) -->
+                      <div class="calendar-header mb-3">
+                        <div class="calendar-day-header">Mon</div>
+                        <div class="calendar-day-header">Tue</div>
+                        <div class="calendar-day-header">Wed</div>
+                        <div class="calendar-day-header">Thu</div>
+                        <div class="calendar-day-header">Fri</div>
+                        <div class="calendar-day-header">Sat</div>
+                        <div class="calendar-day-header">Sun</div>
+                      </div>
+
+                      <!-- Calendar Rows - will be dynamically generated -->
+                      <div class="task-calendar" id="calendar-container">
+                        <!-- Row 1 -->
+                        <div class="calendar-week mb-3" id="week1"></div>
+
+                        <!-- Row 2 -->
+                        <div class="calendar-week mb-3" id="week2"></div>
+
+                        <!-- Row 3 -->
+                        <div class="calendar-week mb-3" id="week3"></div>
+
+                        <!-- Row 4 -->
+                        <div class="calendar-week mb-3" id="week4"></div>
+
+                        <!-- Row 5 (if needed) -->
+                        <div class="calendar-week mb-3" id="week5"></div>
+
+                        <!-- Row 6 (if needed for some months) -->
+                        <div class="calendar-week mb-3" id="week6"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    <script>
+    // Task Calendar specific JavaScript
+    document.addEventListener('DOMContentLoaded', function() {
+      // Calendar navigation
+      const prevMonthBtn = document.querySelector('.prev-month');
+      const nextMonthBtn = document.querySelector('.next-month');
+      const monthButtons = document.querySelectorAll('.month-name');
+      const yearDisplay = document.querySelector('.year-display');
+      const todayHeading = document.querySelector('h4.mb-4');
+
+      // Sample task data - In a real app, this would come from a database
+      const taskData = {
+        "64 SS BW...": { color: "#e6f0ff", type: "design" },
+        "Dancer with...": { color: "#e8f4ff", type: "art" },
+        "Jungle Themed...": { color: "#e0f0ff", type: "craft" }
+      };
+
+      // Get current date
+      const today = new Date();
+      let currentMonth = today.getMonth();
+      let currentYear = today.getFullYear();
+
+      // Initialize calendar
+      initCalendar(currentYear, currentMonth);
+
+      // Display current year and today's date
+      yearDisplay.textContent = currentYear;
+      updateTodayHeading();
+
+      // Function to generate calendar
+      function initCalendar(year, month) {
+        // Display current year and month
+        yearDisplay.textContent = year;
+
+        // Set active month button
+        monthButtons.forEach((btn, index) => {
+          btn.classList.toggle('active', index === month);
+
+          // Add click event to month buttons (if not already added)
+          if (!btn.hasEventListener) {
+            btn.hasEventListener = true;
+            btn.addEventListener('click', function() {
+              const prevActive = document.querySelector('.month-name.active');
+              if (prevActive) prevActive.classList.remove('active');
+              this.classList.add('active');
+              currentMonth = index;
+              generateCalendarDays(currentYear, currentMonth);
+              updateTodayHeading();
+            });
+          }
+        });
+
+        // Generate calendar days
+        generateCalendarDays(year, month);
+      }
+
+      // Function to generate calendar days
+      function generateCalendarDays(year, month) {
+        const weeks = [
+          document.getElementById('week1'),
+          document.getElementById('week2'),
+          document.getElementById('week3'),
+          document.getElementById('week4'),
+          document.getElementById('week5'),
+          document.getElementById('week6')
+        ];
+
+        // Clear all weeks
+        weeks.forEach(week => {
+          week.innerHTML = '';
+        });
+
+        // Get first day of month and total days in month
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        const totalDays = lastDay.getDate();
+
+        // Get day of week for first day (0 = Sunday, 1 = Monday, etc.)
+        // Adjust to make Monday the first day (0)
+        let firstDayIndex = firstDay.getDay() - 1;
+        if (firstDayIndex < 0) firstDayIndex = 6; // Sunday becomes 6
+
+        // Create days for calendar
+        let dayCount = 1;
+        let weekIndex = 0;
+
+        // Add previous month days to first week
+        const prevMonthLastDay = new Date(year, month, 0).getDate();
+        for (let i = 0; i < firstDayIndex; i++) {
+          const dayNum = prevMonthLastDay - firstDayIndex + i + 1;
+          const dayEl = createDayElement(dayNum, true);
+          weeks[0].appendChild(dayEl);
+        }
+
+        // Add current month days
+        while (dayCount <= totalDays) {
+          let weekEl = weeks[weekIndex];
+
+          // If current week is full, move to next week
+          if (weekEl.children.length >= 7) {
+            weekIndex++;
+            weekEl = weeks[weekIndex];
+          }
+
+          // Create day element
+          const dayEl = createDayElement(dayCount, false);
+
+          // Check if it's today
+          if (dayCount === today.getDate() &&
+              month === today.getMonth() &&
+              year === today.getFullYear()) {
+            dayEl.classList.add('current');
+          }
+
+          weekEl.appendChild(dayEl);
+          dayCount++;
+        }
+
+        // Add next month days to fill last week
+        let nextMonthDay = 1;
+        let currentWeek = weeks[weekIndex];
+
+        while (currentWeek.children.length < 7) {
+          const dayEl = createDayElement(nextMonthDay, true);
+          currentWeek.appendChild(dayEl);
+          nextMonthDay++;
+        }
+
+        // Add task items to days
+        addTaskItems();
+
+        // Initialize task interactions
+        initializeTaskInteractions();
+      }
+
+      // Create a day element
+      function createDayElement(day, isOtherMonth) {
+        const dayElement = document.createElement('div');
+        dayElement.className = 'calendar-day d-flex flex-column align-items-stretch';
+
+        if (isOtherMonth) {
+          dayElement.classList.add('other-month');
+        }else{
+            // Day header with date and add button
+            const dayHeader = document.createElement('div');
+            dayHeader.className = 'd-flex justify-content-between p-2';
+            dayHeader.innerHTML = `
+            <span>${day}</span>
+            <button class="btn btn-sm btn-light add-task">+</button>
+            `;
+
+            dayElement.appendChild(dayHeader);
+        }
+        return dayElement;
+      }
+
+      // Function to add task items to days (Simulated data for demonstration)
+      function addTaskItems() {
+        const days = document.querySelectorAll('.calendar-day:not(.other-month)');
+
+        // Clear any existing tasks
+        days.forEach(day => {
+          const children = Array.from(day.children);
+          children.forEach((child, index) => {
+            if (index > 0) { // Keep the day header
+              child.remove();
+            }
+          });
+        });
+
+        // Add tasks based on day number
+        days.forEach(day => {
+          // Get the day number
+          const dayNum = parseInt(day.querySelector('span').textContent);
+
+          // Add tasks based on day number (for demonstration)
+          const taskCount = (dayNum % 3) + 1; // 1-3 tasks per day
+
+          for (let i = 0; i < taskCount; i++) {
+            // Pick a task based on the day and task index
+            const taskNames = Object.keys(taskData);
+            const taskName = taskNames[(dayNum + i) % taskNames.length];
+
+            // Create task item
+            const taskItem = document.createElement('div');
+            taskItem.className = 'task-item p-2 mb-2 bg-light rounded';
+            taskItem.innerHTML = `
+              <div class="d-flex justify-content-between align-items-center" data-value="${taskName}">
+                <span>${taskName}</span>
+                <button class="btn btn-sm btn-light task-view"><i class="bi bi-three-dots"></i></button>
+              </div>
+            `;
+
+            day.appendChild(taskItem);
+          }
+        });
+      }
+
+      // Function to initialize task interactions
+      function initializeTaskInteractions() {
+        // Make tasks interactive
+        const taskItems = document.querySelectorAll('.task-item');
+
+        // Add click events to task items
+        taskItems.forEach(task => {
+          task.addEventListener('click', function(e) {
+            if (!e.target.classList.contains('bi')) {
+              // Toggle a 'selected' class
+              taskItems.forEach(t => t.classList.remove('selected'));
+              this.classList.add('selected');
+            }
+          });
+
+          // Add task options menu click handler
+          const menuBtn = task.querySelector('.bi-three-dots');
+          if (menuBtn) {
+            menuBtn.parentElement.addEventListener('click', function(e) {
+              e.stopPropagation();
+              this.classList.toggle('active');
+            });
+          }
+        });
+
+        // Add click events to the '+' buttons
+        const addButtons = document.querySelectorAll('.calendar-day .add-task');
+        addButtons.forEach(btn => {
+          btn.addEventListener('click', function() {
+            alert('Add task functionality would open a modal to create new task');
+          });
+        });
+
+        // Add click events to the task-view buttons redirecting to tasks.html with task ID
+        const taskViewButtons = document.querySelectorAll('.task-view');
+        taskViewButtons.forEach(btn => {
+          btn.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent the day click event
+            const taskId = this.parentElement.getAttribute('data-value');
+            window.location.href = `tasks.html?taskId=${taskId}`; // Redirect to tasks.html with task ID
+          });
+        });
+      }
+
+      // Function to update today's heading
+      function updateTodayHeading() {
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                           'July', 'August', 'September', 'October', 'November', 'December'];
+        todayHeading.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+      }
+
+      // Previous month button
+      prevMonthBtn.addEventListener('click', function() {
+        currentMonth--;
+        if (currentMonth < 0) {
+          currentMonth = 11;
+          currentYear--;
+        }
+
+        // Update active month button
+        monthButtons.forEach((btn, index) => {
+          btn.classList.toggle('active', index === currentMonth);
+        });
+
+        // Update the calendar
+        generateCalendarDays(currentYear, currentMonth);
+        updateTodayHeading();
+        yearDisplay.textContent = currentYear;
+      });
+
+      // Next month button
+      nextMonthBtn.addEventListener('click', function() {
+        currentMonth++;
+        if (currentMonth > 11) {
+          currentMonth = 0;
+          currentYear++;
+        }
+
+        // Update active month button
+        monthButtons.forEach((btn, index) => {
+          btn.classList.toggle('active', index === currentMonth);
+        });
+
+        // Update the calendar
+        generateCalendarDays(currentYear, currentMonth);
+        updateTodayHeading();
+        yearDisplay.textContent = currentYear;
+      });
+
+      // Calendar Today Button
+      const todayBtn = document.querySelector('.today-btn');
+
+    todayBtn.addEventListener('click', function () {
+      const today = new Date();
+      currentMonth = today.getMonth();
+      currentYear = today.getFullYear();
+
+      // Update active month button
+      monthButtons.forEach((btn, index) => {
+        btn.classList.toggle('active', index === currentMonth);
+      });
+
+      // Update the calendar
+      generateCalendarDays(currentYear, currentMonth);
+      updateTodayHeading();
+      yearDisplay.textContent = currentYear;
+    });
+    });
+  </script>
+  </body>
+</html>

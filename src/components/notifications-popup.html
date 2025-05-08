@@ -1,0 +1,123 @@
+<!-- Notifications Popup Component -->
+<div class="notifications-popup">
+  <div class="notifications-popup-header">
+    <div class="d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Notifications <span class="badge rounded-pill bg-danger">1</span></h5>
+      <div class="d-flex align-items-center">
+        <a href="#" class="text-decoration-none text-orange me-3" id="markAllAsRead">Mark all as read</a>
+        <div class="dropdown">
+          <button class="btn btn-link text-secondary p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-three-dots-vertical"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="notifications.html">View all notifications</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notifications-popup-tabs">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#all-tab">All</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#mentions-tab">Mentions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#archived-tab">Archived</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="notifications-popup-content">
+    <!-- Notification Item with Comment -->
+    <div class="notification-item">
+      <div class="d-flex">
+        <div class="notification-avatar me-3">
+          <img src="assets/images/avatar1.png" alt="Edward Curr" class="rounded-circle">
+        </div>
+        <div class="notification-content">
+          <div class="notification-header">
+            <strong>Edward Curr</strong>
+            <span>Commented in Team</span>
+          </div>
+          <div class="notification-message">
+            <div class="notification-quote">
+              <p>Mine is better <a href="#" class="text-orange">@maria</a>. I only get the best of the best always. We've just reached out 30k goal raised for charity! We're so proud of the team!</p>
+            </div>
+          </div>
+          <div class="notification-time">12 min ago</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Item with Achievement -->
+    <div class="notification-item">
+      <div class="d-flex">
+        <div class="notification-avatar me-3 bg-light-purple rounded-circle">
+          <i class="bi bi-trophy text-purple"></i>
+        </div>
+        <div class="notification-content">
+          <div class="notification-message">
+            <p>We've just reached out 30k goal raised for charity! We're so proud of the team!</p>
+          </div>
+          <div class="notification-time">
+            8 min ago
+            <a href="#" class="float-end text-orange"><i class="bi bi-star"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Item with Permission Request -->
+    <div class="notification-item">
+      <div class="d-flex">
+        <div class="notification-avatar me-3">
+          <img src="assets/images/avatar1.png" alt="Edward Curr" class="rounded-circle">
+        </div>
+        <div class="notification-content">
+          <div class="notification-header">
+            <strong>Edward Curr</strong>
+            <span>Wants to edit the file Dynabike</span>
+          </div>
+          <div class="notification-actions mt-2">
+            <button class="btn btn-orange btn-sm">Accept</button>
+            <button class="btn btn-dark btn-sm">Deny</button>
+          </div>
+          <div class="notification-time">17 min ago</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Item with Image -->
+    <div class="notification-item">
+      <div class="d-flex">
+        <div class="notification-avatar me-3">
+          <img src="assets/images/avatar5.png" alt="Alex Carpena" class="rounded-circle">
+        </div>
+        <div class="notification-content">
+          <div class="notification-header">
+            <strong>Alex Carpena</strong>
+            <span>Shared an image in Team</span>
+          </div>
+          <div class="notification-image mt-2 mb-2">
+            <img src="assets/images/sculpt1.jpg" alt="Shared image" class="rounded img-fluid">
+          </div>
+          <div class="notification-message">
+            <div class="notification-quote">
+              <p>This is my home setup!..... and you are such a hater <a href="#" class="text-orange">@edward</a></p>
+            </div>
+          </div>
+          <div class="notification-time">17 min ago</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notifications-popup-footer text-center py-2">
+    <span class="text-muted">Powered by Courier</span>
+  </div>
+</div>
