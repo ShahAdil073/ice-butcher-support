@@ -202,6 +202,257 @@
       font-size: 0.875rem;
       transition: all 0.2s;
     }
+
+    /* Email Modal Styles */
+    .email-compose-modal {
+      max-width: 700px;
+    }
+    .email-compose-modal .modal-body {
+      padding: 1.5rem;
+    }
+    .email-field {
+      display: flex;
+      border-bottom: 1px solid #dee2e6;
+      padding: 0.5rem 0;
+    }
+    .email-field-label {
+      width: 80px;
+      color: #6c757d;
+      font-weight: 500;
+    }
+    .email-field-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 0.25rem;
+    }
+    .email-tools {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.75rem 0;
+    }
+    .email-editor {
+      min-height: 250px;
+      padding: 1rem 0;
+    }
+    .email-compose-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid #dee2e6;
+    }
+    .tool-button {
+      border: none;
+      background: none;
+      color: #6c757d;
+      border-radius: 4px;
+      padding: 0.25rem 0.5rem;
+    }
+    .tool-button:hover {
+      background-color: #f8f9fa;
+      color: #0f2d50;
+    }
+    .conversation-item {
+      position: relative;
+      border-left: 2px solid rgba(13, 110, 253, 0.5);
+      padding-left: 50px;
+      margin-bottom: 2rem;
+    }
+    .conversation-avatar {
+      position: absolute;
+      top: 0;
+      left: 0px;
+      width: 42px;
+      height: 42px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      background-color: #fff;
+    }
+    .conversation-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .conversation-name {
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+    .conversation-time {
+      color: #6c757d;
+      font-size: 0.75rem;
+    }
+    .conversation-content {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .conversation-footer {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .agent-tag {
+      padding: 0.125rem 0.5rem;
+      background-color: #fff3cd;
+      color: #856404;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+    }
+    .simulated-markdown p {
+      margin-bottom: 0.75rem;
+    }
+    .simulated-markdown ul {
+      padding-left: 1rem;
+    }
+    .conversation-actions {
+      display: flex;
+      justify-content: flex-start;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Support Ticket Modal Styles */
+    .support-ticket-modal {
+      max-width: 700px;
+    }
+    .ticket-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #dee2e6;
+    }
+    .ticket-number {
+      background-color: #e9ecef;
+      color: #495057;
+      padding: 0.125rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    .ticket-status {
+      padding: 0.125rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      cursor: pointer;
+      user-select: none;
+    }
+    .ticket-status.open {
+      background-color: #d1e7dd;
+      color: #0f5132;
+    }
+    .ticket-status.closed {
+      background-color: #f8d7da;
+      color: #842029;
+    }
+    .ticket-id {
+      color: #6c757d;
+      font-size: 0.875rem;
+      margin-left: auto;
+      cursor: pointer;
+      user-select: none;
+    }
+    .ticket-profile {
+      display: flex;
+      align-items: center;
+      margin: 1rem 0;
+    }
+    .ticket-profile-img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 0.75rem;
+    }
+    .ticket-profile-name {
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    .ticket-profile-meta {
+      color: #6c757d;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .ticket-message {
+      padding: 1rem;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .ticket-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid #dee2e6;
+    }
+    .ticket-toolbar {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .toolbar-button {
+      background: none;
+      border: none;
+      color: #6c757d;
+      padding: 0.25rem 0.5rem;
+      font-size: 1.25rem;
+      border-radius: 4px;
+    }
+    .toolbar-button:hover {
+      background-color: #f8f9fa;
+      color: #0f2d50;
+    }
+    .reply-box {
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      min-height: 150px;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      outline: none;
+      overflow-y: auto;
+      white-space: pre-wrap;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 767.98px) {
+      .email-compose-modal .modal-dialog {
+        margin: 0.5rem;
+      }
+      .email-field {
+        flex-direction: column;
+        padding-bottom: 0.75rem;
+      }
+      .email-field-label {
+        width: 100%;
+        margin-bottom: 0.25rem;
+      }
+      .email-compose-actions {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+      .email-tools {
+        flex-wrap: wrap;
+      }
+      .conversation-item {
+        padding-left: 10px;
+      }
+      .conversation-avatar {
+        width: 32px;
+        height: 32px;
+        left: -17px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -298,8 +549,8 @@
                     <i class="bi bi-envelope me-1"></i> Email Support
                   </button>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-envelope me-2"></i>Send Email</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-envelope-paper me-2"></i>Create Ticket</a></li>
+                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#composeEmailModal"><i class="bi bi-envelope me-2"></i>Send Email</a></li>
+                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#supportTicketModal"><i class="bi bi-envelope-paper me-2"></i>Create Ticket</a></li>
                     <li><a class="dropdown-item" href="#"><i class="bi bi-envelope-check me-2"></i>Resolve Support</a></li>
                   </ul>
                 </div>
@@ -328,7 +579,7 @@
                     <i class="bi bi-card-checklist me-1"></i> Create Tickets
                   </button>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-plus-circle me-2"></i>New Support Ticket</a></li>
+                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#supportTicketModal"><i class="bi bi-plus-circle me-2"></i>New Support Ticket</a></li>
                     <li><a class="dropdown-item" href="#"><i class="bi bi-bug me-2"></i>Bug Report</a></li>
                     <li><a class="dropdown-item" href="#"><i class="bi bi-lightbulb me-2"></i>Feature Request</a></li>
                   </ul>
@@ -831,80 +1082,6 @@
                 </div>
               </div>
 
-              <div class="card border-0 shadow-sm">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h6 class="mb-0">Compose New Email</h6>
-                    <button class="btn btn-sm btn-light">
-                      <i class="bi bi-arrow-up-right-square me-1"></i> Expand
-                    </button>
-                  </div>
-
-                  <div class="mb-3">
-                    <label class="form-label">To:</label>
-                    <input type="text" class="form-control" placeholder="Enter or choose a recipient">
-                  </div>
-
-                  <div class="mb-3">
-                    <label class="form-label">From:</label>
-                    <div class="input-group">
-                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                        Search
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">support@icebutcher.com</a></li>
-                        <li><a class="dropdown-item" href="#">sales@icebutcher.com</a></li>
-                        <li><a class="dropdown-item" href="#">info@icebutcher.com</a></li>
-                      </ul>
-                      <input type="text" class="form-control" value="support@icebutcher.com" readonly>
-                    </div>
-                  </div>
-
-                  <div class="mb-3">
-                    <label class="form-label">Subject:</label>
-                    <input type="text" class="form-control" value="Order status and tracking">
-                  </div>
-
-                  <div class="mb-3">
-                    <textarea class="form-control" rows="5" placeholder="Write a message. Press '/' or highlight text to access AI commands."></textarea>
-                  </div>
-
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                      <button class="btn btn-sm btn-light me-1" title="Add attachment">
-                        <i class="bi bi-paperclip"></i>
-                      </button>
-                      <button class="btn btn-sm btn-light me-1" title="Add emoji">
-                        <i class="bi bi-emoji-smile"></i>
-                      </button>
-                      <button class="btn btn-sm btn-light me-1" title="Add image">
-                        <i class="bi bi-image"></i>
-                      </button>
-                      <button class="btn btn-sm btn-light me-1" title="Add link">
-                        <i class="bi bi-link-45deg"></i>
-                      </button>
-                      <button class="btn btn-sm btn-light me-1" title="Add template">
-                        <i class="bi bi-box"></i>
-                      </button>
-                      <div class="dropdown d-inline-block">
-                        <button class="btn btn-sm btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                          <i class="bi bi-three-dots"></i>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Format text</a></li>
-                          <li><a class="dropdown-item" href="#">Save as template</a></li>
-                          <li><a class="dropdown-item" href="#">Schedule send</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div>
-                      <button class="btn btn-sm btn-primary">
-                        Send <i class="bi bi-chevron-down ms-1"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
 
             <!-- Other tabs content would go here -->
@@ -914,7 +1091,323 @@
     </div>
   </div>
 
+  <!-- Compose Email Modal -->
+  <div class="modal fade" id="composeEmailModal" tabindex="-1" aria-labelledby="composeEmailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered email-compose-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="composeEmailModalLabel">
+            <i class="bi bi-envelope me-2 text-primary"></i> Email
+          </h5>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary" title="Minimize">
+              <i class="bi bi-dash-lg"></i>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" title="Expand">
+              <i class="bi bi-arrows-angle-expand"></i>
+            </button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="email-field">
+            <div class="email-field-label">To:</div>
+            <input type="text" class="email-field-input" placeholder="Enter or choose a recipient" value="">
+            <button class="tool-button" title="Add CC">
+              <i class="bi bi-plus-lg"></i>
+            </button>
+          </div>
+          <div class="email-field">
+            <div class="email-field-label">From:</div>
+            <div class="d-flex align-items-center flex-grow-1">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle me-2" type="button" data-bs-toggle="dropdown">
+                Search <i class="bi bi-chevron-down ms-1"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">support@icebutcher.com</a></li>
+                <li><a class="dropdown-item" href="#">sales@icebutcher.com</a></li>
+                <li><a class="dropdown-item" href="#">info@icebutcher.com</a></li>
+              </ul>
+              <span class="flex-grow-1">support@icebutcher.com</span>
+            </div>
+          </div>
+          <div class="email-field">
+            <div class="email-field-label">Subject:</div>
+            <input type="text" class="email-field-input" value="Order status and tracking">
+          </div>
+
+          <div class="email-editor">
+            <div class="write-message">
+              <textarea class="form-control border-0" rows="8" placeholder="Write a message. Press '/' or highlight text to access AI commands."></textarea>
+            </div>
+          </div>
+
+          <div class="email-compose-actions">
+            <div class="email-tools">
+              <button class="tool-button" title="Add attachment">
+                <i class="bi bi-paperclip"></i>
+              </button>
+              <button class="tool-button" title="Add emoji">
+                <i class="bi bi-emoji-smile"></i>
+              </button>
+              <button class="tool-button" title="Add image">
+                <i class="bi bi-image"></i>
+              </button>
+              <button class="tool-button" title="Add link">
+                <i class="bi bi-link-45deg"></i>
+              </button>
+              <button class="tool-button" title="Add formatting">
+                <i class="bi bi-type"></i>
+              </button>
+              <button class="tool-button" title="Insert template">
+                <i class="bi bi-box"></i>
+              </button>
+              <button class="tool-button" title="More options">
+                <i class="bi bi-three-dots"></i>
+              </button>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <small class="text-muted">
+                <i class="bi bi-info-circle"></i> IBA-GPT can make mistakes. Check our <a href="#" class="text-decoration-none">Terms & Conditions</a>.
+              </small>
+              <button class="btn btn-primary">
+                Send <i class="bi bi-send ms-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Support Ticket Modal -->
+  <div class="modal fade" id="supportTicketModal" tabindex="-1" aria-labelledby="supportTicketModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered support-ticket-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="supportTicketModalLabel">
+            <i class="bi bi-ticket-perforated me-2 text-primary"></i> Support Ticket
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="ticket-header">
+            <span class="ticket-number">Ticket: #37577831</span>
+            <span class="ticket-status open">Open</span>
+            <span class="ticket-id">Ticket Status: <i class="bi bi-chevron-down small"></i></span>
+          </div>
+
+          <div class="ticket-profile">
+            <img src="assets/images/avatar1.png" alt="Emma Thompson" class="ticket-profile-img">
+            <div>
+              <h6 class="ticket-profile-name">Emma Thompson</h6>
+              <div class="ticket-profile-meta">
+                <span><i class="bi bi-clock-history"></i> Order status and tracking</span>
+                <span class="agent-tag"><i class="bi bi-person-fill me-1 small"></i> Agent N</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ticket-message">
+            <div class="simulated-markdown">
+              <p>See the latest updates to the Smithmiri Apps Privacy Hub.</p>
+              <p>I'm trying to track my order but the system keeps giving me an error. Can you help?</p>
+            </div>
+          </div>
+
+          <div id="ticketConversation">
+            <div class="newest-conversation mb-4">
+              <h6 class="text-muted mb-3">Newest conversation</h6>
+
+              <div class="conversation-item">
+                <img src="assets/images/avatar1.png" alt="Emma Thompson" class="conversation-avatar">
+                <div class="conversation-header">
+                  <span class="conversation-name">Emma Thompson</span>
+                  <span class="conversation-time">45m Ago</span>
+                </div>
+                <div class="conversation-content">
+                  <p>Thanks. I found the confirmation.</p>
+                </div>
+                <div class="conversation-footer">
+                  <span class="small text-muted"><i class="bi bi-box me-1"></i> Order status and tracking</span>
+                  <div class="ms-auto">
+                    <span class="agent-tag"><i class="bi bi-person-fill me-1 small"></i> Agent N</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="conversation-item">
+                <img src="assets/images/avatar2.png" alt="Kristin Kniss" class="conversation-avatar">
+                <div class="conversation-header">
+                  <span class="conversation-name">Kristin Kniss</span>
+                  <span class="conversation-time">5h Ago</span>
+                </div>
+                <div class="conversation-content">
+                  <p>Thanks. I found the confirmation.</p>
+                </div>
+                <div class="conversation-footer">
+                  <span class="small text-muted"><i class="bi bi-box me-1"></i> Order status and tracking</span>
+                  <div class="ms-auto">
+                    <span class="agent-tag bg-light text-dark"><i class="bi bi-person-fill me-1 small"></i> Agent K</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="conversation-item">
+                <img src="assets/images/avatar1.png" alt="Emma Thompson" class="conversation-avatar">
+                <div class="conversation-header">
+                  <span class="conversation-name">Emma Thompson</span>
+                  <span class="conversation-time">10h Ago</span>
+                </div>
+                <div class="conversation-content">
+                  <p>Thanks. I found the confirmation.</p>
+                </div>
+                <div class="conversation-footer">
+                  <span class="small text-muted"><i class="bi bi-box me-1"></i> Order status and tracking</span>
+                  <div class="ms-auto">
+                    <span class="agent-tag"><i class="bi bi-person-fill me-1 small"></i> Agent N</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="previous-days">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="text-muted mb-0">Previous 7 Days</h6>
+                <button class="btn btn-sm btn-light">
+                  <i class="bi bi-clock-history me-1"></i> View History
+                </button>
+              </div>
+
+              <div class="conversation-item">
+                <img src="assets/images/avatar2.png" alt="Kristin Kniss" class="conversation-avatar">
+                <div class="conversation-header">
+                  <span class="conversation-name">Kristin Kniss</span>
+                  <span class="conversation-time">2nd Mar</span>
+                </div>
+                <div class="conversation-content">
+                  <p>Thanks. I found the confirmation.</p>
+                </div>
+                <div class="conversation-footer">
+                  <span class="small text-muted"><i class="bi bi-box me-1"></i> Order status and tracking</span>
+                  <div class="ms-auto">
+                    <span class="agent-tag bg-light text-dark"><i class="bi bi-person-fill me-1 small"></i> Agent K</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reply-section mt-4">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h6 class="mb-0">Reply</h6>
+              <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-light">
+                  <i class="bi bi-mic me-1"></i> Voice
+                </button>
+                <button class="btn btn-sm btn-light active">
+                  <i class="bi bi-pencil me-1"></i> Text
+                </button>
+              </div>
+            </div>
+
+            <div class="reply-box" contenteditable="true">
+              Write a message. Press '/' or highlight text to access AI commands.
+            </div>
+
+            <div class="ticket-actions">
+              <div class="ticket-toolbar">
+                <button class="toolbar-button" title="Format text">
+                  <i class="bi bi-type"></i>
+                </button>
+                <button class="toolbar-button" title="Add emoji">
+                  <i class="bi bi-emoji-smile"></i>
+                </button>
+                <button class="toolbar-button" title="Attach file">
+                  <i class="bi bi-paperclip"></i>
+                </button>
+                <button class="toolbar-button" title="Add image">
+                  <i class="bi bi-image"></i>
+                </button>
+                <button class="toolbar-button" title="Add link">
+                  <i class="bi bi-link-45deg"></i>
+                </button>
+              </div>
+              <button class="btn btn-primary">
+                Send <i class="bi bi-send ms-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
+  <script>
+    // Javascript to make the modals functional
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize tooltips
+      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[title]'));
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+
+      // Handle reply box placeholder
+      const replyBox = document.querySelector('.reply-box');
+      if (replyBox) {
+        replyBox.addEventListener('focus', function() {
+          if (this.textContent.trim() === 'Write a message. Press \'/\' or highlight text to access AI commands.') {
+            this.textContent = '';
+          }
+        });
+
+        replyBox.addEventListener('blur', function() {
+          if (this.textContent.trim() === '') {
+            this.textContent = 'Write a message. Press \'/\' or highlight text to access AI commands.';
+          }
+        });
+      }
+
+      // Email modal functionality
+      const composeEmailModal = document.getElementById('composeEmailModal');
+      if (composeEmailModal) {
+        composeEmailModal.addEventListener('shown.bs.modal', function() {
+          const toField = composeEmailModal.querySelector('.email-field-input');
+          if (toField) {
+            toField.focus();
+          }
+        });
+      }
+
+      // Support ticket actions
+      const statusDropdown = document.querySelector('.ticket-status');
+      if (statusDropdown) {
+        statusDropdown.addEventListener('click', function() {
+          this.classList.toggle('open');
+          if (!this.classList.contains('open')) {
+            this.classList.add('closed');
+            this.textContent = 'Closed';
+          } else {
+            this.classList.remove('closed');
+            this.textContent = 'Open';
+          }
+        });
+      }
+
+      // Make the ticket ID clickable
+      const ticketId = document.querySelector('.ticket-id');
+      if (ticketId) {
+        ticketId.addEventListener('click', function() {
+          const statuses = ['In Progress', 'Awaiting Customer', 'Resolved', 'Open'];
+          const current = this.textContent.trim().replace('Ticket Status: ', '');
+          const currentIndex = statuses.indexOf(current) !== -1 ? statuses.indexOf(current) : 0;
+          const nextIndex = (currentIndex + 1) % statuses.length;
+          this.innerHTML = 'Ticket Status: ' + statuses[nextIndex] + ' <i class="bi bi-chevron-down small"></i>';
+        });
+      }
+    });
+  </script>
 </body>
 </html>
