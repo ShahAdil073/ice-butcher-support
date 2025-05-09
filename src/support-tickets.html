@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Support Tickets - Ice Butcher</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Sidebar will be loaded here -->
+    <div class="sidebar d-flex flex-column" id="sidebar-container"></div>
+    <div class="sidebar-mobile-overlay" id="sidebarMobileOverlay"></div>
+    <div class="main-content" id="mainContent">
+      <!-- Navbar -->
+      <div id="header-container"></div>
+      <div class="container-fluid pt-3">
+        <div class="d-flex align-items-center mb-3">
+          <div class="d-flex align-items-center">
+            <a href="#" class="text-decoration-none text-muted">
+              <i class="bi bi-life-preserver me-1"></i>
+              Help Desk
+            </a>
+            <span class="mx-2 text-muted">/</span>
+            <span class="fw-medium">Support Tickets</span>
+          </div>
+          <span class="ms-auto d-flex align-items-center">
+            <a href="create-ticket.html" class="btn btn-sm btn-outline-primary ms-3">
+              <i class="bi bi-plus-lg"></i> Create Ticket
+            </a>
+          </span>
+        </div>
+
+        <!-- Tickets Stats Cards -->
+        <div class="row mb-4">
+          <div class="col">
+            <div class="metric-card issues-card">
+              <div class="card-content">
+                <div class="card-title">Number of Issues</div>
+                <div class="card-subtitle">this month</div>
+                <div class="card-value">650</div>
+                <span class="percent-badge">35% <i class="bi bi-arrow-up"></i></span>
+                <a href="#" class="card-link">View Tickets <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+              </div>
+              <div class="card-bg-pattern">
+                <i class="bi bi-exclamation-triangle"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="metric-card solved-card">
+              <div class="card-content">
+                <div class="card-title">Issues Solved</div>
+                <div class="card-subtitle">this month</div>
+                <div class="card-value">430</div>
+                <span class="percent-badge">15% <i class="bi bi-arrow-up"></i></span>
+                <a href="#" class="card-link">View Tickets <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+              </div>
+              <div class="card-bg-pattern">
+                <i class="bi bi-check-circle"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="metric-card open-card">
+              <div class="card-content">
+                <div class="card-title">Open Tickets</div>
+                <div class="card-subtitle">in this project</div>
+                <div class="card-value">220</div>
+                <a href="#" class="card-link">View Tickets <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+              </div>
+              <div class="card-bg-pattern">
+                <i class="bi bi-envelope-open"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="metric-card response-card">
+              <div class="card-content">
+                <div class="card-title">Avg. Response Time</div>
+                <div class="card-subtitle">in the last 7 days</div>
+                <div class="card-value">88%</div>
+                <span class="percent-badge">20% <i class="bi bi-arrow-down"></i></span>
+                <a href="#" class="card-link">View Details <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+              </div>
+              <div class="card-bg-pattern">
+                <i class="bi bi-clock"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="metric-card satisfaction-card">
+              <div class="card-content">
+                <div class="card-title">Client Satisfaction</div>
+                <div class="card-subtitle">in the last 7 days</div>
+                <div class="card-value">80%</div>
+                <span class="percent-badge">8% <i class="bi bi-arrow-up"></i></span>
+                <a href="#" class="card-link">View Reports <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+              </div>
+              <div class="card-bg-pattern">
+                <i class="bi bi-heart"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tickets List View -->
+        <div class="card border-0 shadow-sm mb-4">
+          <div class="card-header bg-white">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5 class="card-title mb-0">Support Tickets</h5>
+              <div class="d-flex align-items-center">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search here..."
+                  />
+                  <button class="btn btn-primary" type="button">
+                    <i class="bi bi-search"></i>
+                  </button>
+                </div>
+                <button class="btn btn-outline-primary ms-2 d-flex align-items-center">
+                  <i class="bi bi-plus-circle me-1"></i>
+                  <span>Create Contact</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-options p-3 d-flex flex-wrap justify-content-between align-items-center border-bottom">
+                  <div class="d-flex mb-2 mb-md-0">
+                    <button class="btn btn-sm me-2 btn-primary">
+                      <i class="bi bi-list-ul"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-secondary">
+                      <i class="bi bi-grid-3x3-gap"></i>
+                    </button>
+                  </div>
+                  <div class="d-flex flex-wrap">
+                    <div class="dropdown me-2 mb-2 mb-md-0">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="contactsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        All Contacts
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="contactsDropdown">
+                        <li><a class="dropdown-item" href="#">All Contacts</a></li>
+                        <li><a class="dropdown-item" href="#">Recent Contacts</a></li>
+                        <li><a class="dropdown-item" href="#">Favorite Contacts</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown me-2 mb-2 mb-md-0">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="createDateDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Create Date
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="createDateDropdown">
+                        <li><a class="dropdown-item" href="#">Today</a></li>
+                        <li><a class="dropdown-item" href="#">This Week</a></li>
+                        <li><a class="dropdown-item" href="#">This Month</a></li>
+                        <li><a class="dropdown-item" href="#">This Year</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown me-2 mb-2 mb-md-0">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="lastActivityDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Last Activity Date
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="lastActivityDropdown">
+                        <li><a class="dropdown-item" href="#">Today</a></li>
+                        <li><a class="dropdown-item" href="#">Yesterday</a></li>
+                        <li><a class="dropdown-item" href="#">Last Week</a></li>
+                        <li><a class="dropdown-item" href="#">Last Month</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown me-2 mb-2 mb-md-0">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="leadStatusDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Lead Status
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="leadStatusDropdown">
+                        <li><a class="dropdown-item" href="#">New</a></li>
+                        <li><a class="dropdown-item" href="#">Contacted</a></li>
+                        <li><a class="dropdown-item" href="#">Qualified</a></li>
+                        <li><a class="dropdown-item" href="#">Converted</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown mb-2 mb-md-0">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="assignedAgentDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Assigned Agent
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="assignedAgentDropdown">
+                        <li><a class="dropdown-item" href="#">All Agents</a></li>
+                        <li><a class="dropdown-item" href="#">My Assignments</a></li>
+                        <li><a class="dropdown-item" href="#">Unassigned</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <button class="btn btn-sm btn-outline-secondary">
+                      <i class="bi bi-sliders"></i> Advanced Filters
+                    </button>
+                  </div>
+                </div>
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th style="width: 40px;">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="selectAll">
+                        <label class="form-check-label" for="selectAllTickets"></label>
+                      </div>
+                    </th>
+                    <th>Customer Name <i class="bi bi-arrow-down-up text-muted ms-1"></i></th>
+                    <th>Lead Generated <i class="bi bi-arrow-down-up text-muted ms-1"></i></th>
+                    <th>Email Address <i class="bi bi-arrow-down-up text-muted ms-1"></i></th>
+                    <th>Customer Number <i class="bi bi-arrow-down-up text-muted ms-1"></i></th>
+                    <th>Labels <i class="bi bi-arrow-down-up text-muted ms-1"></i></th>
+                    <th>Purchase <i class="bi bi-arrow-down-up text-muted ms-1"></i></th>
+                    <th>Company <i class="bi bi-arrow-down-up text-muted ms-1"></i></th>
+                    <th>Support By <i class="bi bi-info-circle text-muted ms-1"></i></th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img src="assets/images/avatar1.png" alt="Eleanor Pena" class="rounded-circle me-2" width="32" height="32">
+                        <span class="fw-medium">Eleanor Pena</span>
+                      </div>
+                    </td>
+                    <td>Jan 21, 2024</td>
+                    <td><a href="mailto:testone@theicebutcher.com" class="text-decoration-none">testone@theicebutcher.com</a></td>
+                    <td>+1(447) 379-2382</td>
+                    <td>
+                      <select class="form-select form-select-sm">
+                        <option>Customer</option>
+                        <option>Lead</option>
+                        <option>VIP</option>
+                      </select>
+                    </td>
+                    <td>02</td>
+                    <td>N/A</td>
+                    <td>Agent Name</td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="actionDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                          Action <i class="bi bi-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="actionDropdown1">
+                          <li><a class="dropdown-item" href="ticket-detail.html">View Details</a></li>
+                          <li><a class="dropdown-item" href="#">Edit</a></li>
+                          <li><a class="dropdown-item" href="#">Delete</a></li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img src="assets/images/avatar2.png" alt="Heather White" class="rounded-circle me-2" width="32" height="32">
+                        <span class="fw-medium">Heather White</span>
+                      </div>
+                    </td>
+                    <td>Jan 18, 2024</td>
+                    <td><a href="mailto:testtwo@theicebutcher.com" class="text-decoration-none">testtwo@theicebutcher.com</a></td>
+                    <td>+1(345)324-5323</td>
+                    <td>
+                      <select class="form-select form-select-sm">
+                        <option>Come Back</option>
+                        <option>Lead</option>
+                        <option>VIP</option>
+                      </select>
+                    </td>
+                    <td>01</td>
+                    <td>Pixels Developer</td>
+                    <td>Agent Name</td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="actionDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                          Action <i class="bi bi-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="actionDropdown1">
+                          <li><a class="dropdown-item" href="ticket-detail.html">View Details</a></li>
+                          <li><a class="dropdown-item" href="#">Edit</a></li>
+                          <li><a class="dropdown-item" href="#">Delete</a></li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img src="assets/images/avatar3.png" alt="Julia Cooper" class="rounded-circle me-2" width="32" height="32">
+                        <span class="fw-medium">Julia Cooper</span>
+                      </div>
+                    </td>
+                    <td>Feb 16, 2024</td>
+                    <td><a href="mailto:testthree@theicebutcher.com" class="text-decoration-none">testthree@theicebutcher.com</a></td>
+                    <td>+1(345)324-5325</td>
+                    <td>
+                      <select class="form-select form-select-sm">
+                        <option>Hot Lead</option>
+                        <option>Customer</option>
+                        <option>VIP</option>
+                      </select>
+                    </td>
+                    <td>00</td>
+                    <td>AB Homes</td>
+                    <td>Agent Name</td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="actionDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                          Action <i class="bi bi-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="actionDropdown1">
+                          <li><a class="dropdown-item" href="ticket-detail.html">View Details</a></li>
+                          <li><a class="dropdown-item" href="#">Edit</a></li>
+                          <li><a class="dropdown-item" href="#">Delete</a></li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img src="assets/images/avatar2.png" alt="Emma Thompson" class="rounded-circle me-2" width="32" height="32">
+                        <span class="fw-medium">Emma Thompson</span>
+                      </div>
+                    </td>
+                    <td>Feb 12, 2024</td>
+                    <td><a href="mailto:testfour@theicebutcher.com" class="text-decoration-none">testfour@theicebutcher.com</a></td>
+                    <td>+1(345)324-5328</td>
+                    <td>
+                      <select class="form-select form-select-sm">
+                        <option>Customer</option>
+                        <option>Lead</option>
+                        <option>VIP</option>
+                      </select>
+                    </td>
+                    <td>00</td>
+                    <td>N/A</td>
+                    <td>Agent Name</td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="actionDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                          Action <i class="bi bi-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="actionDropdown1">
+                          <li><a class="dropdown-item" href="ticket-detail.html">View Details</a></li>
+                          <li><a class="dropdown-item" href="#">Edit</a></li>
+                          <li><a class="dropdown-item" href="#">Delete</a></li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img src="assets/images/avatar4.png" alt="Kevin Jordan" class="rounded-circle me-2" width="32" height="32">
+                        <span class="fw-medium">Kevin Jordan</span>
+                      </div>
+                    </td>
+                    <td>Mar 25, 2024</td>
+                    <td><a href="mailto:testfive@theicebutcher.com" class="text-decoration-none">testfive@theicebutcher.com</a></td>
+                    <td>+1(345)324-5326</td>
+                    <td>
+                      <select class="form-select form-select-sm">
+                        <option>Cold Lead</option>
+                        <option>Customer</option>
+                        <option>VIP</option>
+                      </select>
+                    </td>
+                    <td>01</td>
+                    <td>N/A</td>
+                    <td>Agent Name</td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="actionDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                          Action <i class="bi bi-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="actionDropdown1">
+                          <li><a class="dropdown-item" href="ticket-detail.html">View Details</a></li>
+                          <li><a class="dropdown-item" href="#">Edit</a></li>
+                          <li><a class="dropdown-item" href="#">Delete</a></li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img src="assets/images/avatar3.png" alt="Spector Calista" class="rounded-circle me-2" width="32" height="32">
+                        <span class="fw-medium">Spector Calista</span>
+                      </div>
+                    </td>
+                    <td>Mar 11, 2024</td>
+                    <td><a href="mailto:testsix@theicebutcher.com" class="text-decoration-none">testsix@theicebutcher.com</a></td>
+                    <td>+1(345)324-5327</td>
+                    <td>
+                      <select class="form-select form-select-sm">
+                        <option>Customer</option>
+                        <option>Lead</option>
+                        <option>VIP</option>
+                      </select>
+                    </td>
+                    <td>00</td>
+                    <td>Glow Screen</td>
+                    <td>Agent Name</td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="actionDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                          Action <i class="bi bi-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="actionDropdown1">
+                          <li><a class="dropdown-item" href="ticket-detail.html">View Details</a></li>
+                          <li><a class="dropdown-item" href="#">Edit</a></li>
+                          <li><a class="dropdown-item" href="#">Delete</a></li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img src="assets/images/avatar5.png" alt="Martha Jackson" class="rounded-circle me-2" width="32" height="32">
+                        <span class="fw-medium">Martha Jackson</span>
+                      </div>
+                    </td>
+                    <td>Apr 14, 2024</td>
+                    <td><a href="mailto:testseven@theicebutcher.com" class="text-decoration-none">testseven@theicebutcher.com</a></td>
+                    <td>+1(345)324-5322</td>
+                    <td>
+                      <select class="form-select form-select-sm">
+                        <option>Customer</option>
+                        <option>Lead</option>
+                        <option>VIP</option>
+                      </select>
+                    </td>
+                    <td>01</td>
+                    <td>N/A</td>
+                    <td>Agent Name</td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="actionDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                          Action <i class="bi bi-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="actionDropdown1">
+                          <li><a class="dropdown-item" href="ticket-detail.html">View Details</a></li>
+                          <li><a class="dropdown-item" href="#">Edit</a></li>
+                          <li><a class="dropdown-item" href="#">Delete</a></li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer bg-white py-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="text-muted small">Showing 1 to 8 of 18 entries</div>
+              <nav aria-label="Page navigation">
+                <ul class="pagination pagination-sm mb-0">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo; Previous</span>
+                    </a>
+                  </li>
+                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">...</a></li>
+                  <li class="page-item"><a class="page-link" href="#">8</a></li>
+                  <li class="page-item"><a class="page-link" href="#">9</a></li>
+                  <li class="page-item"><a class="page-link" href="#">10</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">Next &raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    <script>
+      // Add support ticket specific functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        // Initialize select all functionality
+        const selectAllTicketsCheckbox = document.getElementById('selectAllTickets');
+        const ticketCheckboxes = document.querySelectorAll('tbody .form-check-input');
+
+        if (selectAllTicketsCheckbox) {
+          selectAllTicketsCheckbox.addEventListener('change', function() {
+            const isChecked = this.checked;
+            ticketCheckboxes.forEach(checkbox => {
+              checkbox.checked = isChecked;
+
+              // Highlight the row
+              const row = checkbox.closest('tr');
+              if (isChecked) {
+                row.classList.add('table-active');
+              } else {
+                row.classList.remove('table-active');
+              }
+            });
+          });
+        }
+
+        // Individual ticket checkbox functionality
+        ticketCheckboxes.forEach(checkbox => {
+          checkbox.addEventListener('change', function() {
+            const allChecked = Array.from(ticketCheckboxes).every(cb => cb.checked);
+            const anyChecked = Array.from(ticketCheckboxes).some(cb => cb.checked);
+
+            if (selectAllTicketsCheckbox) {
+              selectAllTicketsCheckbox.checked = allChecked;
+              selectAllTicketsCheckbox.indeterminate = anyChecked && !allChecked;
+            }
+
+            // Highlight the row
+            const row = this.closest('tr');
+            if (this.checked) {
+              row.classList.add('table-active');
+            } else {
+              row.classList.remove('table-active');
+            }
+          });
+        });
+        // Detail button functionality
+        const detailButtons = document.querySelectorAll('.badge.bg-primary');
+
+        detailButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            const row = this.closest('tr');
+            const customerName = row.querySelector('td:nth-child(2) .fw-medium').textContent;
+
+            // In a real implementation, this would redirect to ticket detail page
+            alert(`View details for customer: ${customerName}`);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

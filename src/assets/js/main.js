@@ -95,6 +95,15 @@ function initializeComponents() {
         case 'sales-orders.html':
           pageTitle.textContent = 'Sales Orders';
           break;
+        case 'support-tickets.html':
+          pageTitle.textContent = 'Support Tickets';
+          break;
+        case 'ticket-detail.html':
+          pageTitle.textContent = 'Ticket Details';
+          break;
+        case 'create-ticket.html':
+          pageTitle.textContent = 'Create Ticket';
+          break;
         default:
           pageTitle.textContent = 'Ice Butcher';
       }
@@ -131,6 +140,8 @@ function initializeComponents() {
       } else if (currentPage === 'sales-products.html' && href === 'sales-products.html') {
         link.classList.add('active');
       } else if (currentPage === 'sales-orders.html' && href === 'sales-orders.html') {
+        link.classList.add('active');
+      } else if (currentPage === 'support-tickets.html' && href === 'support-tickets.html') {
         link.classList.add('active');
       }
     });
