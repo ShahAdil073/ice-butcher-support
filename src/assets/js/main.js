@@ -29,7 +29,7 @@ async function loadComponents() {
   const components = [
     { selector: '#header-container', file: 'components/header.html' },
     { selector: '#sidebar-container', file: 'components/sidebar.html' },
-    { selector: '#notificationsPopupContainer', file: 'components/notifications-popup.html' }  
+    { selector: '#notificationsPopupContainer', file: 'components/notifications-popup.html' }
   ];
 
   for (const component of components) {
@@ -86,6 +86,15 @@ function initializeComponents() {
         case 'admin-settings.html':
           pageTitle.textContent = 'Admin Settings';
           break;
+        case 'sales-dashboard.html':
+          pageTitle.textContent = 'Sales Dashboard';
+          break;
+        case 'sales-products.html':
+          pageTitle.textContent = 'Sales Products';
+          break;
+        case 'sales-orders.html':
+          pageTitle.textContent = 'Sales Orders';
+          break;
         default:
           pageTitle.textContent = 'Ice Butcher';
       }
@@ -95,6 +104,18 @@ function initializeComponents() {
       const href = link.getAttribute('href');
       if (href === currentPage) {
         link.classList.add('active');
+
+        // For sales pages, expand the sales dropdown if needed
+        if (currentPage.includes('sales-')) {
+          const salesCollapse = document.getElementById('collapseSales');
+          if (salesCollapse) {
+            salesCollapse.classList.add('show');
+            const salesLink = document.querySelector('a[href="#collapseSales"]');
+            if (salesLink) {
+              salesLink.setAttribute('aria-expanded', 'true');
+            }
+          }
+        }
       } else if (currentPage === 'user-profile.html' && href === 'user-profile.html') {
         link.classList.add('active');
       } else if (currentPage === 'users-teams.html' && href === 'users-teams.html') {
@@ -104,6 +125,12 @@ function initializeComponents() {
       } else if (currentPage === 'audit-log.html' && href === 'audit-log.html') {
         link.classList.add('active');
       } else if (currentPage === 'works-schedule.html' && href === 'works-schedule.html') {
+        link.classList.add('active');
+      } else if (currentPage === 'sales-dashboard.html' && href === 'sales-dashboard.html') {
+        link.classList.add('active');
+      } else if (currentPage === 'sales-products.html' && href === 'sales-products.html') {
+        link.classList.add('active');
+      } else if (currentPage === 'sales-orders.html' && href === 'sales-orders.html') {
         link.classList.add('active');
       }
     });

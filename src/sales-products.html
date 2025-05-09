@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sales - All Products | Ice Butcher</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Sidebar will be loaded here -->
+    <div class="sidebar d-flex flex-column" id="sidebar-container"></div>
+    <div class="sidebar-mobile-overlay" id="sidebarMobileOverlay"></div>
+    <div class="main-content" id="mainContent">
+      <!-- Navbar -->
+      <div id="header-container"></div>
+      <div class="container-fluid pt-3">
+        <div class="card-header d-flex justify-content-between align-items-center mb-3">
+              <h3 class="mb-0">All Products</h3>
+              <div class="d-flex">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search here..." aria-label="Search">
+                  <button class="btn btn-outline-secondary" type="button">
+                    <i class="bi bi-search"></i>
+                  </button>
+                </div>
+                <button class="btn btn-primary ms-2 d-flex align-items-center">
+                  <i class="bi bi-plus-lg me-1"></i> Create Deal
+                </button>
+              </div>
+            </div>
+          <div class="card-body">
+
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      All Contacts
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">All Contacts</a></li>
+                      <li><a class="dropdown-item" href="#">My Contacts</a></li>
+                      <li><a class="dropdown-item" href="#">Recent Contacts</a></li>
+                    </ul>
+                  </div>
+
+                  <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Create Date
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">This Week</a></li>
+                      <li><a class="dropdown-item" href="#">This Month</a></li>
+                      <li><a class="dropdown-item" href="#">Last 3 Months</a></li>
+                    </ul>
+                  </div>
+
+                  <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Last Activity Date
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">This Week</a></li>
+                      <li><a class="dropdown-item" href="#">This Month</a></li>
+                      <li><a class="dropdown-item" href="#">Last 3 Months</a></li>
+                    </ul>
+                  </div>
+
+                  <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Lead Status
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">All Status</a></li>
+                      <li><a class="dropdown-item" href="#">Active</a></li>
+                      <li><a class="dropdown-item" href="#">Inactive</a></li>
+                    </ul>
+                  </div>
+
+                  <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Assigned Agent
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">All Agents</a></li>
+                      <li><a class="dropdown-item" href="#">Sales Team</a></li>
+                      <li><a class="dropdown-item" href="#">Support Team</a></li>
+                    </ul>
+                  </div>
+
+                  <div class="ms-2">
+                    <button class="btn btn-outline-secondary" type="button">
+                      <i class="bi bi-gear"></i> Advanced Filters
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col" width="40">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="selectAll">
+                        <label class="form-check-label" for="selectAll"></label>
+                      </div>
+                    </th>
+                    <th>Product Name <i class="bi bi-arrow-down-up text-muted ms-1"></i></th>
+                    <th>Items SKU <i class="bi bi-arrow-down-up text-muted ms-1"></i></th>
+                    <th>Product Category <i class="bi bi-arrow-down-up text-muted ms-1"></i></th>
+                    <th>Unit Price <i class="bi bi-arrow-down-up text-muted ms-1"></i></th>
+                    <th>Discount <i class="bi bi-arrow-down-up text-muted ms-1"></i></th>
+                    <th>Product Status <i class="bi bi-arrow-down-up text-muted ms-1"></i></th>
+                    <th>Total Seals <i class="bi bi-arrow-down-up text-muted ms-1"></i></th>
+                    <th>Last Update <i class="bi bi-arrow-down-up text-muted ms-1"></i></th>
+                    <th>Actions <i class="bi bi-arrow-down-up text-muted ms-1"></i></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                      </div>
+                    </td>
+                    <td class="d-flex align-items-center">
+                      <div class="bg-light text-primary rounded p-2 me-2">
+                        <i class="bi bi-box-seam"></i>
+                      </div>
+                      Seafood 86" Display
+                    </td>
+                    <td>#5RTE6GT</td>
+                    <td><a href="#" class="text-primary">Seafood Display</a></td>
+                    <td>$515.00</td>
+                    <td>10% Off</td>
+                    <td>
+                      <span class="badge bg-info text-dark rounded-pill d-flex align-items-center" style="width: fit-content;">
+                        <span class="me-1" style="width: 8px; height: 8px; background-color: #0dcaf0; border-radius: 50%; display: inline-block;"></span>
+                        Hold On
+                      </span>
+                    </td>
+                    <td>120.00</td>
+                    <td>Jan 21, 2024</td>
+                    <td>
+                        <div class="dropdown">
+                        <button class="btn btn-sm btn-icon" type="button" id="logActions1" data-bs-toggle="dropdown" aria-expanded="false">
+                          <i class="bi bi-three-dots-vertical"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="logActions1">
+                          <li><a class="dropdown-item" href="#">View</a></li>
+                          <li><a class="dropdown-item" href="#">Edit</a></li>
+                          <li><a class="dropdown-item" href="#">Delete</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#">More Actions</a></li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                      </div>
+                    </td>
+                    <td class="d-flex align-items-center">
+                      <div class="bg-light text-primary rounded p-2 me-2">
+                        <i class="bi bi-cup-straw"></i>
+                      </div>
+                      Double Luge
+                    </td>
+                    <td>#5S4E6FT</td>
+                    <td><a href="#" class="text-primary">Ice Luge</a></td>
+                    <td>$1050.00</td>
+                    <td>20% Off</td>
+                    <td>
+                      <span class="badge bg-success text-dark rounded-pill d-flex align-items-center" style="width: fit-content;">
+                        <span class="me-1" style="width: 8px; height: 8px; background-color: #0d6efd; border-radius: 50%; display: inline-block;"></span>
+                        In Stock
+                      </span>
+                    </td>
+                    <td>176.00</td>
+                    <td>Jan 18, 2024</td>
+                    <td><button class="btn btn-link p-0"><i class="bi bi-three-dots-vertical"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                      </div>
+                    </td>
+                    <td class="d-flex align-items-center">
+                      <div class="bg-light text-primary rounded p-2 me-2">
+                        <i class="bi bi-gem"></i>
+                      </div>
+                      3D Selfish
+                    </td>
+                    <td>#5RTE8HT</td>
+                    <td><a href="#" class="text-primary">3d showpieces</a></td>
+                    <td>$1560.00</td>
+                    <td>16% Off</td>
+                    <td>
+                      <span class="badge bg-danger text-dark rounded-pill d-flex align-items-center" style="width: fit-content;">
+                        <span class="me-1" style="width: 8px; height: 8px; background-color: #dc3545; border-radius: 50%; display: inline-block;"></span>
+                        Stock Out
+                      </span>
+                    </td>
+                    <td>123.00</td>
+                    <td>Feb 16, 2024</td>
+                    <td><button class="btn btn-link p-0"><i class="bi bi-three-dots-vertical"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                      </div>
+                    </td>
+                    <td class="d-flex align-items-center">
+                      <div class="bg-light text-primary rounded p-2 me-2">
+                        <i class="bi bi-box-seam"></i>
+                      </div>
+                      Seafood 42" Display
+                    </td>
+                    <td>#5S4E6FT</td>
+                    <td><a href="#" class="text-primary">Seafood Display</a></td>
+                    <td>$1560.00</td>
+                    <td>0% Off</td>
+                    <td>
+                      <span class="badge bg-success text-dark rounded-pill d-flex align-items-center" style="width: fit-content;">
+                        <span class="me-1" style="width: 8px; height: 8px; background-color: #0d6efd; border-radius: 50%; display: inline-block;"></span>
+                        In Stock
+                      </span>
+                    </td>
+                    <td>245.00</td>
+                    <td>Feb 12, 2024</td>
+                    <td><button class="btn btn-link p-0"><i class="bi bi-three-dots-vertical"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                      </div>
+                    </td>
+                    <td class="d-flex align-items-center">
+                      <div class="bg-light text-primary rounded p-2 me-2">
+                        <i class="bi bi-cup-straw"></i>
+                      </div>
+                      Martini Luge
+                    </td>
+                    <td>#7FRE6GT</td>
+                    <td><a href="#" class="text-primary">Ice Luge</a></td>
+                    <td>$1050.00</td>
+                    <td>13% Off</td>
+                    <td>
+                      <span class="badge bg-danger text-dark rounded-pill d-flex align-items-center" style="width: fit-content;">
+                        <span class="me-1" style="width: 8px; height: 8px; background-color: #dc3545; border-radius: 50%; display: inline-block;"></span>
+                        Stock Out
+                      </span>
+                    </td>
+                    <td>132.00</td>
+                    <td>Mar 25, 2024</td>
+                    <td><button class="btn btn-link p-0"><i class="bi bi-three-dots-vertical"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                      </div>
+                    </td>
+                    <td class="d-flex align-items-center">
+                      <div class="bg-light text-primary rounded p-2 me-2">
+                        <i class="bi bi-gem"></i>
+                      </div>
+                      3D Mermaid
+                    </td>
+                    <td>#5S4E6FT</td>
+                    <td><a href="#" class="text-primary">3d showpieces</a></td>
+                    <td>$515.00</td>
+                    <td>20% Off</td>
+                    <td>
+                      <span class="badge bg-danger text-dark rounded-pill d-flex align-items-center" style="width: fit-content;">
+                        <span class="me-1" style="width: 8px; height: 8px; background-color: #dc3545; border-radius: 50%; display: inline-block;"></span>
+                        Stock Out
+                      </span>
+                    </td>
+                    <td>128.00</td>
+                    <td>Mar 11, 2024</td>
+                    <td><button class="btn btn-link p-0"><i class="bi bi-three-dots-vertical"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                      </div>
+                    </td>
+                    <td class="d-flex align-items-center">
+                      <div class="bg-light text-primary rounded p-2 me-2">
+                        <i class="bi bi-ui-checks"></i>
+                      </div>
+                      8 Foot Ice Bar
+                    </td>
+                    <td>#5RTE6GT</td>
+                    <td><a href="#" class="text-primary">Ice Bar</a></td>
+                    <td>$515.00</td>
+                    <td>0% Off</td>
+                    <td>
+                      <span class="badge bg-success text-dark rounded-pill d-flex align-items-center" style="width: fit-content;">
+                        <span class="me-1" style="width: 8px; height: 8px; background-color: #0d6efd; border-radius: 50%; display: inline-block;"></span>
+                        In Stock
+                      </span>
+                    </td>
+                    <td>140.00</td>
+                    <td>Apr 14, 2024</td>
+                    <td><button class="btn btn-link p-0"><i class="bi bi-three-dots-vertical"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                      </div>
+                    </td>
+                    <td class="d-flex align-items-center">
+                      <div class="bg-light text-primary rounded p-2 me-2">
+                        <i class="bi bi-box-seam"></i>
+                      </div>
+                      Seafood 64" Display
+                    </td>
+                    <td>#5S4E6FT</td>
+                    <td><a href="#" class="text-primary">Seafood Display</a></td>
+                    <td>$1560.00</td>
+                    <td>8% Off</td>
+                    <td>
+                      <span class="badge bg-success text-dark rounded-pill d-flex align-items-center" style="width: fit-content;">
+                        <span class="me-1" style="width: 8px; height: 8px; background-color: #0d6efd; border-radius: 50%; display: inline-block;"></span>
+                        In Stock
+                      </span>
+                    </td>
+                    <td>150.00</td>
+                    <td>Jun 26, 2024</td>
+                    <td><button class="btn btn-link p-0"><i class="bi bi-three-dots-vertical"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                      </div>
+                    </td>
+                    <td class="d-flex align-items-center">
+                      <div class="bg-light text-primary rounded p-2 me-2">
+                        <i class="bi bi-ui-checks"></i>
+                      </div>
+                      6 Foot Ice Bar
+                    </td>
+                    <td>#5RTE6GT</td>
+                    <td><a href="#" class="text-primary">Ice Bar</a></td>
+                    <td>$1050.00</td>
+                    <td>10% Off</td>
+                    <td>
+                      <span class="badge bg-danger text-dark rounded-pill d-flex align-items-center" style="width: fit-content;">
+                        <span class="me-1" style="width: 8px; height: 8px; background-color: #dc3545; border-radius: 50%; display: inline-block;"></span>
+                        Stock Out
+                      </span>
+                    </td>
+                    <td>200.00</td>
+                    <td>Aug 11, 2024</td>
+                    <td><button class="btn btn-link p-0"><i class="bi bi-three-dots-vertical"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                      </div>
+                    </td>
+                    <td class="d-flex align-items-center">
+                      <div class="bg-light text-primary rounded p-2 me-2">
+                        <i class="bi bi-cup-straw"></i>
+                      </div>
+                      Tube Luge
+                    </td>
+                    <td>#5S4E6FT</td>
+                    <td><a href="#" class="text-primary">Ice Luge</a></td>
+                    <td>$542.00</td>
+                    <td>20% Off</td>
+                    <td>
+                      <span class="badge bg-success text-dark rounded-pill d-flex align-items-center" style="width: fit-content;">
+                        <span class="me-1" style="width: 8px; height: 8px; background-color: #0d6efd; border-radius: 50%; display: inline-block;"></span>
+                        In Stock
+                      </span>
+                    </td>
+                    <td>120.00</td>
+                    <td>Aug 18, 2024</td>
+                    <td><button class="btn btn-link p-0"><i class="bi bi-three-dots-vertical"></i></button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-4">
+              <button class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left me-1"></i> Previous
+              </button>
+              <div>
+                <button class="btn btn-primary btn-sm">1</button>
+                <button class="btn btn-outline-secondary btn-sm">2</button>
+                <button class="btn btn-outline-secondary btn-sm">3</button>
+                <button class="btn btn-outline-secondary btn-sm">...</button>
+                <button class="btn btn-outline-secondary btn-sm">8</button>
+                <button class="btn btn-outline-secondary btn-sm">9</button>
+                <button class="btn btn-outline-secondary btn-sm">10</button>
+              </div>
+              <button class="btn btn-outline-secondary">
+                Next <i class="bi bi-arrow-right ms-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
