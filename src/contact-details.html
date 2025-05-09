@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Details | Ice Butcher</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .contact-details-container {
+      padding: 0;
+    }
+    .profile-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .profile-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 1rem;
+    }
+    .score-box {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 0.75rem;
+      min-width: 100px;
+      text-align: center;
+      margin-right: 1rem;
+    }
+    .score-box .score {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .rating {
+      color: #ffc107;
+    }
+    .nav-pills .nav-link {
+      color: #6c757d;
+      padding: 0.75rem 1rem;
+      font-weight: 500;
+    }
+    .nav-pills .nav-link.active {
+      background-color: transparent;
+      color: #0f2d50;
+      border-bottom: 2px solid #0f2d50;
+      border-radius: 0;
+    }
+    .contact-action-buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .contact-info-box {
+      margin-bottom: 1.5rem;
+    }
+    .contact-info-box h6 {
+      font-size: 0.875rem;
+      color: #6c757d;
+      margin-bottom: 0.25rem;
+    }
+    .contact-info-box p {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+    .info-container {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .social-profile {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+    .tab-content {
+      padding: 1.5rem 0;
+    }
+    .activity-item {
+      padding: 1.25rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .activity-item.deal {
+      background-color: rgba(25, 135, 84, 0.1);
+    }
+    .activity-item.meeting {
+      background-color: rgba(13, 110, 253, 0.1);
+    }
+    .activity-item.alert {
+      background-color: rgba(255, 122, 89, 0.1);
+    }
+    .activity-icon {
+      background-color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .activity-icon i {
+      font-size: 1.25rem;
+    }
+    .deal-icon {
+      color: #198754;
+    }
+    .meeting-icon {
+      color: #0d6efd;
+    }
+    .alert-icon {
+      color: #ff7a59;
+    }
+    .activity-details {
+      display: flex;
+      align-items: flex-start;
+    }
+    .activity-content {
+      flex: 1;
+    }
+    .activity-title {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .activity-meta {
+      color: #6c757d;
+      font-size: 0.875rem;
+    }
+    .step-container {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 1.5rem;
+    }
+    .step-number {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 24px;
+      height: 24px;
+      background-color: #f0f7ff;
+      color: #0f2d50;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .support-message {
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      background-color: #f8f9fa;
+    }
+    .write-message {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    .message-tools {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+    }
+    .system-info {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .system-info-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+    .system-info-label {
+      color: #6c757d;
+      font-size: 0.875rem;
+    }
+    .system-info-value {
+      font-weight: 500;
+    }
+    .clickable-badge {
+      cursor: pointer;
+    }
+    .action-button {
+      padding: 0.5rem 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 0.875rem;
+      transition: all 0.2s;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar" id="sidebar-container"></div>
+  <div class="sidebar-mobile-overlay" id="sidebarMobileOverlay"></div>
+  <div class="main-content">
+    <div id="header-container"></div>
+
+    <div class="container-fluid contact-details-container">
+      <div class="d-flex align-items-center mb-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="#" class="text-decoration-none"><i class="bi bi-star-fill text-warning me-1"></i>Leads Management</a></li>
+            <li class="breadcrumb-item"><a href="seals-contacts.html" class="text-decoration-none">Seals Contacts</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Contact Details</li>
+          </ol>
+        </nav>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3 col-md-4">
+          <div class="card border-0 shadow-sm mb-4">
+            <div class="card-body">
+              <div class="profile-header">
+                <img src="assets/images/avatar1.png" alt="Spector Calista" class="profile-avatar">
+                <div>
+                  <h5 class="mb-0">Spector Calista</h5>
+                  <p class="text-muted mb-0 small">CEO at travelonnext.com</p>
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center mb-3">
+                <div class="score-box">
+                  <div class="score">100</div>
+                  <div class="small">Score</div>
+                </div>
+                <div>
+                  <div class="rating mb-1">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  </div>
+                  <div class="small text-muted">Customer Fit</div>
+                </div>
+                <button class="btn btn-sm btn-link text-danger ms-auto">
+                  <i class="bi bi-pencil-fill"></i>
+                </button>
+              </div>
+
+              <hr>
+
+              <h6 class="text-muted mb-3">Contact information</h6>
+
+              <ul class="nav nav-pills flex-column mb-3" id="contactTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="overview-tab" data-bs-toggle="pill" data-bs-target="#overview" type="button" role="tab" aria-controls="overview" aria-selected="true">
+                    <i class="bi bi-grid me-2"></i>Overview
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="details-tab" data-bs-toggle="pill" data-bs-target="#details" type="button" role="tab" aria-controls="details" aria-selected="false">
+                    <i class="bi bi-person me-2"></i>Contact Details
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="conversations-tab" data-bs-toggle="pill" data-bs-target="#conversations" type="button" role="tab" aria-controls="conversations" aria-selected="false">
+                    <i class="bi bi-chat-left-text me-2"></i>Conversations
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="activities-tab" data-bs-toggle="pill" data-bs-target="#activities" type="button" role="tab" aria-controls="activities" aria-selected="false">
+                    <i class="bi bi-activity me-2"></i>Activities
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="deals-tab" data-bs-toggle="pill" data-bs-target="#deals" type="button" role="tab" aria-controls="deals" aria-selected="false">
+                    <i class="bi bi-currency-dollar me-2"></i>Deals
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-9 col-md-8">
+          <div class="tab-content" id="contactTabsContent">
+            <!-- Overview Tab -->
+            <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+              <div class="d-flex justify-content-end mb-4">
+                <div class="dropdown me-2">
+                  <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    <i class="bi bi-envelope me-1"></i> Email Support
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-envelope me-2"></i>Send Email</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-envelope-paper me-2"></i>Create Ticket</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-envelope-check me-2"></i>Resolve Support</a></li>
+                  </ul>
+                </div>
+                <div class="dropdown me-2">
+                  <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    <i class="bi bi-telephone me-1"></i> Call
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-telephone me-2"></i>Work Phone</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-phone me-2"></i>Mobile Phone</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-telephone-plus me-2"></i>Add New Number</a></li>
+                  </ul>
+                </div>
+                <div class="dropdown me-2">
+                  <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    <i class="bi bi-list-check me-1"></i> To-Dos
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-plus-circle me-2"></i>Create To-Do</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-list-check me-2"></i>View To-Dos</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-check-all me-2"></i>Mark Complete</a></li>
+                  </ul>
+                </div>
+                <div class="dropdown me-2">
+                  <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    <i class="bi bi-card-checklist me-1"></i> Create Tickets
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-plus-circle me-2"></i>New Support Ticket</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-bug me-2"></i>Bug Report</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-lightbulb me-2"></i>Feature Request</a></li>
+                  </ul>
+                </div>
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    <i class="bi bi-currency-dollar me-1"></i> Sales Activities
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-plus-circle me-2"></i>Create Opportunity</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-cash-coin me-2"></i>Track Sales</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-cart-plus me-2"></i>Add Deal</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- First Row - Contact Info -->
+              <div class="row mb-4">
+                <div class="col-md-6">
+                  <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                      <h6 class="card-title mb-3">Contact Information</h6>
+                      <div class="row g-3">
+                        <div class="col-md-6">
+                          <div class="contact-info-box">
+                            <h6>First Name</h6>
+                            <p>Spector</p>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="contact-info-box">
+                            <h6>Last Name</h6>
+                            <p>Calista</p>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="contact-info-box">
+                            <h6>Email Address</h6>
+                            <p>spector@gmail.com</p>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="contact-info-box">
+                            <h6>Work Phone</h6>
+                            <p>+1(345)324-5253</p>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="contact-info-box">
+                            <h6>Location</h6>
+                            <p>Glendale, Arizona, USA</p>
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <div class="contact-info-box">
+                            <h6>Created At</h6>
+                            <p>5 Month Ago</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="card-title mb-0">Recent Activities</h6>
+                        <a href="#" class="small text-primary text-decoration-none">Show All</a>
+                      </div>
+
+                      <div class="activity-item deal">
+                        <div class="activity-details">
+                          <div class="activity-icon">
+                            <i class="bi bi-cart-check deal-icon"></i>
+                          </div>
+                          <div class="activity-content">
+                            <div class="activity-title">8 Foot Ice Bar</div>
+                            <div class="activity-meta">$515.99 • In Progress</div>
+                          </div>
+                          <div class="activity-date small text-muted">30 Apr, 20</div>
+                        </div>
+                      </div>
+
+                      <div class="activity-item meeting">
+                        <div class="activity-details">
+                          <div class="activity-icon">
+                            <i class="bi bi-calendar-event meeting-icon"></i>
+                          </div>
+                          <div class="activity-content">
+                            <div class="activity-title">Support Wanted</div>
+                            <div class="activity-meta">Thu 20 Mar, 2025 from 1:30 PM</div>
+                          </div>
+                          <div class="activity-date small text-muted">20 Mar, 25</div>
+                        </div>
+                      </div>
+
+                      <div class="activity-item alert">
+                        <div class="activity-details">
+                          <div class="activity-icon">
+                            <i class="bi bi-bell alert-icon"></i>
+                          </div>
+                          <div class="activity-content">
+                            <div class="activity-title">Spector Calista hasn't been contacted yet.</div>
+                            <div>
+                              <button class="btn btn-sm btn-outline-secondary me-2">
+                                <i class="bi bi-envelope me-1"></i>Send Email
+                              </button>
+                              <button class="btn btn-sm btn-outline-secondary">
+                                <i class="bi bi-telephone me-1"></i>Make Call
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Second Row - Quick Start and More Details -->
+              <div class="row mb-4">
+                <div class="col-md-6">
+                  <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                      <h6 class="card-title mb-3">Quick Start</h6>
+
+                      <div class="step-container">
+                        <div class="step-number">01</div>
+                        <div class="step-content">
+                          <h6 class="mb-1">Follow these simple steps to set up Freshdesk and start delivering delightful customer support.</h6>
+                          <div class="d-flex align-items-center small text-muted">
+                            <i class="bi bi-person-fill me-1"></i> Spector Calista • 5 Days Ago
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="step-container">
+                        <div class="step-number">02</div>
+                        <div class="step-content">
+                          <h6 class="mb-1">Scheduled a Meeting</h6>
+                          <p class="small mb-1">Follow these simple steps to set up Freshdesk and start delivering delightful customer support.</p>
+                          <div class="d-flex align-items-center small text-muted">
+                            <i class="bi bi-person-fill me-1"></i> Spector Calista • 3 Days Ago
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                      <h6 class="card-title mb-3">More Details</h6>
+
+                      <div class="info-container mb-3">
+                        <h6 class="text-muted mb-2">Info</h6>
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="contact-info-box">
+                              <h6>Tags</h6>
+                              <p>Customer</p>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="contact-info-box">
+                              <h6>Source</h6>
+                              <p>Email</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="info-container mb-3">
+                        <h6 class="text-muted mb-2">Location</h6>
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="contact-info-box">
+                              <h6>Address</h6>
+                              <p>876 Harmony Avenue</p>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="contact-info-box">
+                              <h6>City</h6>
+                              <p>Glendale</p>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="contact-info-box">
+                              <h6>State</h6>
+                              <p>Arizona</p>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="contact-info-box">
+                              <h6>Country</h6>
+                              <p>USA</p>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="contact-info-box">
+                              <h6>Zip Code</h6>
+                              <p>342587</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="info-container mb-3">
+                        <h6 class="text-muted mb-2">Lifecycle Stage</h6>
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="contact-info-box">
+                              <h6>Lifecycle Stage</h6>
+                              <p>Sales Qualified Lead</p>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="contact-info-box">
+                              <h6>Status</h6>
+                              <p>Qualified</p>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="contact-info-box">
+                              <h6>Lost Reason</h6>
+                              <p class="text-muted">Click To Add</p>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="contact-info-box">
+                              <h6>Customer Fit</h6>
+                              <p>Good</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="info-container">
+                        <h6 class="text-muted mb-2">Social profiles</h6>
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="contact-info-box">
+                              <h6>LinkedIn</h6>
+                              <p class="text-muted">Click To Add</p>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="contact-info-box">
+                              <h6>X</h6>
+                              <p class="text-muted">Click To Add</p>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="contact-info-box">
+                              <h6>Facebook</h6>
+                              <p class="text-muted">Click To Add</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Third Row - System Information -->
+              <div class="row">
+                <div class="col-12">
+                  <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                      <h6 class="card-title mb-3">System information</h6>
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="system-info">
+                            <div class="system-info-row">
+                              <div class="system-info-label">Created At</div>
+                              <div class="system-info-value">2 Months Ago</div>
+                            </div>
+                            <div class="system-info-row">
+                              <div class="system-info-label">Updated By</div>
+                              <div class="system-info-value">Safin Ahmed</div>
+                            </div>
+                            <div class="system-info-row">
+                              <div class="system-info-label">Last Activity Date</div>
+                              <div class="system-info-value">18 May, 2024</div>
+                            </div>
+                            <div class="system-info-row">
+                              <div class="system-info-label">Last Order</div>
+                              <div class="system-info-value">--</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="system-info">
+                            <div class="system-info-row">
+                              <div class="system-info-label">Support</div>
+                              <div class="system-info-value">--</div>
+                            </div>
+                            <div class="system-info-row">
+                              <div class="system-info-label">Campaign</div>
+                              <div class="system-info-value">Email Campaign</div>
+                            </div>
+                            <div class="system-info-row">
+                              <div class="system-info-label">Order Amount</div>
+                              <div class="system-info-value">--</div>
+                            </div>
+                            <div class="system-info-row">
+                              <div class="system-info-label">Contact Type</div>
+                              <div class="system-info-value">--</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Conversations Tab -->
+            <div class="tab-pane fade" id="conversations" role="tabpanel" aria-labelledby="conversations-tab">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="mb-0">Email Support</h5>
+                <span class="badge bg-primary rounded-pill">Awaiting Response (130)</span>
+              </div>
+
+              <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body">
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search Conversation...">
+                    <button class="btn btn-outline-secondary" type="button">
+                      <i class="bi bi-search"></i>
+                    </button>
+                  </div>
+
+                  <ul class="nav nav-pills mb-3" id="supportTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="support-overview-tab" data-bs-toggle="pill" data-bs-target="#support-overview" type="button" role="tab">
+                        Support Overview
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="awaiting-response-tab" data-bs-toggle="pill" data-bs-target="#awaiting-response" type="button" role="tab">
+                        <i class="bi bi-clock-history me-1"></i> Awaiting Response
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="sent-tab" data-bs-toggle="pill" data-bs-target="#sent" type="button" role="tab">
+                        <i class="bi bi-check-all me-1"></i> Sent
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="scheduled-tab" data-bs-toggle="pill" data-bs-target="#scheduled" type="button" role="tab">
+                        <i class="bi bi-calendar-check me-1"></i> Scheduled
+                      </button>
+                    </li>
+                  </ul>
+
+                  <hr>
+
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h6 class="mb-0">Type of Support Tickets</h6>
+                    <a href="#" class="btn btn-sm btn-light text-primary">
+                      <i class="bi bi-envelope-paper me-1"></i> Email Templates <span class="badge bg-success ms-1">3</span>
+                    </a>
+                  </div>
+
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th width="40">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox">
+                            </div>
+                          </th>
+                          <th>Email Sent To <i class="bi bi-arrow-down-up text-muted ms-1 small"></i></th>
+                          <th>Email Body <i class="bi bi-arrow-down-up text-muted ms-1 small"></i></th>
+                          <th>Email Label <i class="bi bi-arrow-down-up text-muted ms-1 small"></i></th>
+                          <th>Last Update <i class="bi bi-arrow-down-up text-muted ms-1 small"></i></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox">
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <img src="assets/images/avatar1.png" alt="Eleanor Pena" class="rounded-circle me-2" width="36" height="36">
+                              <div>
+                                <div>Eleanor Pena</div>
+                                <div class="small text-muted">olivia@untitleui.com</div>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div>Want to see how CRM Gold can help your business?</div>
+                            <div class="small text-muted">Hello Jane, That's good to know...</div>
+                          </td>
+                          <td>
+                            <span class="badge bg-light text-dark clickable-badge">Label</span>
+                            <span class="badge bg-light text-dark clickable-badge">Label</span>
+                          </td>
+                          <td>Jan 21, 2024</td>
+                          <td>
+                            <button class="btn btn-sm btn-link text-dark">
+                              <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox">
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <img src="assets/images/avatar2.png" alt="Heather White" class="rounded-circle me-2" width="36" height="36">
+                              <div>
+                                <div>Heather White</div>
+                                <div class="small text-muted">olivia@untitleui.com</div>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div>Spreadsheet shared with you: "CRM Analysis 2024"</div>
+                            <div class="small text-muted">Hi Spector, Here is the contract...</div>
+                          </td>
+                          <td>
+                            <div class="badge bg-success text-white p-2">$1050.00</div>
+                          </td>
+                          <td>Jan 18, 2024</td>
+                          <td>
+                            <button class="btn btn-sm btn-link text-dark">
+                              <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox">
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <img src="assets/images/avatar3.png" alt="Julia Copper" class="rounded-circle me-2" width="36" height="36">
+                              <div>
+                                <div>Julia Copper</div>
+                                <div class="small text-muted">olivia@untitleui.com</div>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div>Want to see how CRM Gold can help your business?</div>
+                            <div class="small text-muted">Hello Jane, That's good to know...</div>
+                          </td>
+                          <td>
+                            <span class="badge bg-success text-white p-2">$1560.00</span>
+                            <span class="badge bg-light text-dark clickable-badge">Label</span>
+                          </td>
+                          <td>Feb 16, 2024</td>
+                          <td>
+                            <button class="btn btn-sm btn-link text-dark">
+                              <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="d-flex justify-content-between align-items-center mt-3">
+                    <button class="btn btn-sm btn-outline-secondary">
+                      <i class="bi bi-chevron-left me-1"></i> Previous
+                    </button>
+                    <div class="d-flex gap-1">
+                      <button class="btn btn-sm btn-outline-secondary">1</button>
+                      <button class="btn btn-sm btn-outline-secondary">2</button>
+                      <button class="btn btn-sm btn-outline-secondary">3</button>
+                      <span class="btn btn-sm disabled">...</span>
+                      <button class="btn btn-sm btn-outline-secondary">8</button>
+                      <button class="btn btn-sm btn-outline-secondary">9</button>
+                      <button class="btn btn-sm btn-outline-secondary">10</button>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary">
+                      Next <i class="bi bi-chevron-right ms-1"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h6 class="mb-0">Compose New Email</h6>
+                    <button class="btn btn-sm btn-light">
+                      <i class="bi bi-arrow-up-right-square me-1"></i> Expand
+                    </button>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">To:</label>
+                    <input type="text" class="form-control" placeholder="Enter or choose a recipient">
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">From:</label>
+                    <div class="input-group">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        Search
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">support@icebutcher.com</a></li>
+                        <li><a class="dropdown-item" href="#">sales@icebutcher.com</a></li>
+                        <li><a class="dropdown-item" href="#">info@icebutcher.com</a></li>
+                      </ul>
+                      <input type="text" class="form-control" value="support@icebutcher.com" readonly>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label">Subject:</label>
+                    <input type="text" class="form-control" value="Order status and tracking">
+                  </div>
+
+                  <div class="mb-3">
+                    <textarea class="form-control" rows="5" placeholder="Write a message. Press '/' or highlight text to access AI commands."></textarea>
+                  </div>
+
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <button class="btn btn-sm btn-light me-1" title="Add attachment">
+                        <i class="bi bi-paperclip"></i>
+                      </button>
+                      <button class="btn btn-sm btn-light me-1" title="Add emoji">
+                        <i class="bi bi-emoji-smile"></i>
+                      </button>
+                      <button class="btn btn-sm btn-light me-1" title="Add image">
+                        <i class="bi bi-image"></i>
+                      </button>
+                      <button class="btn btn-sm btn-light me-1" title="Add link">
+                        <i class="bi bi-link-45deg"></i>
+                      </button>
+                      <button class="btn btn-sm btn-light me-1" title="Add template">
+                        <i class="bi bi-box"></i>
+                      </button>
+                      <div class="dropdown d-inline-block">
+                        <button class="btn btn-sm btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                          <i class="bi bi-three-dots"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Format text</a></li>
+                          <li><a class="dropdown-item" href="#">Save as template</a></li>
+                          <li><a class="dropdown-item" href="#">Schedule send</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div>
+                      <button class="btn btn-sm btn-primary">
+                        Send <i class="bi bi-chevron-down ms-1"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Other tabs content would go here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

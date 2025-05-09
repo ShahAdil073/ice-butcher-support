@@ -85,10 +85,27 @@
     <a class="nav-link sidebar-menu-item ms-4" href="design-portal.html"
       ><i class="bi bi-pencil-square nav-icon"></i><span class="nav-text">Design Portal</span></a>
   </div>
-  <a class="nav-link sidebar-menu-item" href="#"
-    ><i class="bi bi-people nav-icon"></i
-    ><span class="nav-text">Leads Management</span></a
-  >
+  <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#collapseLeads" role="button" aria-expanded="true" aria-controls="collapseLeads">
+    <span>
+      <i class="bi bi-people nav-icon"></i><span class="nav-text">Leads Management</span>
+    </span>
+    <i class="bi bi-chevron-down nav-text"></i>
+  </a>
+  <div class="collapse show" id="collapseLeads">
+    <a class="nav-link sidebar-menu-item ms-4" href="leads-management.html"
+      ><i class="bi bi-people-fill nav-icon"></i
+      ><span class="nav-text">All Contacts</span></a
+    >
+    <a class="nav-link sidebar-menu-item ms-4" href="vip-contacts.html"
+      ><i class="bi bi-star nav-icon"></i
+      ><span class="nav-text">VIP Contacts</span></a
+    >
+    <a class="nav-link sidebar-menu-item ms-4" href="seals-contacts.html"
+      ><i class="bi bi-person-lines-fill nav-icon"></i
+      ><span class="nav-text">Seals Contacts</span></a
+    >
+  </div>
+
   <a
     class="nav-link d-flex justify-content-between align-items-center"
     data-bs-toggle="collapse"
