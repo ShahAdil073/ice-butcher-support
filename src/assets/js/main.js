@@ -288,7 +288,7 @@ function initializeOrdersPage() {
   });
 
   // Task category filtering
-  const taskLinks = document.querySelectorAll('.task-link');
+  const taskLinks = document.querySelectorAll('.orders-tracking .task-link');
 
   taskLinks.forEach(link => {
     link.addEventListener('click', function(e) {

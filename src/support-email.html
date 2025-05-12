@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Support - Ice Butcher</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      .badge.bg-light {
+        background-color: #f0f1f3 !important;
+        color: #495057 !important;
+      }
+      .fw-medium {
+        font-weight: 500 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar will be loaded here -->
+    <div class="sidebar d-flex flex-column" id="sidebar-container"></div>
+    <div class="sidebar-mobile-overlay" id="sidebarMobileOverlay"></div>
+    <div class="main-content" id="mainContent">
+      <!-- Navbar -->
+      <div id="header-container"></div>
+
+      <!-- Main Content -->
+      <div class="container-fluid pt-3">
+        <!-- Email Support Section -->
+        <div class="row mb-4">
+          <div class="col-md-4 col-lg-3 mb-4 mb-md-0">
+            <div class="card border-0 shadow-sm">
+              <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">Support Overview</h5>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <div class="input-group">
+                    <span class="input-group-text bg-white border-end-0">
+                      <i class="bi bi-search"></i>
+                    </span>
+                    <input
+                      type="text"
+                      id="emailTabSearch"
+                      class="form-control border-start-0"
+                      placeholder="Search Conversation..."
+                    />
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <div class="task-group mb-2">
+                    <a href="#" class="task-link active d-flex justify-content-between align-items-center">
+                      <div>
+                        <i class="bi bi-hourglass-split me-2"></i>
+                        Awaiting Response
+                      </div>
+                    </a>
+                  </div>
+
+                  <div class="task-group mb-2">
+                    <a href="#" class="task-link d-flex justify-content-between align-items-center">
+                      <div>
+                        <i class="bi bi-people me-2"></i>
+                        Team Inbox
+                      </div>
+                    </a>
+                  </div>
+
+                  <div class="task-group mb-2">
+                    <a href="#" class="task-link d-flex justify-content-between align-items-center">
+                      <div>
+                        <i class="bi bi-check2-all me-2"></i>
+                        Sent
+                      </div>
+                    </a>
+                  </div>
+
+                  <div class="task-group mb-4">
+                    <a href="#" class="task-link d-flex justify-content-between align-items-center">
+                      <div>
+                        <i class="bi bi-calendar-check me-2"></i>
+                        Scheduled
+                      </div>
+                    </a>
+                  </div>
+
+                  <h6 class="text-muted mb-3">Type of Support Tickets</h6>
+
+                  <div class="task-group mb-2">
+                    <a href="#" class="task-link d-flex justify-content-between align-items-center">
+                      <div>
+                        <i class="bi bi-envelope me-2"></i>
+                        Email Templates
+                      </div>
+                      <span class="badge bg-secondary rounded-pill">3</span>
+                    </a>
+                  </div>
+
+                  <div class="task-group mb-2">
+                    <a href="#" class="task-link d-flex justify-content-between align-items-center">
+                      <div>
+                        <i class="bi bi-arrow-repeat me-2"></i>
+                        Email Tracking
+                      </div>
+                    </a>
+                  </div>
+
+                  <div class="task-group mb-2">
+                    <a href="#" class="task-link d-flex justify-content-between align-items-center">
+                      <div>
+                        <i class="bi bi-file-earmark-text me-2"></i>
+                        Drafts
+                      </div>
+                    </a>
+                  </div>
+
+                  <div class="task-group mb-2">
+                    <a href="#" class="task-link d-flex justify-content-between align-items-center">
+                      <div>
+                        <i class="bi bi-trash me-2"></i>
+                        Trash
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Email Support Table Section -->
+          <div class="col-md-8 col-lg-9">
+            <div class="card border-0 shadow-sm">
+              <div class="card-header bg-white">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h5 class="card-title mb-0">Email Support</h5>
+                  <div class="d-flex align-items-center">
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Search here..."
+                      />
+                      <button class="btn btn-primary" type="button">
+                        <i class="bi bi-search"></i>
+                      </button>
+                    </div>
+                    <button class="btn btn-outline-primary ms-2 d-flex align-items-center">
+                      <i class="bi bi-plus-circle me-1"></i>
+                      <span>Send Mail</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body p-0">
+                <div class="table-options p-3 d-flex flex-wrap justify-content-between align-items-center border-bottom">
+                  <div class="d-flex flex-wrap">
+                    <div class="dropdown me-2 mb-2 mb-md-0">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        Email Tracking <i class="bi bi-chevron-down"></i>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">All Emails</a></li>
+                        <li><a class="dropdown-item" href="#">Sent Only</a></li>
+                        <li><a class="dropdown-item" href="#">Scheduled</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown me-2 mb-2 mb-md-0">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        Priority <i class="bi bi-chevron-down"></i>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">High</a></li>
+                        <li><a class="dropdown-item" href="#">Medium</a></li>
+                        <li><a class="dropdown-item" href="#">Low</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown me-2 mb-2 mb-md-0">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        Ticket Status <i class="bi bi-chevron-down"></i>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Open</a></li>
+                        <li><a class="dropdown-item" href="#">In Progress</a></li>
+                        <li><a class="dropdown-item" href="#">Resolved</a></li>
+                        <li><a class="dropdown-item" href="#">Closed</a></li>
+                      </ul>
+                    </div>
+                    <div class="dropdown mb-2 mb-md-0">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        Assigned Teams <i class="bi bi-chevron-down"></i>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">All Teams</a></li>
+                        <li><a class="dropdown-item" href="#">Support</a></li>
+                        <li><a class="dropdown-item" href="#">Sales</a></li>
+                        <li><a class="dropdown-item" href="#">Technical</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <button class="btn btn-sm btn-outline-secondary">
+                      <i class="bi bi-sliders"></i> Advanced Filters
+                    </button>
+                  </div>
+                </div>
+
+                <div class="p-3">
+                  <h5 class="mb-3">Awaiting Response (130)</h5>
+                </div>
+
+                <!-- Email Table -->
+                <div class="table-responsive">
+                  <table class="table table-hover mb-0">
+                    <thead>
+                      <tr>
+                        <th scope="col" class="ps-3">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="selectAll">
+                          </div>
+                        </th>
+                        <th scope="col">Email Sent To <i class="bi bi-arrow-down-short"></i></th>
+                        <th scope="col">Email Body <i class="bi bi-arrow-down-short"></i></th>
+                        <th scope="col">Email Label <i class="bi bi-arrow-down-short"></i></th>
+                        <th scope="col">Last Update <i class="bi bi-arrow-down-short"></i></th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="ps-3">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox">
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="assets/images/avatar1.png" class="rounded-circle me-2" width="36" height="36" alt="Eleanor Pena">
+                            <div>
+                              <div class="fw-medium">Eleanor Pena</div>
+                              <div class="text-muted small">olivia@untitledui.com</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div>
+                            <div class="fw-medium">Want to see how CRM Gold can help you meet your sales goals?</div>
+                            <div class="text-muted small">Hello Jane, That's good to know. Would the Hilton hotel work for you? We love...</div>
+                          </div>
+                        </td>
+                        <td>
+                          <span class="badge rounded-pill bg-light text-dark me-1">Label</span>
+                          <span class="badge rounded-pill bg-light text-dark">Label</span>
+                        </td>
+                        <td>Jan 21, 2024</td>
+                        <td>
+                          <button class="btn btn-sm btn-link text-muted">
+                            <i class="bi bi-three-dots-vertical"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ps-3">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox">
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="assets/images/avatar2.png" class="rounded-circle me-2" width="36" height="36" alt="Heather White">
+                            <div>
+                              <div class="fw-medium">Heather White</div>
+                              <div class="text-muted small">olivia@untitledui.com</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div>
+                            <div class="fw-medium">Spreadsheet shared with you: "24th Batch All in One Sheet - Class Videos &...</div>
+                            <div class="text-muted small">Hi Spector, Here is the contract with the details. We look forward to deliverin...</div>
+                          </div>
+                        </td>
+                        <td>
+                          <span class="badge bg-primary text-white">$1050.00</span>
+                        </td>
+                        <td>Jan 18, 2024</td>
+                        <td>
+                          <button class="btn btn-sm btn-link text-muted">
+                            <i class="bi bi-three-dots-vertical"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ps-3">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox">
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="assets/images/avatar3.png" class="rounded-circle me-2" width="36" height="36" alt="Julia Copper">
+                            <div>
+                              <div class="fw-medium">Julia Copper</div>
+                              <div class="text-muted small">olivia@untitledui.com</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div>
+                            <div class="fw-medium">Want to see how CRM Gold can help you meet your sales goals?</div>
+                            <div class="text-muted small">Hello Jane, That's good to know. Would the Hilton hotel work for you? We love...</div>
+                          </div>
+                        </td>
+                        <td>
+                          <span class="badge bg-success text-white">$1560.00</span>
+                          <span class="badge rounded-pill bg-light text-dark">Label</span>
+                        </td>
+                        <td>Feb 16, 2024</td>
+                        <td>
+                          <button class="btn btn-sm btn-link text-muted">
+                            <i class="bi bi-three-dots-vertical"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ps-3">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox">
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="assets/images/avatar4.png" class="rounded-circle me-2" width="36" height="36" alt="Emma Thompson">
+                            <div>
+                              <div class="fw-medium">Emma Thompson</div>
+                              <div class="text-muted small">olivia@untitledui.com</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div>
+                            <div class="fw-medium">Spreadsheet shared with you: "24th Batch All in One Sheet - Class Videos &...</div>
+                            <div class="text-muted small">Hi Spector, Here is the contract with the details. We look forward to deliverin...</div>
+                          </div>
+                        </td>
+                        <td>
+                          <span class="badge rounded-pill bg-light text-dark">Label</span>
+                          <span class="badge rounded-pill bg-light text-dark">Label</span>
+                        </td>
+                        <td>Feb 12, 2024</td>
+                        <td>
+                          <button class="btn btn-sm btn-link text-muted">
+                            <i class="bi bi-three-dots-vertical"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ps-3">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox">
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="assets/images/avatar5.png" class="rounded-circle me-2" width="36" height="36" alt="Kevin Jordan">
+                            <div>
+                              <div class="fw-medium">Kevin Jordan</div>
+                              <div class="text-muted small">olivia@untitledui.com</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div>
+                            <div class="fw-medium">Want to see how CRM Gold can help you meet your sales goals?</div>
+                            <div class="text-muted small">Hello Jane, That's good to know. Would the Hilton hotel work for you? We love...</div>
+                          </div>
+                        </td>
+                        <td>
+                          <span class="badge bg-primary text-white">$1050.00</span>
+                          <span class="badge rounded-pill bg-light text-dark">Label</span>
+                        </td>
+                        <td>Mar 25, 2024</td>
+                        <td>
+                          <button class="btn btn-sm btn-link text-muted">
+                            <i class="bi bi-three-dots-vertical"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ps-3">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox">
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="assets/images/avatar1.png" class="rounded-circle me-2" width="36" height="36" alt="Spector Calista">
+                            <div>
+                              <div class="fw-medium">Spector Calista</div>
+                              <div class="text-muted small">olivia@untitledui.com</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div>
+                            <div class="fw-medium">Spreadsheet shared with you: "24th Batch All in One Sheet - Class Videos &...</div>
+                            <div class="text-muted small">Hi Spector, Here is the contract with the details. We look forward to deliverin...</div>
+                          </div>
+                        </td>
+                        <td>
+                          <span class="badge rounded-pill bg-light text-dark">Label</span>
+                          <span class="badge rounded-pill bg-light text-dark">Label</span>
+                        </td>
+                        <td>Mar 11, 2024</td>
+                        <td>
+                          <button class="btn btn-sm btn-link text-muted">
+                            <i class="bi bi-three-dots-vertical"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ps-3">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox">
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="assets/images/avatar2.png" class="rounded-circle me-2" width="36" height="36" alt="Martha Jackson">
+                            <div>
+                              <div class="fw-medium">Martha Jackson</div>
+                              <div class="text-muted small">olivia@untitledui.com</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div>
+                            <div class="fw-medium">Want to see how CRM Gold can help you meet your sales goals?</div>
+                            <div class="text-muted small">Hello Jane, That's good to know. Would the Hilton hotel work for you? We love...</div>
+                          </div>
+                        </td>
+                        <td>
+                          <span class="badge bg-info text-white">$515.00</span>
+                          <span class="badge rounded-pill bg-light text-dark">Label</span>
+                        </td>
+                        <td>Apr 14, 2024</td>
+                        <td>
+                          <button class="btn btn-sm btn-link text-muted">
+                            <i class="bi bi-three-dots-vertical"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ps-3">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox">
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="assets/images/avatar3.png" class="rounded-circle me-2" width="36" height="36" alt="Nick Raymond">
+                            <div>
+                              <div class="fw-medium">Nick Raymond</div>
+                              <div class="text-muted small">olivia@untitledui.com</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div>
+                            <div class="fw-medium">Spreadsheet shared with you: "24th Batch All in One Sheet - Class Videos &...</div>
+                            <div class="text-muted small">Hi Spector, Here is the contract with the details. We look forward to deliverin...</div>
+                          </div>
+                        </td>
+                        <td>
+                          <span class="badge rounded-pill bg-light text-dark">Label</span>
+                          <span class="badge rounded-pill bg-light text-dark">Label</span>
+                        </td>
+                        <td>Jun 26, 2024</td>
+                        <td>
+                          <button class="btn btn-sm btn-link text-muted">
+                            <i class="bi bi-three-dots-vertical"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ps-3">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox">
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="assets/images/avatar4.png" class="rounded-circle me-2" width="36" height="36" alt="Christine Wolfi">
+                            <div>
+                              <div class="fw-medium">Christine Wolfi</div>
+                              <div class="text-muted small">olivia@untitledui.com</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div>
+                            <div class="fw-medium">Want to see how CRM Gold can help you meet your sales goals?</div>
+                            <div class="text-muted small">Hello Jane, That's good to know. Would the Hilton hotel work for you? We love...</div>
+                          </div>
+                        </td>
+                        <td>
+                          <span class="badge bg-primary text-white">$1050.00</span>
+                          <span class="badge rounded-pill bg-light text-dark">Label</span>
+                        </td>
+                        <td>Aug 11, 2024</td>
+                        <td>
+                          <button class="btn btn-sm btn-link text-muted">
+                            <i class="bi bi-three-dots-vertical"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="ps-3">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox">
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="assets/images/avatar5.png" class="rounded-circle me-2" width="36" height="36" alt="Aurelien Bard">
+                            <div>
+                              <div class="fw-medium">Aurelien Bard</div>
+                              <div class="text-muted small">olivia@untitledui.com</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div>
+                            <div class="fw-medium">Spreadsheet shared with you: "24th Batch All in One Sheet - Class Videos &...</div>
+                            <div class="text-muted small">Hi Spector, Here is the contract with the details. We look forward to deliverin...</div>
+                          </div>
+                        </td>
+                        <td>
+                          <span class="badge rounded-pill bg-light text-dark">Label</span>
+                        </td>
+                        <td>Aug 18, 2024</td>
+                        <td>
+                          <button class="btn btn-sm btn-link text-muted">
+                            <i class="bi bi-three-dots-vertical"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="d-flex justify-content-between align-items-center p-3 border-top">
+                  <button class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left me-1"></i> Previous
+                  </button>
+                  <div class="d-flex">
+                    <button class="btn btn-sm mx-1 btn-primary">1</button>
+                    <button class="btn btn-sm mx-1 btn-outline-secondary">2</button>
+                    <button class="btn btn-sm mx-1 btn-outline-secondary">3</button>
+                    <span class="btn btn-sm mx-1 disabled">...</span>
+                    <button class="btn btn-sm mx-1 btn-outline-secondary">8</button>
+                    <button class="btn btn-sm mx-1 btn-outline-secondary">9</button>
+                    <button class="btn btn-sm mx-1 btn-outline-secondary">10</button>
+                  </div>
+                  <button class="btn btn-outline-secondary">
+                    Next <i class="bi bi-arrow-right ms-1"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      // Email Support Page JavaScript
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Handle sidebar navigation
+  const sidebarLinks = document.querySelectorAll('.task-link');
+  sidebarLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      // Remove active class from all links
+      sidebarLinks.forEach(l => l.classList.remove('active'));
+      // Add active class to the clicked link
+      this.classList.add('active');
+
+      // Update the header based on selected category
+      const headerText = this.querySelector('div').innerText.trim();
+      const mainHeader = document.querySelector('.p-3 h5.mb-3');
+      if (mainHeader) {
+        // Keep the count but change the category name
+        const count = mainHeader.innerText.match(/\((\d+)\)/);
+        if (count) {
+          mainHeader.innerText = `${headerText} ${count[0]}`;
+        } else {
+          mainHeader.innerText = headerText;
+        }
+      }
+    });
+  });
+
+  // Row actions (three dots button)
+  const actionButtons = document.querySelectorAll('.btn-link.text-muted');
+  actionButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // In a real implementation, this would show a dropdown menu with actions
+      alert('Actions menu would appear here');
+    });
+  });
+});
+
+// Task search functionality
+  const emailTabSearchInput = document.getElementById('emailTabSearch');
+
+  function performEmailTabSearch() {
+    if (!emailTabSearchInput) return;
+
+    const searchTerm = emailTabSearchInput.value.toLowerCase().trim();
+    let foundAny = false;
+
+    // Filter task links based on search term
+    const taskLinks = document.querySelectorAll('.task-link');
+    taskLinks.forEach(link => {
+      const taskText = link.querySelector('div').textContent.toLowerCase();
+      const badge = link.querySelector('.badge');
+      const badgeValue = badge ? badge.textContent.trim() : '';
+
+      if (searchTerm === '' ||
+          taskText.includes(searchTerm) ||
+          badgeValue.includes(searchTerm)) {
+        link.parentElement.style.display = ''; // Show the parent task-group
+        foundAny = true;
+      } else {
+        link.parentElement.style.display = 'none'; // Hide the parent task-group
+      }
+    });
+
+    // If no results found and search term exists, show a message
+    const existingNoResults = document.getElementById('no-search-results');
+    if (!foundAny && searchTerm !== '') {
+      if (!existingNoResults) {
+        const noResults = document.createElement('div');
+        noResults.id = 'no-search-results';
+        noResults.className = 'alert alert-info mt-3';
+        noResults.textContent = `No tasks matching "${searchTerm}" found`;
+        emailTabSearchInput.parentElement.parentElement.after(noResults);
+      }
+    } else if (existingNoResults) {
+      existingNoResults.remove();
+    }
+
+    // Adjust headings visibility
+    const headings = document.querySelectorAll('h6.text-muted.mb-3');
+    headings.forEach(heading => {
+      // Skip if there's no search term
+      if (searchTerm === '') {
+        heading.style.display = '';
+        return;
+      }
+
+      // Find all task groups after this heading until the next heading
+      let visibleTasksUnderHeading = false;
+      let current = heading.nextElementSibling;
+
+      while (current && current.tagName !== 'H6') {
+        if (current.classList.contains('task-group') && current.style.display !== 'none') {
+          visibleTasksUnderHeading = true;
+          break;
+        }
+        current = current.nextElementSibling;
+        if (!current) break;
+      }
+
+      heading.style.display = visibleTasksUnderHeading ? '' : 'none';
+    });
+  }
+
+  if (emailTabSearchInput) {
+    // Search as you type
+    emailTabSearchInput.addEventListener('input', performEmailTabSearch);
+
+    // Handle keyboard events
+    emailTabSearchInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        this.value = '';
+        performEmailTabSearch();
+      }
+
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        performEmailTabSearch();
+      }
+    });
+
+    // Initial search to ensure everything is visible
+    setTimeout(performEmailTabSearch, 500);
+  }
+
+    </script>
+  </body>
+</html>
