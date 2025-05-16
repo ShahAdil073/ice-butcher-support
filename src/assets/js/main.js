@@ -1,3 +1,18 @@
+// Apply sidebar state immediately to prevent flicker
+(function() {
+  const sidebarCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+  document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.getElementById("sidebar-container");
+    if (sidebar) {
+      if (sidebarCollapsed) {
+        sidebar.classList.add("collapsed");
+      } else {
+        sidebar.classList.remove("collapsed");
+      }
+    }
+  });
+})();
+
 // Main JavaScript for Ice Butcher Dashboard
 /**
  * Utility functions to load components and handle component interactions
@@ -114,6 +129,17 @@ function initializeComponents() {
       if (href === currentPage) {
         link.classList.add('active');
 
+        // Keep parent dropdown open if the active link is inside a dropdown
+        const parentCollapse = link.closest('.collapse');
+        if (parentCollapse) {
+          parentCollapse.classList.add('show');
+          const parentToggle = document.querySelector(`[href="#${parentCollapse.id}"]`);
+          if (parentToggle) {
+            parentToggle.classList.remove('collapsed');
+            parentToggle.setAttribute('aria-expanded', 'true');
+          }
+        }
+
         // For sales pages, expand the sales dropdown if needed
         if (currentPage.includes('sales-')) {
           const salesCollapse = document.getElementById('collapseSales');
@@ -153,9 +179,11 @@ function initializeSidebarComponents() {
   const sidebar = document.getElementById("sidebar-container");
   const sidebarToggleBtn = document.getElementById("sidebarToggleBtn");
   const sidebarArrow = document.getElementById("sidebarArrow");
-  const sidebarMobileOverlay = document.getElementById(
-    "sidebarMobileOverlay"
-  );
+  const sidebarMobileOverlay = document.getElementById("sidebarMobileOverlay");
+  
+  // Check localStorage for saved state
+  const sidebarCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+  
   function setSidebarCollapsed(collapsed) {
     if (collapsed) {
       sidebar.classList.add("collapsed");
@@ -170,26 +198,33 @@ function initializeSidebarComponents() {
         sidebarMobileOverlay.classList.add("active");
       }
     }
+    // Save state to localStorage
+    localStorage.setItem('sidebarCollapsed', collapsed);
   }
+  
+  // Apply saved state on page load
+  setSidebarCollapsed(sidebarCollapsed);
+  
   if (sidebarToggleBtn) {
     sidebarToggleBtn.onclick = () => {
-      if (sidebar.classList.contains("collapsed")) {
-        setSidebarCollapsed(false);
-      } else {
-        setSidebarCollapsed(true);
-      }
+      setSidebarCollapsed(!sidebar.classList.contains("collapsed"));
     };
   }
+  
   if (sidebarMobileOverlay) {
     sidebarMobileOverlay.onclick = function () {
       setSidebarCollapsed(true);
     };
   }
+  
   function handleSidebarOnResize() {
     if (window.innerWidth < 992) {
       setSidebarCollapsed(true);
     } else {
-      setSidebarCollapsed(false);
+      // Only expand if there's no saved preference
+      if (localStorage.getItem('sidebarCollapsed') === null) {
+        setSidebarCollapsed(false);
+      }
       if (sidebarMobileOverlay) {
         sidebarMobileOverlay.classList.remove("active");
       }
@@ -463,25 +498,6 @@ function initializeOrdersPage() {
     }
   }
 
-  // Pagination functionality
-  const paginationButtons = document.querySelectorAll('.d-flex .btn-sm');
-
-  paginationButtons.forEach(button => {
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
-      // Remove active class from all buttons
-      paginationButtons.forEach(btn => {
-        btn.classList.remove('btn-primary');
-        btn.classList.add('btn-outline-secondary');
-      });
-
-      // Add active class to clicked button
-      if (!this.classList.contains('disabled')) {
-        this.classList.add('btn-primary');
-        this.classList.remove('btn-outline-secondary');
-      }
-    });
-  });
 
   // Filter dropdown functionality
   const filterDropdowns = document.querySelectorAll('.table-options .dropdown-menu');

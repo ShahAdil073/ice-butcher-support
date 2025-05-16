@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Ticket - Ice Butcher</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      .email-conversation {
+        overflow-y: auto;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 20px;
+      }
+
+      .badge.bg-light {
+        background-color: #f0f1f3 !important;
+        color: #495057 !important;
+      }
+
+      .badge.bg-success {
+        font-weight: normal;
+        font-size: 11px;
+        padding: 4px 8px;
+      }
+
+      .fw-medium {
+        font-weight: 500 !important;
+      }
+
+      .user-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .email-message {
+        padding: 16px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        max-width: 80%;
+      }
+
+      .email-message-time {
+        font-size: 0.8rem;
+        color: #6c757d;
+      }
+
+      .empty-mailbox {
+        text-align: center;
+        padding: 50px 0;
+      }
+
+      .empty-mailbox img {
+        max-width: 250px;
+        margin-bottom: 20px;
+      }
+
+      .message-dot {
+        height: 8px;
+        width: 8px;
+        background-color: #28a745;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 6px;
+      }
+
+      .btn-toolbar {
+        display: flex;
+        gap: 8px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .conversation-header {
+        padding: 15px;
+        border-bottom: 1px solid #dee2e6;
+      }
+
+      .message-content {
+        margin-top: 10px;
+      }
+
+      .message-content p {
+        margin-bottom: 10px;
+      }
+
+      .message-content ul {
+        padding-left: 20px;
+      }
+
+      .dropdown-menu {
+        min-width: 150px;
+      }
+
+      .dropdown-menu .dropdown-item {
+        padding: 0.4rem 1rem;
+      }
+
+      .bot-message {
+        background-color: #fff;
+        border: 1px solid #eee;
+        margin-bottom: 30px;
+      }
+
+      .user-message {
+        background-color: #e9f4ff;
+        margin-left: auto;
+        margin-bottom: 30px;
+      }
+
+      .list-group-item {
+        border-left: none;
+        border-right: none;
+        padding: 12px 15px;
+      }
+
+      .list-group-item:first-child {
+        border-top: none;
+      }
+
+      .list-group-item.active {
+        background-color: #f0f7ff;
+        color: #000;
+        border-color: #ddd;
+      }
+
+      .newest-conversation {
+        padding: 10px 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+        font-weight: 500;
+      }
+
+      .conversation-controls {
+        display: flex;
+        gap: 10px;
+      }
+
+      .previous-days {
+        padding: 8px 15px;
+        background-color: #f8f9fa;
+        color: #6c757d;
+        font-size: 0.85rem;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+
+      .ticket-header {
+        padding: 15px;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+      }
+
+      .ticket-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .ticket-meta {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: #6c757d;
+        font-size: 13px;
+      }
+
+      .conversation-avatar {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+      }
+
+      .conversation-summary {
+        margin-left: 5px;
+        flex-grow: 1;
+      }
+
+      .conversation-timestamp {
+        font-size: 12px;
+        color: #6c757d;
+        white-space: nowrap;
+      }
+
+      .email-composer {
+        border-top: 1px solid #dee2e6;
+        padding: 15px;
+      }
+
+      .composer-fields {
+        margin-bottom: 15px;
+      }
+
+      .text-warning {
+        color: #ff7a59 !important;
+      }
+
+      .email-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        border-top: 1px solid #eee;
+        padding: 8px 0;
+        margin-top: 15px;
+      }
+
+      .composer-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+      }
+
+      .composer-hint {
+        color: #6c757d;
+        font-size: 12px;
+      }
+
+      .privacy-notice {
+        display: flex;
+        align-items: center;
+        background-color: #f8f9fb;
+        padding: 8px 15px;
+        margin-bottom: 15px;
+        border-radius: 4px;
+        color: #6c757d;
+        font-size: 13px;
+      }
+
+      .privacy-notice i {
+        color: #007bff;
+        margin-right: 8px;
+      }
+
+      /* Match the exact conversation interface */
+      .conversation-area {
+        background-color: #f8f9fb;
+        padding: 15px;
+        border-radius: 4px;
+      }
+
+      .message-bubble {
+        margin-bottom: 25px;
+      }
+
+      .message-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .message-sender {
+        font-weight: 500;
+        margin-right: 10px;
+      }
+
+      .message-time {
+        color: #6c757d;
+        font-size: 12px;
+      }
+
+      .message-body {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      }
+
+      .user-bubble .message-body {
+        background-color: #e9f4ff;
+      }
+
+      .sender-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+
+      .input-field {
+        border: none;
+        padding: 10px;
+        width: 100%;
+        background-color: transparent;
+      }
+
+      .input-field:focus {
+        outline: none;
+      }
+
+      .compose-card {
+        background-color: white;
+        border-radius: 4px;
+        margin-top: 15px;
+      }
+
+      .compose-field {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+        padding: 10px 15px;
+      }
+
+      .compose-label {
+        font-weight: 500;
+        width: 80px;
+        color: #333;
+      }
+
+      .compose-input {
+        flex-grow: 1;
+        display: flex;
+      }
+
+      .compose-actions {
+        width: 40px;
+        text-align: right;
+      }
+
+      .composer-textarea {
+        width: 100%;
+        min-height: 120px;
+        border: none;
+        resize: none;
+        padding: 15px;
+      }
+
+      .composer-textarea:focus {
+        outline: none;
+      }
+
+      .composer-tools {
+        display: flex;
+        padding: 8px 15px;
+        border-top: 1px solid #eee;
+      }
+
+      .tool-button {
+        background: none;
+        border: none;
+        color: #6c757d;
+        padding: 5px;
+        margin-right: 8px;
+        cursor: pointer;
+      }
+
+      .tool-button:hover {
+        color: #333;
+      }
+
+      /* Conversation list sidebar */
+      .conversation-list-sidebar {
+        overflow-y: auto;
+        max-height: calc(100vh - 150px);
+      }
+
+      /* Empty state */
+      .blank-conversation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 50px 0;
+        text-align: center;
+      }
+
+      .blank-conversation img {
+        max-width: 200px;
+        margin-bottom: 20px;
+      }
+
+      .blank-conversation h5 {
+        margin-bottom: 10px;
+      }
+
+      .blank-conversation p {
+        color: #6c757d;
+        margin-bottom: 20px;
+      }
+
+      /* Collapsed sidebar styles */
+      .sidebar-collapsed .conversation-list {
+        display: none;
+      }
+
+      /* Make the page responsive */
+      @media (max-width: 768px) {
+        .email-message {
+          max-width: 100%;
+        }
+
+        .btn-toolbar {
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar will be loaded here -->
+    <div class="sidebar d-flex flex-column" id="sidebar-container"></div>
+    <div class="sidebar-mobile-overlay" id="sidebarMobileOverlay"></div>
+    <div class="main-content" id="mainContent">
+      <!-- Navbar -->
+      <div id="header-container"></div>
+
+      <!-- Main Content -->
+      <div class="container-fluid pt-3">
+        <div class="row">
+          <!-- Left Sidebar - Conversation List -->
+          <div class="conversation-sidebar col-md-3">
+            <div class="card shadow-sm h-100">
+              <div class="d-flex align-items-center p-2">
+                <div class="me-2">
+                  <button class="btn btn-light border toggle-sidebar" style="width: 34px; height: 34px; padding: 0;">
+                    <i class="bi bi-layout-text-sidebar"></i>
+                  </button>
+                </div>
+                <div class="flex-grow-1">
+                  <button class="btn btn-primary w-100 text-white d-flex align-items-center justify-content-center" data-bs-toggle="modal" data-bs-target="#createTicketModal">
+                    <i class="bi bi-plus-lg me-2"></i> Support Ticket
+                  </button>
+                </div>
+              </div>
+              <div class="d-flex align-items-center mx-2">
+                <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Search here..."
+                      />
+                      <button class="btn btn-primary" type="button">
+                        <i class="bi bi-search"></i>
+                      </button>
+                  </div>
+              </div>
+
+              <div class="conversation-list" id="conversationList">
+                <div class="newest-conversation">
+                  <span>Newest conversation</span>
+                  <div class="conversation-controls">
+                    <button class="btn btn-sm btn-light p-0" style="width: 28px; height: 28px;">
+                      <i class="bi bi-filter"></i>
+                    </button>
+                    <button class="btn btn-sm btn-light p-0" style="width: 28px; height: 28px;">
+                      <i class="bi bi-grid"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="conversation-list-sidebar">
+                  <div class="list-group list-group-flush">
+                    <a href="#" class="list-group-item list-group-item-action">
+                      <div class="d-flex align-items-center">
+                        <img src="assets/images/avatar1.png" alt="Emma Thompson" class="user-avatar me-2">
+                        <div class="conversation-summary">
+                          <div class="fw-medium">Emma Thompson</div>
+                          <div class="small">
+                            Thanks, I found the confirmation email...
+                          </div>
+                        </div>
+                        <div class="conversation-timestamp ms-2">45m Ago</div>
+                      </div>
+                      <div class="d-flex align-items-center mt-2">
+                        <small class="text-muted">
+                          <i class="bi bi-envelope me-1"></i> Order status and tracking
+                        </small>
+                        <div class="ms-auto">
+                          <i class="bi bi-arrow-return-left me-1 text-warning"></i>
+                        </div>
+                      </div>
+                    </a>
+
+                    <a href="#" class="list-group-item list-group-item-action">
+                      <div class="d-flex align-items-center">
+                        <img src="assets/images/avatar2.png" alt="John Robert" class="user-avatar me-2">
+                        <div class="conversation-summary">
+                          <div class="fw-medium">John Robert</div>
+                          <div class="small">
+                            Thanks, I found the confirmation email...
+                          </div>
+                        </div>
+                        <div class="conversation-timestamp ms-2">5h Ago</div>
+                      </div>
+                      <div class="d-flex align-items-center mt-2">
+                        <small class="text-muted">
+                          <i class="bi bi-envelope me-1"></i> Order status and tracking
+                        </small>
+                        <div class="ms-auto">
+                          <i class="bi bi-arrow-return-left me-1 text-danger"></i>
+                        </div>
+                      </div>
+                    </a>
+
+                    <a href="#" class="list-group-item list-group-item-action">
+                      <div class="d-flex align-items-center">
+                        <img src="assets/images/avatar3.png" alt="Kristin Kniss" class="user-avatar me-2">
+                        <div class="conversation-summary">
+                          <div class="fw-medium">Kristin Kniss</div>
+                          <div class="small">
+                            Thanks, I found the confirmation email...
+                          </div>
+                        </div>
+                        <div class="conversation-timestamp ms-2">10h Ago</div>
+                      </div>
+                      <div class="d-flex align-items-center mt-2">
+                        <small class="text-muted">
+                          <i class="bi bi-envelope me-1"></i> Order status and tracking
+                        </small>
+                        <div class="ms-auto">
+                          <i class="bi bi-arrow-return-left me-1 text-warning"></i>
+                        </div>
+                      </div>
+                    </a>
+
+                    <div class="previous-days">
+                      Previous 7 Days
+                    </div>
+
+                    <a href="#" class="list-group-item list-group-item-action">
+                      <div class="d-flex align-items-center">
+                        <img src="assets/images/avatar4.png" alt="Chris Chiang" class="user-avatar me-2">
+                        <div class="conversation-summary">
+                          <div class="fw-medium">Chris Chiang</div>
+                          <div class="small">
+                            Thanks, I found the confirmation email...
+                          </div>
+                        </div>
+                        <div class="conversation-timestamp ms-2">2nd Mar</div>
+                      </div>
+                      <div class="d-flex align-items-center mt-2">
+                        <small class="text-muted">
+                          <i class="bi bi-envelope me-1"></i> Order status and tracking
+                        </small>
+                        <div class="ms-auto">
+                          <i class="bi bi-arrow-return-left me-1 text-danger"></i>
+                        </div>
+                      </div>
+                    </a>
+
+                    <a href="#" class="list-group-item list-group-item-action">
+                      <div class="d-flex align-items-center">
+                        <img src="assets/images/avatar5.png" alt="Christine Wolff" class="user-avatar me-2">
+                        <div class="conversation-summary">
+                          <div class="fw-medium">Christine Wolff</div>
+                          <div class="small">
+                            Thanks, I found the confirmation email...
+                          </div>
+                        </div>
+                        <div class="conversation-timestamp ms-2">4th Mar</div>
+                      </div>
+                      <div class="d-flex align-items-center mt-2">
+                        <small class="text-muted">
+                          <i class="bi bi-envelope me-1"></i> Order status and tracking
+                        </small>
+                        <div class="ms-auto">
+                          <i class="bi bi-arrow-return-left me-1 text-danger"></i>
+                        </div>
+                      </div>
+                    </a>
+
+                    <a href="#" class="list-group-item list-group-item-action">
+                      <div class="d-flex align-items-center">
+                        <img src="assets/images/avatar3.png" alt="Juli Cooper" class="user-avatar me-2">
+                        <div class="conversation-summary">
+                          <div class="fw-medium">Juli Cooper</div>
+                          <div class="small">
+                            Thanks, I found the confirmation email...
+                          </div>
+                        </div>
+                        <div class="conversation-timestamp ms-2">8th Mar</div>
+                      </div>
+                      <div class="d-flex align-items-center mt-2">
+                        <small class="text-muted">
+                          <i class="bi bi-envelope me-1"></i> Order status and tracking
+                        </small>
+                        <div class="ms-auto">
+                          <i class="bi bi-arrow-return-left me-1 text-warning"></i>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Content Area - Email Conversation -->
+          <div class="conversation-box col-md-9">
+            <div class="card shadow-sm">
+              <!-- Ticket Header/Info -->
+              <div class="card-header bg-white border-bottom py-3">
+                <div class="d-flex align-items-center justify-content-between" id="conversationHeader">
+                  <!-- This will be populated dynamically based on selected conversation or new ticket -->
+                  <div class="d-flex align-items-center blank-conversation-header">
+                    <div class="me-2 conversation-box-collapse d-none">
+                      <button class="btn btn-light border toggle-sidebar" style="width: 34px; height: 34px; padding: 0;">
+                        <i class="bi bi-layout-text-sidebar"></i>
+                      </button>
+                    </div>
+                    <div class="me-2">
+                      <h5 class="mb-0">Create New Ticket</h5>
+                      <p class="text-muted small mb-0">Select a conversation or create a new ticket</p>
+                    </div>
+                  </div>
+                  <div>
+                    <button class="btn btn-light border">
+                      <i class="bi bi-three-dots-vertical"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Body - Conversation Content -->
+              <div class="card-body">
+                <!-- Blank state initially shown -->
+                <div class="blank-conversation" id="blankConversation">
+                  <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI1MCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZD0iTTEyNSA3QzEyNSA3IDIwMyA0OCAyMDMgMTQzQzIwMyAyMzggNDUgMTkwIDQ1IDE0M0M0NSA5NiAxMjUgNyAxMjUgN1oiIGZpbGw9IiNGRkYiIHN0cm9rZT0iI0VFRSIvPgogIDxwYXRoIGQ9Ik0xNzUgMTAwQzE3NSAxMTkuMzMgMTYzLjY2IDEzNSAxNTAgMTM1QzEzNi4zNCAxMzUgMTI1IDExOS4zMyAxMjUgMTAwQzEyNSA4MC42NyAxMzYuMzQgNjUgMTUwIDY1QzE2My42NiA2NSAxNzUgODAuNjcgMTc1IDEwMFoiIGZpbGw9IiNGRkYiIHN0cm9rZT0iI0VFRSIvPgogIDxwYXRoIGQ9Ik0xNzEgMjI1QzE3MSAyNTUuMzc2IDE0Ni4zNzYgMjgwIDExNiAyODBDODUuNjI0MyAyODAgNjEgMjU1LjM3NiA2MSAyMjVDNjEgMTk0LjYyNCA4NS42MjQzIDE3MCAxMTYgMTcwQzE0Ni4zNzYgMTcwIDE3MSAxOTQuNjI0IDE3MSAyMjVaIiBmaWxsPSIjRkZGIiBzdHJva2U9IiNFRUUiLz4KICA8cmVjdCB4PSI4NSIgeT0iNjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSIxMDAiIHJ4PSIxMCIgZmlsbD0iI0ZGRiIgc3Ryb2tlPSIjRjVBNjVDIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8cGF0aCBkPSJNOTUgNzBDOTUgNjcuNzIzOSA5Ni43OTU5IDY1Ljk3OTggOTkuMDM0MyA2Ni4wMDA2TDE1MC45NjYgNjYuNDk4NUMxNTMuMjA0IDY2LjUxOTIgMTU1IDY4LjI3NiAxNTUgNzAuNTE1N1YxNDkuNDg0QzE1NSAxNTEuNzI0IDE1My4yMDQgMTUzLjQ4MSAxNTAuOTY2IDE1My41MDFMOTkuMDM0MyAxNTMuOTk5Qzk2Ljc5NTkgMTU0LjAyIDk1IDE1Mi4yNzYgOTUgMTUwVjcwWiIgZmlsbD0iI0ZGRiIvPgogIDxjaXJjbGUgY3g9IjE0MCIgY3k9IjQ1IiByPSIxMCIgZmlsbD0iI0Y1QTY1QyIvPgogIDxjaXJjbGUgY3g9IjkwIiBjeT0iMTUwIiByPSIyMCIgZmlsbD0iI0ZGRiIgc3Ryb2tlPSIjRjVBNjVDIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8Y2lyY2xlIGN4PSI5MCIgY3k9IjE1MCIgcj0iMTAiIGZpbGw9IiNGRkYiIHN0cm9rZT0iI0Y1QTY1QyIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHBhdGggZD0iTTEwMSAxMDlMOTAgMTUwTDEyMCAxNTAiIHN0cm9rZT0iI0Y1QTY1QyIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHBhdGggZD0iTTEwMSAxMDlMMTIwIDE1MCIgc3Ryb2tlPSIjRjVBNjVDIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDkiIHI9IjEwIiBmaWxsPSIjRkZGIiBzdHJva2U9IiNGNUE2NUMiIHN0cm9rZS13aWR0aD0iMiIvPgogIDxwYXRoIGQ9Ik05NSA4MEgxNDUiIHN0cm9rZT0iI0VFRSIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHBhdGggZD0iTTk1IDEwMEgxNDUiIHN0cm9rZT0iI0VFRSIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHBhdGggZD0iTTExNSAxMjBIMTQ1IiBzdHJva2U9IiNFRUUiIHN0cm9rZS13aWR0aD0iMiIvPgogIDxwYXRoIGQ9Ik0xMTUgMTQwSDE0NSIgc3Ryb2tlPSIjRUVFIiBzdHJva2Utd2lkdGg9IjIiLz4KPC9zdmc+Cg==" alt="Empty Mailbox">
+                  <h5>No conversation selected</h5>
+                  <p>Select a conversation from the sidebar or create a new ticket</p>
+                  <button class="btn btn-primary px-4 py-2" data-bs-toggle="modal" data-bs-target="#createTicketModal">Create New Ticket</button>
+                </div>
+
+                <!-- Privacy Notice -->
+                <div class="d-flex align-items-center mb-4 p-2 bg-light rounded border d-none" id="privacyNotice">
+                  <i class="bi bi-shield-check text-primary me-2"></i>
+                  <span>See the latest updates to the Softmvrr Apps Privacy Hub.</span>
+                </div>
+
+                <!-- Conversation Area - Initially Hidden -->
+                <div id="conversationArea" class="conversation-area d-none">
+                  <!-- Conversations will be populated here -->
+                </div>
+
+                <!-- Email Composer - Initially Hidden -->
+                <div class="compose-card mt-4 d-none" id="composeArea">
+                  <!-- Email Form Fields -->
+                  <div class="compose-field">
+                    <div class="compose-label">To:</div>
+                    <div class="compose-input">
+                      <input type="text" class="input-field" placeholder="Enter or choose a recipient" id="recipientField">
+                    </div>
+                    <div class="compose-actions">
+                      <button class="btn btn-sm btn-light">
+                        <i class="bi bi-three-dots-vertical"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="compose-field">
+                    <div class="compose-label">From:</div>
+                    <div class="compose-input">
+                      <button class="btn btn-sm text-start px-2 text-secondary dropdown-toggle w-100" data-bs-toggle="dropdown" id="fromField">
+                        Search
+                      </button>
+                      <ul class="dropdown-menu w-100">
+                        <li><a class="dropdown-item sender-option" href="#" data-email="support@example.com">support@example.com</a></li>
+                        <li><a class="dropdown-item sender-option" href="#" data-email="info@example.com">info@example.com</a></li>
+                      </ul>
+                    </div>
+                    <div class="compose-actions">
+                      <button class="btn btn-sm btn-light">
+                        <i class="bi bi-three-dots-vertical"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="compose-field">
+                    <div class="compose-label">Subject:</div>
+                    <div class="compose-input">
+                      <input type="text" class="input-field" value="Order status and tracking" id="subjectField">
+                    </div>
+                    <div class="compose-actions"></div>
+                  </div>
+
+                  <!-- Message Composer Area -->
+                  <textarea class="composer-textarea" placeholder="Write a message. Press '/' or highlight text to access AI commands." id="messageField"></textarea>
+
+                  <!-- Composer Toolbar -->
+                  <div class="composer-tools">
+                    <button class="tool-button"><i class="bi bi-exclamation-triangle"></i></button>
+                    <button class="tool-button"><i class="bi bi-emoji-smile"></i></button>
+                    <button class="tool-button"><i class="bi bi-image"></i></button>
+                    <button class="tool-button"><i class="bi bi-paperclip"></i></button>
+                    <button class="tool-button"><i class="bi bi-code"></i></button>
+                    <button class="tool-button"><i class="bi bi-file-earmark-text"></i></button>
+                    <button class="tool-button"><i class="bi bi-card-heading"></i></button>
+                    <div class="ms-auto">
+                      <button class="tool-button"><i class="bi bi-three-dots"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Footer with Send Button - Initially Hidden -->
+              <div class="card-footer bg-white py-3 d-flex justify-content-between align-items-center d-none" id="composeFooter">
+                <div class="small text-muted">
+                  IBA.GPT can make mistakes. Check our Terms & Conditions.
+                </div>
+                <div class="d-flex align-items-center">
+                  <button class="btn btn-light me-2">
+                    <i class="bi bi-mic"></i>
+                  </button>
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" id="sendMessageBtn">
+                      Send
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li><a class="dropdown-item" href="#">Send now</a></li>
+                      <li><a class="dropdown-item" href="#">Schedule send</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Create Ticket Modal -->
+    <div class="modal fade" id="createTicketModal" tabindex="-1" aria-labelledby="createTicketModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="createTicketModalLabel">Create New Support Ticket</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="newTicketForm">
+              <div class="mb-3">
+                <label for="customerName" class="form-label">Customer Name</label>
+                <input type="text" class="form-control" id="customerName" required>
+              </div>
+              <div class="mb-3">
+                <label for="customerEmail" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="customerEmail" required>
+              </div>
+              <div class="mb-3">
+                <label for="ticketSubject" class="form-label">Subject</label>
+                <input type="text" class="form-control" id="ticketSubject" value="Order status and tracking">
+              </div>
+              <div class="mb-3">
+                <label for="ticketPriority" class="form-label">Priority</label>
+                <select class="form-select" id="ticketPriority">
+                  <option value="low">Low</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="high">High</option>
+                  <option value="urgent">Urgent</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="ticketMessage" class="form-label">Initial Message</label>
+                <textarea class="form-control" id="ticketMessage" rows="4"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" id="createTicketBtn">Create Ticket</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // DOM Elements
+        const toggleSidebarBtns = document.querySelectorAll('.toggle-sidebar');
+        const conversationSidebar = document.querySelector('.conversation-sidebar');
+        const conversationBox = document.querySelector('.conversation-box');
+        const conversationBoxCollapse = document.querySelector('.conversation-box-collapse');
+        const mobileToggleBtn = document.getElementById('mobileToggleBtn');
+        const createTicketBtn = document.getElementById('createTicketBtn');
+        const newTicketForm = document.getElementById('newTicketForm');
+        const blankConversation = document.getElementById('blankConversation');
+        const conversationHeader = document.getElementById('conversationHeader');
+        const conversationArea = document.getElementById('conversationArea');
+        const composeArea = document.getElementById('composeArea');
+        const composeFooter = document.getElementById('composeFooter');
+        const privacyNotice = document.getElementById('privacyNotice');
+        const sendMessageBtn = document.getElementById('sendMessageBtn');
+        const fromFieldDropdownItems = document.querySelectorAll('.sender-option');
+
+        // Toggle sidebar
+        if (toggleSidebarBtns) {
+          toggleSidebarBtns.forEach(item => {
+          item.addEventListener('click', function(e) {
+            e.preventDefault();
+            conversationSidebar.classList.toggle('d-none');
+            conversationBox.classList.toggle('col-md-9');
+            conversationBox.classList.toggle('col-md-12');
+            conversationBoxCollapse.classList.toggle('d-none');
+          });
+        });
+        }
+
+
+        // Create ticket
+        if (createTicketBtn) {
+          createTicketBtn.addEventListener('click', function() {
+            const customerName = document.getElementById('customerName').value;
+            const customerEmail = document.getElementById('customerEmail').value;
+            const ticketSubject = document.getElementById('ticketSubject').value;
+            const ticketPriority = document.getElementById('ticketPriority').value;
+            const ticketMessage = document.getElementById('ticketMessage').value;
+
+            if (!customerName || !customerEmail) {
+              alert('Please fill in all required fields.');
+              return;
+            }
+
+            // Hide modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById('createTicketModal'));
+            modal.hide();
+
+            // Show conversation
+            showConversation({
+              name: customerName,
+              email: customerEmail,
+              subject: ticketSubject,
+              priority: ticketPriority,
+              message: ticketMessage,
+              timestamp: new Date()
+            });
+
+            // Add to conversation list
+            addToConversationList({
+              name: customerName,
+              subject: ticketSubject,
+              timestamp: 'Just now'
+            });
+          });
+        }
+
+        // Function to show conversation
+        function showConversation(ticket) {
+          // Update header
+          conversationHeader.innerHTML = `
+            <div class="d-flex align-items-center">
+              <img src="assets/images/avatar1.png" class="rounded-circle me-2" width="40" height="40" alt="Profile">
+              <div>
+                <h6 class="mb-0 d-flex align-items-center">
+                  ${ticket.name}
+                  <span class="badge bg-success rounded-pill ms-2">open</span>
+                </h6>
+                <div class="d-flex align-items-center small text-muted">
+                  <i class="bi bi-envelope me-1"></i>
+                  ${ticket.subject} /
+                  <span class="text-warning ms-1">Agent Name</span>
+                </div>
+              </div>
+            </div>
+            <div class="ms-auto d-flex align-items-center">
+              <div class="me-3">
+                Ticket: #${Math.floor(Math.random() * 1000000000)}
+                <i class="bi bi-clipboard ms-1"></i>
+              </div>
+              <div class="dropdown me-2">
+                <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                  Ticket Status <i class="bi bi-chevron-down ms-1"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href="#">Open</a></li>
+                  <li><a class="dropdown-item" href="#">Pending</a></li>
+                  <li><a class="dropdown-item" href="#">Resolved</a></li>
+                  <li><a class="dropdown-item" href="#">Closed</a></li>
+                </ul>
+              </div>
+              <button class="btn btn-light border">
+                <i class="bi bi-three-dots-vertical"></i>
+              </button>
+            </div>
+          `;
+
+          // Hide blank state and show conversation
+          blankConversation.classList.add('d-none');
+          privacyNotice.classList.remove('d-none');
+          conversationArea.classList.remove('d-none');
+          composeArea.classList.remove('d-none');
+          composeFooter.classList.remove('d-none');
+
+          // Update recipient field
+          document.getElementById('recipientField').value = ticket.email;
+          document.getElementById('subjectField').value = ticket.subject;
+
+          // Add initial message if provided
+          if (ticket.message) {
+            conversationArea.innerHTML = `
+              <div class="message-bubble user-bubble">
+                <div class="message-header">
+                  <img src="assets/images/avatar1.png" alt="User" class="sender-avatar">
+                  <div class="message-sender">${ticket.name}</div>
+                  <div class="message-time">${formatTime(ticket.timestamp)}</div>
+                </div>
+                <div class="message-body">
+                  ${ticket.message}
+                </div>
+              </div>
+            `;
+          } else {
+            conversationArea.innerHTML = '';
+          }
+
+          // Reset message field
+          document.getElementById('messageField').value = '';
+        }
+
+        // Function to add to conversation list
+        function addToConversationList(conversation) {
+          const listItem = document.createElement('a');
+          listItem.className = 'list-group-item list-group-item-action active';
+          listItem.href = '#';
+          listItem.innerHTML = `
+            <div class="d-flex align-items-center">
+              <img src="assets/images/avatar1.png" alt="${conversation.name}" class="user-avatar me-2">
+              <div class="conversation-summary">
+                <div class="fw-medium">${conversation.name}</div>
+                <div class="small">
+                  New ticket created
+                </div>
+              </div>
+              <div class="conversation-timestamp ms-2">${conversation.timestamp}</div>
+            </div>
+            <div class="d-flex align-items-center mt-2">
+              <small class="text-muted">
+                <i class="bi bi-envelope me-1"></i> ${conversation.subject}
+              </small>
+              <div class="ms-auto">
+                <i class="bi bi-arrow-return-left me-1 text-warning"></i>
+              </div>
+            </div>
+          `;
+
+          // Add to top of list
+          const listGroup = document.querySelector('.list-group');
+          listGroup.prepend(listItem);
+
+          // Remove active class from other items
+          document.querySelectorAll('.list-group-item.active').forEach(item => {
+            if (item !== listItem) {
+              item.classList.remove('active');
+            }
+          });
+
+          // Make list items clickable
+          listItem.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelectorAll('.list-group-item').forEach(item => {
+              item.classList.remove('active');
+            });
+            this.classList.add('active');
+
+            // Show conversation
+            showConversation({
+              name: conversation.name,
+              email: 'customer@example.com',
+              subject: conversation.subject,
+              timestamp: new Date()
+            });
+          });
+        }
+
+        // Send message functionality
+        if (sendMessageBtn) {
+          sendMessageBtn.addEventListener('click', function() {
+            const messageField = document.getElementById('messageField');
+            const message = messageField.value.trim();
+
+            if (!message) {
+              alert('Please enter a message');
+              return;
+            }
+
+            // Add message to conversation
+            const messageHTML = `
+              <div class="message-bubble bot-bubble">
+                <div class="message-header">
+                  <img src="assets/images/avatar5.png" alt="Agent" class="sender-avatar">
+                  <div class="message-sender">You (Agent)</div>
+                  <div class="message-time">${formatTime(new Date())}</div>
+                </div>
+                <div class="message-body">
+                  ${message}
+                </div>
+              </div>
+            `;
+
+            conversationArea.innerHTML += messageHTML;
+
+            // Clear message field
+            messageField.value = '';
+
+            // Scroll to bottom
+            conversationArea.scrollTop = conversationArea.scrollHeight;
+          });
+        }
+
+        // Update from field when option selected
+        fromFieldDropdownItems.forEach(item => {
+          item.addEventListener('click', function(e) {
+            e.preventDefault();
+            const email = this.getAttribute('data-email');
+            document.getElementById('fromField').textContent = email;
+          });
+        });
+
+        // Make conversation list items clickable
+        document.querySelectorAll('.list-group-item').forEach(item => {
+          item.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelectorAll('.list-group-item').forEach(i => {
+              i.classList.remove('active');
+            });
+            this.classList.add('active');
+
+            // Get conversation details
+            const name = this.querySelector('.fw-medium').textContent;
+            const subject = this.querySelector('.text-muted').textContent.trim();
+
+            // Show conversation
+            showConversation({
+              name: name,
+              email: 'customer@example.com',
+              subject: subject,
+              timestamp: new Date()
+            });
+
+            // Add demo messages based on name
+            if (name === 'Emma Thompson') {
+              conversationArea.innerHTML = `
+                <div class="message-bubble user-bubble">
+                  <div class="message-header">
+                    <img src="assets/images/avatar1.png" alt="User" class="sender-avatar">
+                    <div class="message-sender">You</div>
+                    <div class="message-time">02:22 AM</div>
+                  </div>
+                  <div class="message-body">
+                    do androids truly dream of electric sheeps or not?
+                  </div>
+                </div>
+
+                <div class="message-bubble bot-bubble">
+                  <div class="message-header">
+                    <img src="assets/images/logo.png" alt="Ice Butcher Assistant" class="sender-avatar">
+                    <div class="message-sender">Ice Butcher Assitant</div>
+                    <div class="message-time">02:22 AM</div>
+                  </div>
+                  <div class="message-body">
+                    <h6>Consciousness and Dreaming</h6>
+                    <ul>
+                      <li>Dreams as a Human Phenomenon: Dreams in humans are closely tied to our biology, particularly our brain's activity during sleep. They involve complex neural processes, memories, emotions, and experiences.</li>
+                      <li>Artificial Consciousness: Currently, androids and AI systems do not possess consciousness or subjective experiences. Without consciousness, the concept of dreaming as humans experience it doesn't apply.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <div class="fw-medium mb-2">Simulated dreaming</div>
+                  <ul>
+                    <li>Data Processing: Advanced AI systems, like neural networks, can engage in processes that might resemble dreaming in a metaphorical sense. For example, during periods of inactivity, an AI might process data, update models, or run simulations to improve its performance.</li>
+                    <li>Generative Models: Some AI models, such as Generative Adversarial Networks (GANs), create new data based on learned patterns. This generative process might be likened to "dreaming" in that the AI creates new, original content from its existing knowledge.</li>
+                  </ul>
+                </div>
+
+                <div class="message-bubble user-bubble">
+                  <div class="message-header">
+                    <img src="assets/images/avatar1.png" alt="User" class="sender-avatar">
+                    <div class="message-sender">You</div>
+                    <div class="message-time">02:22 AM</div>
+                  </div>
+                  <div class="message-body">
+                    let's say it does - what happens then?
+                  </div>
+                </div>
+              `;
+            } else {
+              // Other conversations can have different demo content
+              const randomMessages = [
+                'Hi, I need help with my order status.',
+                'Thanks for your quick response!',
+                'When will my order be delivered?',
+                'I appreciate your help with this issue.'
+              ];
+
+              conversationArea.innerHTML = `
+                <div class="message-bubble user-bubble">
+                  <div class="message-header">
+                    <img src="${this.querySelector('img').src}" alt="User" class="sender-avatar">
+                    <div class="message-sender">${name}</div>
+                    <div class="message-time">${formatTime(new Date(Date.now() - 3600000))}</div>
+                  </div>
+                  <div class="message-body">
+                    ${randomMessages[Math.floor(Math.random() * randomMessages.length)]}
+                  </div>
+                </div>
+              `;
+            }
+          });
+        });
+
+        // Helper function to format time
+        function formatTime(date) {
+          return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+      });
+    </script>
+  </body>
+</html>

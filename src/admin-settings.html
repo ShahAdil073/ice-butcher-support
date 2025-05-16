@@ -243,9 +243,17 @@
                         <p class="text-muted">Manage your current integrated accounts.</p>
                         </div>
                         <div class="d-flex users-teams-actions gap-2">
-                        <div class="search-container position-relative">
-                            <input type="text" class="form-control search-input" placeholder="Search here...">
-                            <i class="bi bi-search search-icon position-absolute"></i>
+                        <div class="d-flex">
+                            <div class="input-group">
+                              <input
+                                type="text"
+                                class="form-control search-input"
+                                placeholder="Search here..."
+                              />
+                              <button class="btn btn-primary" type="button">
+                                <i class="bi bi-search"></i>
+                              </button>
+                            </div>
                         </div>
                         <button class="btn btn-primary grant-access-btn">
                             <i class="bi bi-lock me-1"></i> Grant Access
@@ -488,10 +496,18 @@
                         <h3 class="mb-1">Audit Log</h3>
                         </div>
                         <div class="d-flex audit-log-actions gap-2">
-                        <div class="search-container position-relative">
-                            <input type="text" class="form-control search-input" placeholder="Search here...">
-                            <i class="bi bi-search search-icon position-absolute"></i>
-                        </div>
+                            <div class="d-flex search-container position-relative">
+                                <div class="input-group">
+                                  <input
+                                    type="text"
+                                    class="form-control search-input"
+                                    placeholder="Search here..."
+                                  />
+                                  <button class="btn btn-primary" type="button">
+                                    <i class="bi bi-search"></i>
+                                  </button>
+                                </div>
+                            </div>
                         <button class="btn btn-primary export-btn">
                             <i class="bi bi-download me-1"></i> Export Report
                         </button>
@@ -944,8 +960,7 @@
                         <div class="bg-white p-3 rounded shadow-sm mb-3">
                             <h5 class="mb-3">January</h5>
                             <div class="calendar-small">
-                            <div class="calendar-header d-flex justify-content-between align-items-center mb-2">
-                                <div class="week-days d-flex w-100 justify-content-between">
+                            <div class="calendar-header mb-2">
                                 <div class="day-label">MON</div>
                                 <div class="day-label">TUE</div>
                                 <div class="day-label">WED</div>
@@ -953,7 +968,6 @@
                                 <div class="day-label">FRI</div>
                                 <div class="day-label">SAT</div>
                                 <div class="day-label">SUN</div>
-                                </div>
                             </div>
                             <div class="calendar-grid">
                                 <div class="calendar-row d-flex">

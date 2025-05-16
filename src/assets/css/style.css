@@ -796,7 +796,7 @@ tr:has(.badge.bg-secondary) {
 /* Hide sidebar sub-tabs in collapsed mode */
 .sidebar.collapsed .collapse,
 .sidebar.collapsed [aria-controls] + .collapse {
-  display: none !important;
+  margin-left: -1.5rem;
 }
 
 /* Admin Settings specific styles */

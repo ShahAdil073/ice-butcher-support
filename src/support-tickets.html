@@ -24,91 +24,61 @@
       <!-- Navbar -->
       <div id="header-container"></div>
       <div class="container-fluid pt-3">
-        <div class="d-flex align-items-center mb-3">
-          <div class="d-flex align-items-center">
-            <a href="#" class="text-decoration-none text-muted">
-              <i class="bi bi-life-preserver me-1"></i>
-              Help Desk
-            </a>
-            <span class="mx-2 text-muted">/</span>
-            <span class="fw-medium">Support Tickets</span>
-          </div>
-          <span class="ms-auto d-flex align-items-center">
-            <a href="create-ticket.html" class="btn btn-sm btn-outline-primary ms-3">
-              <i class="bi bi-plus-lg"></i> Create Ticket
-            </a>
-          </span>
-        </div>
-
-        <!-- Tickets Stats Cards -->
-        <div class="row mb-4">
+        <!-- Info Cards Row -->
+        <div class="row dashboard-cards flex-nowrap overflow-auto pb-2 gx-3">
           <div class="col">
-            <div class="metric-card issues-card">
-              <div class="card-content">
-                <div class="card-title">Number of Issues</div>
-                <div class="card-subtitle">this month</div>
-                <div class="card-value">650</div>
-                <span class="percent-badge">35% <i class="bi bi-arrow-up"></i></span>
-                <a href="#" class="card-link">View Tickets <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+            <div class="card dashboard-card-1 p-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-medium"
+                  >Revenue Generate<br /><small>this month</small></span
+                >
+                <span class="percent">35%</span>
               </div>
-              <div class="card-bg-pattern">
-                <i class="bi bi-exclamation-triangle"></i>
-              </div>
+              <div class="fw-semibold fs-4 mt-3">$88.9k</div>
             </div>
           </div>
           <div class="col">
-            <div class="metric-card solved-card">
-              <div class="card-content">
-                <div class="card-title">Issues Solved</div>
-                <div class="card-subtitle">this month</div>
-                <div class="card-value">430</div>
-                <span class="percent-badge">15% <i class="bi bi-arrow-up"></i></span>
-                <a href="#" class="card-link">View Tickets <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+            <div class="card dashboard-card-2 p-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-medium"
+                  >Come Back Order<br /><small>in the last 7 days</small></span
+                >
+                <span class="percent">20%</span>
               </div>
-              <div class="card-bg-pattern">
-                <i class="bi bi-check-circle"></i>
-              </div>
+              <div class="fw-semibold fs-4 mt-3">$4.56k</div>
             </div>
           </div>
           <div class="col">
-            <div class="metric-card open-card">
-              <div class="card-content">
-                <div class="card-title">Open Tickets</div>
-                <div class="card-subtitle">in this project</div>
-                <div class="card-value">220</div>
-                <a href="#" class="card-link">View Tickets <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+            <div class="card dashboard-card-3 p-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-medium"
+                  >Deals In-Progress<br /><small>this month</small></span
+                >
+                <span class="percent">15%</span>
               </div>
-              <div class="card-bg-pattern">
-                <i class="bi bi-envelope-open"></i>
-              </div>
+              <div class="fw-semibold fs-4 mt-3">$23.0k</div>
             </div>
           </div>
           <div class="col">
-            <div class="metric-card response-card">
-              <div class="card-content">
-                <div class="card-title">Avg. Response Time</div>
-                <div class="card-subtitle">in the last 7 days</div>
-                <div class="card-value">88%</div>
-                <span class="percent-badge">20% <i class="bi bi-arrow-down"></i></span>
-                <a href="#" class="card-link">View Details <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+            <div class="card dashboard-card-4 p-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-medium"
+                  >New Customer Order<br /><small>in this project</small></span
+                >
+                <span class="percent">20%</span>
               </div>
-              <div class="card-bg-pattern">
-                <i class="bi bi-clock"></i>
-              </div>
+              <div class="fw-semibold fs-4 mt-3">$18.9K</div>
             </div>
           </div>
           <div class="col">
-            <div class="metric-card satisfaction-card">
-              <div class="card-content">
-                <div class="card-title">Client Satisfaction</div>
-                <div class="card-subtitle">in the last 7 days</div>
-                <div class="card-value">80%</div>
-                <span class="percent-badge">8% <i class="bi bi-arrow-up"></i></span>
-                <a href="#" class="card-link">View Reports <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+            <div class="card dashboard-card-5 p-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-medium"
+                  >Revenue Lost<br /><small>in the last 7 days</small></span
+                >
+                <span class="percent">8%</span>
               </div>
-              <div class="card-bg-pattern">
-                <i class="bi bi-heart"></i>
-              </div>
+              <div class="fw-semibold fs-4 mt-3">$5.3k</div>
             </div>
           </div>
         </div>
@@ -129,10 +99,10 @@
                     <i class="bi bi-search"></i>
                   </button>
                 </div>
-                <button class="btn btn-outline-primary ms-2 d-flex align-items-center">
+                <a href="create-ticket.html" class="btn btn-outline-primary ms-2 d-flex align-items-center">
                   <i class="bi bi-plus-circle me-1"></i>
-                  <span>Create Contact</span>
-                </button>
+                  <span>Create Ticket</span>
+                </a>
               </div>
             </div>
           </div>
